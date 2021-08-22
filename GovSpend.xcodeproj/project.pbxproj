@@ -46,7 +46,6 @@
 		6A891C7826C0717800D51A81 /* MonthlyDebtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A891C7726C0717800D51A81 /* MonthlyDebtData.swift */; };
 		6A891C7A26C071A200D51A81 /* MonthlyDebtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A891C7926C071A200D51A81 /* MonthlyDebtManager.swift */; };
 		6A891C7C26C071C300D51A81 /* DebtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A891C7B26C071C300D51A81 /* DebtView.swift */; };
-		6A8E56E726A49C4600B41160 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E56E626A49C4600B41160 /* K.swift */; };
 		6A8E56E926A49CB700B41160 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E56E826A49CB700B41160 /* K.swift */; };
 		6A8F83A826D0549700362A6A /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8F83A726D0549700362A6A /* NewView.swift */; };
 		6AA48DAA269B579A0011687F /* ItemDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA48DA9269B579A0011687F /* ItemDestinationView.swift */; };
@@ -112,7 +111,6 @@
 		6A891C7926C071A200D51A81 /* MonthlyDebtManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyDebtManager.swift; sourceTree = "<group>"; };
 		6A891C7B26C071C300D51A81 /* DebtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtView.swift; sourceTree = "<group>"; };
 		6A8D55EA26C3390900516C0C /* GovSpend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GovSpend.entitlements; sourceTree = "<group>"; };
-		6A8E56E626A49C4600B41160 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		6A8E56E826A49CB700B41160 /* K.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		6A8F83A726D0549700362A6A /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
 		6AA48DA9269B579A0011687F /* ItemDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDestinationView.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				6AA57B7A26939C10008A3EA6 /* Preview Content */,
 				6A270434269E322800ECAE35 /* Keys.swift */,
 				6A8E56E826A49CB700B41160 /* K.swift */,
-				6A8E56E626A49C4600B41160 /* K.swift */,
 			);
 			path = GovSpend;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				6A67812726A46DEC002735FE /* CategorySearchManager.swift in Sources */,
 				6A27CC74269CBD0700B4818B /* CategorySearchData.swift in Sources */,
 				6A8193CB26B0617A00315EAB /* Dummy.swift in Sources */,
-				6A8E56E726A49C4600B41160 /* K.swift in Sources */,
 				6AAFC35626962D4D00F7696B /* CandidateModel.swift in Sources */,
 				6AA57B7726939C0E008A3EA6 /* CurrentCongressDetailsView.swift in Sources */,
 				6A273D9226A1FD9C005ADF21 /* TopContribManager.swift in Sources */,

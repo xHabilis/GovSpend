@@ -33,7 +33,7 @@ struct HomeScreenView: View {
                             .frame(width: UIScreen.main.bounds.width-45, height: 25, alignment: .bottom).padding(.bottom, -10.0)
                         VStack (spacing: 30){
                             
-    //MARK: - First Card: Search by Congress and Chamber
+//MARK: - First Card: Search by Congress and Chamber
     
                             VStack(spacing: 2){
                                 
