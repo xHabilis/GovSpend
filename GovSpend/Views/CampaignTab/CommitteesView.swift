@@ -137,19 +137,19 @@ struct CommitteesView: View {
                         .shadow(radius: 5)
                         
                         Spacer()
-                        VStack (spacing: 10){
+                        VStack (spacing: 20){
                             
                             Text("\(committeeObject.committeeMetaData!.copyright!)")
                                 .font(.system(size: 12))
                             
-                            
-                            
-                            Link("ProPublica", destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/candidates/")!)
-                                .frame(width: 250, height: 35, alignment: .center)
-                                .font(.system(size: 15))
-                                .background(Color(K.appColors.background))
-                                .cornerRadius(15)
-                                .shadow(radius: 5)
+                            Link(destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/candidates/")!, label: {
+                                Text("ProPublica")
+                                    .frame(width: 250, height: 35, alignment: .center)
+                                    .font(.system(size: 15))
+                                    .background(Color(K.appColors.background))
+                                    .cornerRadius(15)
+                                    .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                            })
                             
                             
                         }

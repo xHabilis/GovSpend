@@ -75,10 +75,13 @@ struct TopContribView: View {
                     .frame(width: UIScreen.main.bounds.width-35, height: 60, alignment: .center)
                     .background(Color(K.appColors.background))
                     .cornerRadius(8)
-                    .shadow(radius: 5)
+                    .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                     
                     
                 }
+                
+                
+
                 
                 
                 Spacer()
@@ -88,12 +91,14 @@ struct TopContribView: View {
                             .font(.system(size: 15)).fontWeight(.semibold)
                         
                         
-                        Link("Source", destination: URL(string: "\(topContItem.source)")!)
-                            .frame(width: 300, height: 35, alignment: .center)
-                            .font(.system(size: 15))
-                            .background(Color(K.appColors.background))
-                            .cornerRadius(15)
-                            .shadow(radius: 5)
+                        Link(destination: URL(string: "\(topContItem.source)")!, label: {
+                            Text("Source")
+                                .frame(width: 300, height: 35, alignment: .center)
+                                .font(.system(size: 15))
+                                .background(Color(K.appColors.background))
+                                .cornerRadius(15)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                        })
                         
                         Text(" Notice: The organizations themselves did not donate, rather the money came from the organization's PAC, its individual members or employees or owners, and those individuals' immediate families.")
                             .font(.system(size: 11)).fontWeight(.semibold)
@@ -137,66 +142,3 @@ struct TopContribView_Previews: PreviewProvider {
 }
 
 
-
-
-
-//let topCont = [
-//    
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//    dummyContribs(id: "123456",
-//                  org_name: "Some Super Awesome Company Name",
-//                  total: "$345,099",
-//                  pacs: "$100,000",
-//                  indivs: "$34,678"),
-//]
-//
-
-
-//            List (contribs.topContributors) {contributor in
-//                Text(contributor.attributes!.org_name)
-//                Text(contributor.attributes!.total)
-//                Text(contributor.attributes!.pacs)
-//                Text(contributor.attributes!.indivs)
-
-//.onAppear() {
-////contribs.getTopContributors(for: id, in: "")
-//}

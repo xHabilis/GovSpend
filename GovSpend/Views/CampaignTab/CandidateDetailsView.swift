@@ -35,7 +35,7 @@ struct CandidateDetailsView: View {
                                             .font(.system(size: 12)).fontWeight(.semibold)
                                     }
                                     .frame(width: 300, height: 30, alignment: .center)
-                                    //.background(Color(K.appColors.green))
+
                                     
                                     
                                     HStack {
@@ -48,7 +48,6 @@ struct CandidateDetailsView: View {
                                             .frame(width: 100, height: 20, alignment: .leading)
                                     }
                                     .frame(width: 300, height: 10, alignment: .center)
-                                    //.background(Color(K.appColors.green))
                                     
                                     HStack {
                                         
@@ -60,7 +59,6 @@ struct CandidateDetailsView: View {
                                             .frame(width: 100, height: 20, alignment: .leading)
                                     }
                                     .frame(width: 300, height: 10, alignment: .center)
-                                    //.background(Color(K.appColors.green))
 
                                     
                                 }
@@ -106,7 +104,7 @@ struct CandidateDetailsView: View {
 
                     }
                     .frame(width: 420, height: 160, alignment: .center)
-                    //.background(Color(K.appColors.lightGray))
+
 
 
 //MARK: - Committee Button
@@ -126,7 +124,7 @@ struct CandidateDetailsView: View {
                         .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
                         .background(Configs.chooseColor(for: path.party ))
                         .cornerRadius(10)
-                        .shadow(radius: 5)
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
                     }
                     
                     
@@ -175,29 +173,28 @@ struct CandidateDetailsView: View {
                         }
 
                     }
-                    ///Totals Frame
                     .padding(.top)
                     .frame(width: 400, height: 400, alignment: .center)
-                    // .background(Color("myBackground"))
                     .cornerRadius(8)
                     .shadow(radius: 2)
                     
                     
                     
-                    VStack (spacing: 10){
+                    VStack (spacing: 20){
                         if let copyInfo = detailsManager.candidateDetailsMetaData {
                             Text("\(copyInfo.copyright)")
                                 .font(.system(size: 12))
                         }
                         
-                        //Text(theFunds.source)
-                        Link("ProPublica", destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/candidates/")!)
-                            .frame(width: 250, height: 35, alignment: .center)
-                            //.foregroundColor()
-                            .font(.system(size: 15))
-                            .background(Color(K.appColors.background))
-                            .cornerRadius(15)
-                            .shadow(radius: 5)
+                        
+                        Link(destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/candidates/")!, label: {
+                            Text("ProPublica")
+                                .frame(width: 250, height: 35, alignment: .center)
+                                .font(.system(size: 15))
+                                .background(Color(K.appColors.background))
+                                .cornerRadius(15)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                        })
                     
   
                 }

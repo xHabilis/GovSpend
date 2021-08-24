@@ -44,16 +44,16 @@ class CategorySearchManager: ObservableObject {
                 if let safeData = data {
                     do {
                         let theData = try decoder.decode(CategorySearchData.self, from: safeData)
-                        
-                        
-                        
-                        
-                        DispatchQueue.main.async {
-                            if let dataStuff = theData.results {
-                            self.theCategoryResults = dataStuff
+  
+                        if let dataStuff = theData.results {
+                            
+                            DispatchQueue.main.async {
+                                self.theCategoryResults = dataStuff
+                                self.categoryMetaData = theData
                             }
-                            self.categoryMetaData = theData
-
+                            
+                            
+                            
                         }
                         
                     } catch {

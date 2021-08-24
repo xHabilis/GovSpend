@@ -41,17 +41,15 @@ class AnnualDebtManager: ObservableObject {
                                     someArray.append((name: "\(year.record_fiscal_year!)", value: year.debtAsDouble))
                                 }
                             }
-
-                        
+                            
+                            if let theDebt = allAnnualDebt.data {
                                 DispatchQueue.main.async {
-                                 
-                                    if let theDebt = allAnnualDebt.data {
-                                        self.annualDebt =  theDebt
-                                    }
                                     
+                                    self.annualDebt =  theDebt
                                     self.barChartData = someArray
-                                    
                                 }
+         
+                            }
 
                         } catch {
                             print("DATA \(error.localizedDescription)")

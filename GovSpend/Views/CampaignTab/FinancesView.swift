@@ -11,7 +11,8 @@ struct FinancesView: View {
     
     @StateObject var theFinancials: FinancesManager
     @State private var showCitationView: Bool = false
-    @State private var showFundRaising = false
+    @State private var showFundRaising: Bool = false
+    @State private var showTable: Bool = true
     
     var firstName: String
     var lastName: String
@@ -28,8 +29,9 @@ struct FinancesView: View {
     var contact: String
     var phone: String
     var website: String
-    
+    @ViewBuilder
     var body: some View {
+        
         ZStack {
             ZStack {
                 VStack {
@@ -40,7 +42,6 @@ struct FinancesView: View {
                         VStack {
                             
                             let fullImageURL = "\(K.apiURLs.imageURL)\(bioID)\(K.apiURLs.imageURLjpg)"
-                            //let fullImageURL = "https://i.imgur.com/L4tLYAz.jpeg"
                             RemoteImage(url: fullImageURL)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 100, height: 140, alignment: .center)
@@ -59,7 +60,6 @@ struct FinancesView: View {
                                         
                                     }
                                     .frame(width: 280, height: 20, alignment: .center)
-                                    //.background(Color(K.appColors.green))
                                     
                                     HStack {
                                         VStack {
@@ -68,20 +68,16 @@ struct FinancesView: View {
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .trailing)
-                                        //.background(Color(.white))
                                         
                                         VStack {
                                             Text(nextElection)
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .leading)
-                                        //.background(Color(.white))
                                         
                                     }
                                     .frame(width: 280, height: 20, alignment: .center)
-                                    //.background(Color(K.appColors.green))
-                                    
-                                    
+
                                     
                                     HStack {
                                         VStack {
@@ -89,18 +85,15 @@ struct FinancesView: View {
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .trailing)
-                                        // .background(Color(.white))
-                                        //
+
                                         VStack {
                                             Text(status)
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .leading)
-                                        // .background(Color(.white))
                                         
                                     }
                                     .frame(width: 280, height: 20, alignment: .center)
-                                    //.background(Color(K.appColors.green))
                                     
                                     HStack {
                                         VStack {
@@ -108,18 +101,16 @@ struct FinancesView: View {
                                                 .font(.system(size: 12))
                                         }
                                         .frame(width: 100, height: 20, alignment: .trailing)
-                                        //.background(Color(.white))
                                         
                                         VStack {
                                             Text("\(Configs.getLongName(for: party))")
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .leading)
-                                        //.background(Color(.white))
                                         
                                     }
                                     .frame(width: 280, height: 20, alignment: .center)
-                                    //.background(Color(K.appColors.green))
+    
                                 }
                                 
                             }
@@ -152,7 +143,6 @@ struct FinancesView: View {
                                 
                             }
                             .frame(width: UIScreen.main.bounds.width-140, height: 30, alignment: .center)
-                            //.background(Color(K.appColors.green))
                             .background(Configs.chooseColor(for: party))
                             .cornerRadius(8)
                             
@@ -170,12 +160,10 @@ struct FinancesView: View {
                         
                     }
                     .frame(width: UIScreen.main.bounds.width-15, height: 160, alignment: .center)
-                    //.background(Color(K.appColors.lightGray))
                     
                     HStack{
-                        //MARK: - Button: Top Contributors
+//MARK: - Button: Top Contributors
                         
-                        //Top Contributors Button
                         if let idInPF = theFinancials.pfProfile?.attributes {
                             NavigationLink(
                                 destination: TopContribView(contribs: TopContribManager(), id: idInPF.member_id),
@@ -187,10 +175,9 @@ struct FinancesView: View {
                                 .foregroundColor(Color.black)
                                 .font(.system(size: 12))
                                 .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
-                                .background(Color(K.appColors.green))
+                                .background(Configs.chooseColor(for: party))
                                 .cornerRadius(10)
-                                //.shadow(color: .black, radius: 3)
-                                .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                         }
                         
 //MARK: - Button: Sector Totals
@@ -209,10 +196,9 @@ struct FinancesView: View {
                                 .foregroundColor(Color.black)
                                 .font(.system(size: 12))
                                 .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
-                                .background(Color(K.appColors.green))
+                                .background(Configs.chooseColor(for: party))
                                 .cornerRadius(10)
-                                //.shadow(color: .black, radius: 3)
-                                .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
                         }
                         
@@ -225,10 +211,9 @@ struct FinancesView: View {
                             .foregroundColor(Color.black)
                             .font(.system(size: 12))
                             .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
-                            .background(Color(K.appColors.green))
+                            .background(Configs.chooseColor(for: party))
                             .cornerRadius(10)
-                            //.shadow(color: .black, radius: 3)
-                            .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                            .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
                             .sheet(isPresented: $showFundRaising) {
                                 FundRaisingView(funds: FundRaisingManager(), id: idInPF.member_id)
@@ -243,42 +228,33 @@ struct FinancesView: View {
                     
                     Spacer()
                     
-                    //MARK: - Conditional List: Reported Assets
-                    
-                    //Reported Assets Table
+//MARK: - Reported Assets
+
                     Text("Reported Assets")
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
-                        //.background(Color(K.appColors.background))
-                        //.cornerRadius(10)
+
                     
 
                         List(theFinancials.pfAssets) { asset in
-                            //List(person) { asset in
-                            
                             VStack (){
                                 HStack {
                                     
                                     VStack (spacing: 4){
                                         Text(asset.attributes!.name)
-                                            //Text(asset.name!)
                                             .font(.system(size: 12)).fontWeight(.semibold)
                                             .multilineTextAlignment(.leading).lineLimit(3)
                                     }
                                     .frame(width: 180, height: 35, alignment: .leading)
                                     VStack (spacing: 3.5){
                                         Text(asset.attributes!.sector)
-                                            //Text(asset.sector!)
                                             .font(.system(size: 9))
-                                        //.padding(.bottom, 2.0)
                                         
                                         Text("High: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
-                                            //Text(asset.holdings_high!)
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
-                                        //.padding(.bottom, -3.0)
+
                                         
                                         Text("Low: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
-                                            //Text(asset.holdings_low!)
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
                                     }
                                     .frame(width: 150, height: 45, alignment: .center)
@@ -289,46 +265,39 @@ struct FinancesView: View {
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
                             .background(Color(K.appColors.background))
                             .cornerRadius(8)
-                            .shadow(radius: 5)
+                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                             
                         }
+              
 
+//MARK: - Positions
                     
-                    
-                    
-                    
-                    //MARK: - Conditional List: Positions
-                    
-                    //Positions Table
                     Text("Positions")
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
-                        //.background(Color(K.appColors.background))
-                        //.cornerRadius(10)
+
                     
 
                         List(theFinancials.pfPositions) { position in
-                            //List(otherPerson) { position in
-                            
                             VStack {
                                 VStack(spacing: 5) {
                                     
                                     Text(position.attributes!.title)
-                                        //Text(position.title!)
                                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
                                         .font(.system(size: 12))
                                     
                                     Text(position.attributes!.organization)
-                                        //Text(position.organization!)
+                                        .font(.system(size: 9)).fontWeight(.semibold)
                                         .frame(width: UIScreen.main.bounds.width-25, height: 10, alignment: .center)
-                                        .font(.system(size: 9))
+                                        
                                 }
                             }
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
                             .background(Color(K.appColors.background))
                             .cornerRadius(8)
-                            .shadow(radius: 5)
+                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                         }
+             
 
                     
                     
@@ -344,12 +313,12 @@ struct FinancesView: View {
                                                 CitationView()
                                             }})
                 .onAppear() {
-                    theFinancials.getPersonalFinances(for: cID)
+                theFinancials.getPersonalFinances(for: cID)
 
                 }
                 
             }
-        }//
+        }
         
     }
     
@@ -375,54 +344,3 @@ struct PersonalFinanceView_Previews: PreviewProvider {
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
-
-//
-//let person = [
-//
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company with a really long name to test",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//    DummyPFList(id: "12345",
-//                name: "Some Cool Company",
-//                holdings_low: "$200,000",
-//                holdings_high: "$234,567,889",
-//                sector: "Real Estate and Other Stuff Also"),
-//]
-//
-//let otherPerson = [
-//
-//    DummyPFListPositions(id: "123456",
-//                         title: "CHairman Board of Directors of Clowns",
-//                         organization: "Some Fancey place"),
-//    DummyPFListPositions(id: "123456",
-//                         title: "CHairman Board of Directors of Clowns",
-//                         organization: "Some Fancey place"),
-//    DummyPFListPositions(id: "123456",
-//                         title: "CHairman Board of Directors of Clowns",
-//                         organization: "Some Fancey place"),
-//    DummyPFListPositions(id: "123456",
-//                         title: "CHairman Board of Directors of Clowns",
-//                         organization: "Some Fancey place"),
-//]

@@ -44,7 +44,6 @@ class CandidateDetailsManager: ObservableObject {
                     do {
                         let detailsResult = try decoder.decode(CandidateDetailsData.self, from: safeData)
                         
-                        //print("Result \(detailsResult)")
                         
                         DispatchQueue.main.async {
                             self.candidateDetails = detailsResult.results

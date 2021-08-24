@@ -26,40 +26,56 @@ struct CitationView: View {
                         .foregroundColor(.black)
                     
                     
-                    Link("OpenSecrets", destination: URL(string: "https://www.opensecrets.org/open-data/api")!)
-                        .frame(width: 300, height: 40, alignment: .center)
-                        .font(.system(size: 13))
-                        .background(Color(K.appColors.cardShadowReverse))
-                        .cornerRadius(15)
-                        .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                    
+                    Link(destination: URL(string: "https://www.opensecrets.org/open-data/api")!, label: {
+                        Text("OpenSecrets")
+                            .font(.system(size: 13))
+                            .frame(width: 300, height: 40, alignment: .center)
+                            .background(Color(K.appColors.cardShadowReverse))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
+                    })
+                    
+                    
+                    
+                    Link(destination: URL(string: "https://www.opensecrets.org/open-data/api")!, label: {
+                        Text("OpenSecrets")
+                            .font(.system(size: 13))
+                            .frame(width: 300, height: 40, alignment: .center)
+                            .background(Color(K.appColors.cardShadowReverse))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
+                    })
+                        
                 }
-
-                
+   
                 VStack(spacing: 10) {
                     Text("ProPublica")
                         .foregroundColor(.black)
                         .font(.system(size: 15)).fontWeight(.semibold)
                     
                     
-                    Link("Campaign Finance", destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/")!)
-                        .frame(width: 300, height: 40, alignment: .center)
-                        //.foregroundColor()
-                        .font(.system(size: 13))
-                        .background(Color(K.appColors.cardShadowReverse))
-                        .cornerRadius(15)
-                        .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                    Link(destination: URL(string: "https://projects.propublica.org/api-docs/campaign-finance/")!, label: {
+                        Text("Campaign Finance")
+                            .font(.system(size: 13))
+                            .frame(width: 300, height: 40, alignment: .center)
+                            .background(Color(K.appColors.cardShadowReverse))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
+                    })
                     
                     
                     
                     
                     
-                    Link("Congress", destination: URL(string: "https://www.propublica.org/datastore/api/propublica-congress-api")!)
-                        .frame(width: 300, height: 40, alignment: .center)
-                        //.foregroundColor()
-                        .font(.system(size: 13))
-                        .background(Color(K.appColors.cardShadowReverse))
-                        .cornerRadius(15)
-                        .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                    Link(destination: URL(string: "https://www.propublica.org/datastore/api/propublica-congress-api")!, label: {
+                        Text("Congress")
+                            .font(.system(size: 13))
+                            .frame(width: 300, height: 40, alignment: .center)
+                            .background(Color(K.appColors.cardShadowReverse))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
+                    })
                     
                 }
                 
@@ -68,13 +84,18 @@ struct CitationView: View {
                         .foregroundColor(.black)
                         .font(.system(size: 15)).fontWeight(.semibold)
                     
-                    Link("Fiscal Data", destination: URL(string: "https://fiscaldata.treasury.gov/datasets/")!)
-                        .frame(width: 300, height: 40, alignment: .center)
-                        //.foregroundColor()
-                        .font(.system(size: 13))
-                        .background(Color(K.appColors.cardShadowReverse))
-                        .cornerRadius(15)
-                        .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+                    Link(destination: URL(string: "https://fiscaldata.treasury.gov/datasets/")!, label: {
+                        Text("Fiscal Data")
+                            .font(.system(size: 13))
+                            .frame(width: 300, height: 40, alignment: .center)
+                            .background(Color(K.appColors.cardShadowReverse))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
+                    })
+                    
+                    Link(destination: /*@START_MENU_TOKEN@*/URL(string: "https://www.apple.com")!/*@END_MENU_TOKEN@*/, label: {
+                        /*@START_MENU_TOKEN@*/Text("Link")/*@END_MENU_TOKEN@*/
+                    })
                     
                 }
                 

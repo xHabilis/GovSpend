@@ -44,15 +44,15 @@ class CommitteeManager: ObservableObject {
                 if let safeData = data {
                     do {
                         let theCommitteeData = try decoder.decode(CommitteeData.self, from: safeData)
-                        
-                        
-                        
-                        
-                        DispatchQueue.main.async {
-                            if let committeeStuff = theCommitteeData.results {
+        
+                        if let committeeStuff = theCommitteeData.results {
+                            DispatchQueue.main.async {
+                                
                                 self.committeeList = committeeStuff
+                                self.committeeMetaData = theCommitteeData
+                                
                             }
-                            self.committeeMetaData = theCommitteeData
+                            
                         }
                         
                     } catch {

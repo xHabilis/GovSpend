@@ -42,24 +42,22 @@ class GiftRevenueManager: ObservableObject {
                                     someArray.append((name: "\(day.record_date)", value: day.giftAsDouble))
                                 }
                             }
-
-                        
+                            
+                            if let money = giftMoneyAll.data {
                                 DispatchQueue.main.async {
-                                 
-                                    if let money = giftMoneyAll.data {
-                                        self.revenue =  money
-                                    }
                                     
                                     self.barChartData = someArray
-                                    
+                                    self.revenue =  money
                                 }
-
+                                
+                            }
+                            
                         } catch {
                             print("DATA \(error.localizedDescription)")
                         }
                     }
                 }
-        }
+            }
             task.resume()
     }
 }

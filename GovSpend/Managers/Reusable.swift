@@ -71,23 +71,20 @@ struct ItemNameValue: View {
     var body: some View {
         HStack(spacing: 20){
             Text(itemName)
-                .foregroundColor(Color.black)
                 .font(.system(size: 12))
                 .padding(.leading)
-                .frame(width: 200, height: 30, alignment: .leading)
-                .background(Color(K.appColors.lightGray))
-                .cornerRadius(8)
-                .shadow(radius: 0.5)
+                .frame(width: 190, height: 30, alignment: .trailing)
+
             Text(String(itemValue))
                 .foregroundColor(Color.black)
                 .font(.system(size: 12)).fontWeight(.semibold)
-                .frame(width: 120, height: 30, alignment: .center)
+                .frame(width: 140, height: 30, alignment: .center)
                 .background(Color(itemValueColor))
-
                 .cornerRadius(8)
-                .shadow(radius: 1.5)
+                .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
         }
-        .font(.system(size: 13))
+        .frame(width: UIScreen.main.bounds.width-25, height: 30, alignment: .leading)
+        
     }
 }
 

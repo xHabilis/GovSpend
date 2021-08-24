@@ -47,17 +47,15 @@ class MonthlyDebtManager: ObservableObject {
                                 }
                             }
 
-                        
+                            if let theDebt = allMonthly.data {
                                 DispatchQueue.main.async {
-                                 
-                                    if let theDebt = allMonthly.data {
-                                        self.monthlyDebt =  theDebt
-                                    }
                                     
+                                    self.monthlyDebt =  theDebt
                                     self.barChartData = someArray
                                     self.lineChartData = arrayOfDoubles
-                                    
                                 }
+                           
+                            }
 
                         } catch {
                             print("DATA \(error.localizedDescription)")

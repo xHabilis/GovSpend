@@ -11,8 +11,8 @@ struct HomeScreenView: View {
 
     @State private var candidateName: String = ""
     @State private var cycleYear = "2020"
-    @State private var congressNumber = "117"
-    @State private var chamber = "Senate"
+    @State private var congressNumber = "Select Session"
+    @State private var chamber = "Select Chamber"
     @State private var showCitationView: Bool = false
     @State private var isShowingCandidates: Bool = false
    
@@ -24,7 +24,6 @@ struct HomeScreenView: View {
             ScrollView (showsIndicators: false){
                 ZStack {
                     Color(K.appColors.background)
-                        //.edgesIgnoringSafeArea(.all)
 
                     
                     VStack (spacing: 25) {
@@ -38,12 +37,12 @@ struct HomeScreenView: View {
                             VStack(spacing: 2){
                                 
                                 VStack{
-                                    Text("House Chambers: 102-117")
+                                    Text("House: Sessions 102-117")
                                         .font(.system(size: 9))
                                     
                                 }
                                 VStack{
-                                    Text("Senate Chambers: 80-117")
+                                    Text("Senate: Sessions 80-117")
                                         .font(.system(size: 9))
                                 }
                             }
@@ -65,11 +64,13 @@ struct HomeScreenView: View {
                                 
                                 //Picker Poperties
                                 .font(.system(size: 12))
-                                .pickerStyle(MenuPickerStyle())
                                 .frame(width: 125, height: 35, alignment: .center)
+                                .pickerStyle(MenuPickerStyle())
+                                
                                 .background(Color(K.appColors.grayBrown))
                                 .foregroundColor(.accentColor)
                                 .cornerRadius(15)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 2.5)
 
                                 
                                 
@@ -92,9 +93,9 @@ struct HomeScreenView: View {
                                 .background(Color(K.appColors.grayBrown))
                                 .foregroundColor(.accentColor)
                                 .cornerRadius(15)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 2.5)
 
-                                
-                                //Search: GO Button
+
                                 NavigationLink(
                                     destination: CongressSearchResultsView(personalFinance: FinancesManager(), congress: AllCongressManager(),congressNum: congressNumber, congressChamber: chamber),
                                     label: {
@@ -106,19 +107,15 @@ struct HomeScreenView: View {
                                     })
                                     .foregroundColor(Color.black)
                                     .font(.system(size: 12))
-                                    //.frame(width: 40, height: 30, alignment: .center)
-                                    //.background(Color(K.appColors.background))
-                                    //.cornerRadius(7)
                                     .shadow(color: .black,radius: 1.5)
 
                             }
 
                         }
-                        .frame(width: UIScreen.main.bounds.width-75, height: 250, alignment: .top)
+                        .frame(width: UIScreen.main.bounds.width-65, height: 250, alignment: .top)
                         .background(Color(K.appColors.cardShadowReverse))
                         .cornerRadius(24)
-                        //.shadow(color: .black, radius: 2)
-                        .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 2)
                       
                         
 //MARK: - Second Card: Search ALL FEC Candidates
@@ -166,7 +163,8 @@ struct HomeScreenView: View {
                         .background(Color(K.appColors.grayBrown))
                         .foregroundColor(.accentColor)
                         .cornerRadius(15)
-                        .clipped()
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 2.5)
+  
 
                         //Present Search Results
                         NavigationLink(destination: FECSearchResultsView(candidateSearchManager: FECCandidateSearchManager(),
@@ -176,47 +174,53 @@ struct HomeScreenView: View {
                                        isActive: $isShowingCandidates) { EmptyView() }
                         
                         }
-                        .frame(width: UIScreen.main.bounds.width-75, height: 250, alignment: .top)
+                        .frame(width: UIScreen.main.bounds.width-65, height: 250, alignment: .top)
                         .background(Color(K.appColors.cardShadowReverse))
                         .cornerRadius(24)
-                        //.shadow(color: .black, radius: 2)
-                        .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 2)
                         
                         
 //MARK: - Categories
-                        VStack (spacing: 10) {
-                        Text("Top 20 Candidates - Categories")
+                    VStack (spacing: 10) {
+                        Text("Top 20 Candidates")
                             .font(.system(size: 13)).fontWeight(.semibold)
                             .frame(width: 290, height: 28, alignment: .center)
-                        
-                        VStack {
-                        HStack (spacing:30){
-                            VStack(spacing: 25) {
-                                
+
+                        VStack(spacing: 30) {
+                            VStack (spacing: 20) {
+                                Text("Categories")
+                                    .font(.system(size: 9))
+                                    .frame(width: UIScreen.main.bounds.width-45, height: 15, alignment: .center)
+                            }
+                            .frame(width: UIScreen.main.bounds.width-45, height: 65, alignment: .center)
+                            .background(Color(K.appColors.green))
+                            
+                        HStack (spacing:20){
+                            VStack(spacing: 15) {
+                                CategoryLink(CategoryUrlName: "individual-total",
+                                             CategoryTitle: "Individual Totals")
                                 CategoryLink(CategoryUrlName: "candidate-loan",
                                              CategoryTitle: "Candidate Loans")
-                                CategoryLink(CategoryUrlName: "debts-owed",
-                                             CategoryTitle: "Debts Owed")
                                 CategoryLink(CategoryUrlName: "end-cash",
                                              CategoryTitle: "End Cash")
                             }
                             
-                            VStack (spacing: 25){
-                                CategoryLink(CategoryUrlName: "individual-total",
-                                             CategoryTitle: "Individual Totals")
+                            VStack (spacing: 15){
+                                
                                 CategoryLink(CategoryUrlName: "pac-total",
                                              CategoryTitle: "PAC Totals")
+                                CategoryLink(CategoryUrlName: "debts-owed",
+                                             CategoryTitle: "Debts Owed")
                                 CategoryLink(CategoryUrlName: "receipts-total",
                                              CategoryTitle: "Receipt Totals")
                             }
                         }
                         
                         }
-                        .frame(width: UIScreen.main.bounds.width-75, height: 200, alignment: .center)
+                        .frame(width: UIScreen.main.bounds.width-65, height: 250, alignment: .top)
                         .background(Color(K.appColors.cardShadowReverse))
                         .cornerRadius(24)
-                        //.shadow(color: .black, radius: 2)
-                        .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 2)
                     Spacer()
                      
                     }

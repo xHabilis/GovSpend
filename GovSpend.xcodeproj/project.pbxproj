@@ -53,6 +53,8 @@
 		6AA57B7726939C0E008A3EA6 /* CurrentCongressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA57B7626939C0E008A3EA6 /* CurrentCongressDetailsView.swift */; };
 		6AA57B7926939C10008A3EA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA57B7826939C10008A3EA6 /* Assets.xcassets */; };
 		6AA57B7C26939C10008A3EA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA57B7B26939C10008A3EA6 /* Preview Assets.xcassets */; };
+		6AABBEA726D4565600C1ADA3 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEA626D4565600C1ADA3 /* Testing.swift */; };
+		6AABBEA926D5403900C1ADA3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEA826D5403900C1ADA3 /* SettingsView.swift */; };
 		6AAE117B26A384550099B6A2 /* AllCongressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE117A26A384550099B6A2 /* AllCongressManager.swift */; };
 		6AAE117D26A384640099B6A2 /* AllCongressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE117C26A384640099B6A2 /* AllCongressData.swift */; };
 		6AAFC35626962D4D00F7696B /* CandidateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAFC35526962D4D00F7696B /* CandidateModel.swift */; };
@@ -120,6 +122,8 @@
 		6AA57B7826939C10008A3EA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AA57B7B26939C10008A3EA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6AA57B7D26939C10008A3EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AABBEA626D4565600C1ADA3 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		6AABBEA826D5403900C1ADA3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6AAE117A26A384550099B6A2 /* AllCongressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCongressManager.swift; sourceTree = "<group>"; };
 		6AAE117C26A384640099B6A2 /* AllCongressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCongressData.swift; sourceTree = "<group>"; };
 		6AAFC35526962D4D00F7696B /* CandidateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateModel.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				6AD1E437269F3D5B002601B6 /* CurrentCongressData.swift */,
 				6AD1E435269F3CF4002601B6 /* CurrentCongressManager.swift */,
 				6A36D1FE26A0F7450084AEF1 /* PFListView.swift */,
+				6AABBEA626D4565600C1ADA3 /* Testing.swift */,
 			);
 			path = Later;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				6A891C6E26C06ED800D51A81 /* DebtTab */,
 				6AE96B7F26C0B64E008AA9D0 /* RevenueTab */,
 				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
+				6AABBEA826D5403900C1ADA3 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				6AA57B7726939C0E008A3EA6 /* CurrentCongressDetailsView.swift in Sources */,
 				6A273D9226A1FD9C005ADF21 /* TopContribManager.swift in Sources */,
 				6A891C7826C0717800D51A81 /* MonthlyDebtData.swift in Sources */,
+				6AABBEA926D5403900C1ADA3 /* SettingsView.swift in Sources */,
 				6A8193CF26B35B4A00315EAB /* HomeTabsView.swift in Sources */,
 				6AA57B7526939C0E008A3EA6 /* GovSpendApp.swift in Sources */,
 				6AAE117B26A384550099B6A2 /* AllCongressManager.swift in Sources */,
@@ -425,6 +432,7 @@
 				6A4384F226A08434007AFF6F /* PersonalFinanceData.swift in Sources */,
 				6AD1E438269F3D5B002601B6 /* CurrentCongressData.swift in Sources */,
 				6AAFC3852696597600F7696B /* TopContributorsView.swift in Sources */,
+				6AABBEA726D4565600C1ADA3 /* Testing.swift in Sources */,
 				6A67812926A48A8E002735FE /* CategoryResultView.swift in Sources */,
 				6A54BE262697F9B300419A13 /* CandidateDetailsData.swift in Sources */,
 				6A273D8E26A1FCC1005ADF21 /* TopContribView.swift in Sources */,

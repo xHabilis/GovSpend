@@ -24,55 +24,46 @@ struct SectorTotalsView: View {
         ZStack {
             Color(K.appColors.background)
                 .edgesIgnoringSafeArea(.bottom)
+            
             VStack {
                 List (sector.sectorTotal) { sectorItem in
-                //List (sectorStuff) { sector in
                     HStack {
                         VStack {
                             Text(sectorItem.attributes!.sector_name)
-                            //Text(sector.sector_name)
                                 .font(.system(size: 12)).fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(3)
                             
                         }
                         .frame(width: 180, height: 50, alignment: .leading)
-                        //.background(Color(K.appColors.lightBlue))
                         
                         VStack (spacing: 5) {
                             
                             HStack {
                                 Text("Total:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
-                                //.background(Color(K.appColors.lightBlue))
                                 Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.total)!))")
-                                //Text(sectorItem.attributes)
                                     .frame(width: 60, height: 10, alignment: .leading)
-                                //.background(Color(K.appColors.lightBlue))
                             }
                             .font(.system(size: 10))
                             
                             HStack {
                                 Text("From Pacs:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
-                                //.background(Color(K.appColors.lightBlue))
                                 
                                 Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.pacs)!))")
-                                //Text(sector.pacs)
                                     .frame(width: 60, height: 10, alignment: .leading)
-                                //.background(Color(K.appColors.lightBlue))
+
                             }
                             .font(.system(size: 10))
                             
                             HStack {
                                 Text("Individuals:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
-                                //.background(Color(K.appColors.lightBlue))
                                 
                                 Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.indivs)!))")
-                                //Text(sector.indivs)
                                     .frame(width: 60, height: 10, alignment: .leading)
-                                //.background(Color(K.appColors.lightBlue))
+
                             }
                             .font(.system(size: 10))
                             
@@ -81,7 +72,7 @@ struct SectorTotalsView: View {
                     .frame(width: UIScreen.main.bounds.width-35, height: 60, alignment: .center)
                     .background(Color(K.appColors.background))
                     .cornerRadius(8)
-                    .shadow(radius: 5)
+                    .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                 }
                 Spacer()
                 
@@ -90,14 +81,15 @@ struct SectorTotalsView: View {
                     Text("Center for Responsive Politics")
                         .font(.system(size: 15)).fontWeight(.semibold)
                     
-                    //Text(theFunds.source)
-                    Link("Source", destination: URL(string: "\(theSector.source)")!)
-                        .frame(width: 300, height: 35, alignment: .center)
-                        //.foregroundColor()
-                        .font(.system(size: 15))
-                        .background(Color(K.appColors.background))
-                        .cornerRadius(15)
-                        .shadow(radius: 5)
+        
+                    Link(destination: URL(string: "\(theSector.source)")!, label: {
+                        Text("Source")
+                            .frame(width: 300, height: 35, alignment: .center)
+                            .font(.system(size: 15))
+                            .background(Color(K.appColors.background))
+                            .cornerRadius(15)
+                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                    })
                     
                     Text("Last Updated: 04/04/2020")
                         .font(.system(size: 11)).fontWeight(.semibold)
@@ -137,71 +129,3 @@ struct SectorTotalsView_Previews: PreviewProvider {
         SectorTotalsView(sector: SectorTotalsManager(), id: "")
     }
 }
-
-
-//            .onAppear() {
-//                sector.getSectorTotals(for: id, in: "2020")
-//            }
-
-//.navigationBarTitle("Sector Totals")
-//.navigationBarItems(trailing:
-//                        Button(action: {
-//                            showCitationView = true
-//
-//                        }){Image(systemName: "info.circle").imageScale(.large)
-//                            .sheet(isPresented: $showCitationView) {
-//                                CitationView()
-//                            }})
-
-let sectorStuff = [
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-    dummySector(id: "12345",
-                sector_name: "Real Estate/ Finance and Length",
-                indivs: "$12,455",
-                pacs: "$45,345",
-                total: "5$00,000"),
-]

@@ -40,17 +40,17 @@ class SectorTotalsManager: ObservableObject {
                         do {
                             let allSectorData = try decoder.decode(SectorTotalsData.self, from: safeData)
 
-                            let tableData = allSectorData.response?.sectors?.sector
-                            let candidateData = allSectorData.response?.sectors
-                            
+                            if let tableData = allSectorData.response?.sectors?.sector {
                                 DispatchQueue.main.async {
-                                    if let table = tableData {
-                                        self.sectorTotal = table
-                                    }
-                                    
-                                    self.sectorCandidate = candidateData
-
+                                    self.sectorTotal = tableData
                                 }
+                            }
+
+                            if let candidateData = allSectorData.response?.sectors {
+                                DispatchQueue.main.async {
+                                    self.sectorCandidate = candidateData
+                                }
+                            }
 
                         } catch {
                             print("DATA \(error.localizedDescription)")

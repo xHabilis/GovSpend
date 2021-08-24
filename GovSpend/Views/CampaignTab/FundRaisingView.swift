@@ -30,7 +30,7 @@ struct FundRaisingView: View {
                                                 
                                             }){Image(systemName: "info.circle").imageScale(.large)
                                                 .sheet(isPresented: $showCitationView) {
-                                                    CitationView(); Image(systemName: "info.circle").imageScale(.large)
+                                                    CitationView()
                                                 }})
                 
                     VStack (spacing: 35) {
@@ -55,7 +55,6 @@ struct FundRaisingView: View {
                         .background(Configs.chooseColor(for: "\(theFunds.party)")).opacity(9)
                         .cornerRadius(20)
                         .shadow(radius: 10)
-                        
                         
                         
                         VStack {
@@ -90,26 +89,27 @@ struct FundRaisingView: View {
                         }
                         .frame(width: UIScreen.main.bounds.width-25, height: 280, alignment: .center)
                             
-                            
-                    VStack (spacing: 15){
-                        Text(theFunds.origin)
-                            .font(.system(size: 15)).fontWeight(.semibold)
-         
-
-                        Link("Source", destination: URL(string: "\(theFunds.source)")!)
-                            .frame(width: 300, height: 35, alignment: .center)
-                            .font(.system(size: 15))
-                            .background(Color(K.appColors.background))
-                            .cornerRadius(15)
-                            .shadow(radius: 5)
                         
+                        VStack (spacing: 15){
+                            Text(theFunds.origin)
+                                .font(.system(size: 15)).fontWeight(.semibold)
+
+                            Link(destination: URL(string: "\(theFunds.source)")!, label: {
+                                Text("Source")
+                                    .frame(width: 300, height: 35, alignment: .center)
+                                    .font(.system(size: 15))
+                                    .background(Color(K.appColors.background))
+                                    .cornerRadius(15)
+                                    .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                            })
+                            
                             Text("Last Updated: \(theFunds.last_updated)")
                                 .font(.system(size: 11))
-                    }
-                    .frame(width: UIScreen.main.bounds.width-25, height: 150, alignment: .center)
-                    .background(Color(K.appColors.grayBrown)).opacity(0.9)
-                    .cornerRadius(20)
-                    .shadow(radius: 10)
+                        }
+                        .frame(width: UIScreen.main.bounds.width-25, height: 150, alignment: .center)
+                        .background(Color(K.appColors.green)).opacity(0.9)
+                        .cornerRadius(20)
+                        .shadow(radius: 5)
                         
                         
                     }
@@ -133,25 +133,3 @@ struct FundRaisingView_Previews: PreviewProvider {
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
-
-
-//let theFunds = FundRaising(cand_name: "Bernard Sanders",
-//                           cid: "1234456",
-//                           cycle: "2020",
-//                           state: "CA",
-//                           party: "D",
-//                           chamber: "H",
-//                           first_elected: "2018",
-//                           next_election: "2022",
-//                           total: "$123,456,778",
-//                           spent: "$247,567",
-//                           cash_on_hand: "$100,000,000",
-//                           debt: "$289,556",
-//                           origin: "Origin",
-//                           source: "Source",
-//                           last_updated: "02/23/2019")
-
-
-//origin = "Center for Responsive Politics"
-//source = "https://www.opensecrets.org/members-of-congress/summary?cid=N00035267&cycle=2022"
-//last_updated = "06/30/2021"

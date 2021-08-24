@@ -41,25 +41,24 @@ class FinancesManager: ObservableObject {
                         do {
                             let allPersonalFinances = try decoder.decode(PersonalFinanceData.self, from: safeData)
 
-                            let a = allPersonalFinances.response?.member_profile.assets
-                            let p = allPersonalFinances.response?.member_profile.positions
-                            let t = allPersonalFinances.response?.member_profile.transactions
-                            let profile = allPersonalFinances.response?.member_profile
-                            
+  
+                            if let asset = allPersonalFinances.response?.member_profile.assets {
                                 DispatchQueue.main.async {
-                                    if let position =  p?.position {
-                                        self.pfPositions = position
-                                    }
-                                    if let asset = a?.asset {
-                                        self.pfAssets = asset
-                                    }
-                                    if let transaction = t?.transaction {
-                                        self.pfTransactions = transaction
-                                    }
-                                    
-                                    self.pfProfile = profile
-                                    
+                                    self.pfAssets = asset.asset
                                 }
+                            }
+                            if let profile = allPersonalFinances.response {
+                                DispatchQueue.main.async {
+                                    self.pfProfile = profile.member_profile
+                                }
+                            }
+                            
+                            if let position = allPersonalFinances.response?.member_profile.positions {
+                                DispatchQueue.main.async {
+                                    self.pfPositions = position.position
+                                }
+                            }
+                            
 
                         } catch {
                             print("DATA \(error.localizedDescription)")
@@ -74,3 +73,18 @@ class FinancesManager: ObservableObject {
 
 
 //Test This!
+
+//DispatchQueue.main.async {
+//    if let position =  p?.position {
+//        self.pfPositions = position
+//    }
+//
+//    self.pfAssets = asset.
+//
+//    if let transaction = t?.transaction {
+//        self.pfTransactions = transaction
+//    }
+//
+//
+//
+//}

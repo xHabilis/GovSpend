@@ -43,7 +43,7 @@ struct FECSearchResultsView: View {
                                 .font(.system(size: 12))
                                 .background(Configs.chooseColor(for: candidate.candidate!.party))
                                 .cornerRadius(8)
-                                .shadow(radius: 2)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
                         }
                         
                         VStack {
@@ -53,7 +53,7 @@ struct FECSearchResultsView: View {
                                 .font(.system(size: 11))
                                 .background(Configs.chooseColor(for: candidate.candidate!.party))
                                 .cornerRadius(8)
-                                .shadow(radius: 2)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
                         }
                         
                     }

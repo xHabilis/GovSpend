@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct GovSpendApp: App {
+
     var body: some Scene {
         WindowGroup {
             HomeTabsView()
+            
         }
     }
 }
+

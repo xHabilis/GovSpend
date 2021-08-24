@@ -40,20 +40,21 @@ class TopContribManager: ObservableObject {
                     if let safeData = data {
                         do {
                             let allTopContribs = try decoder.decode(TopContribData.self, from: safeData)
-
-                            let person = allTopContribs.response?.contributors
-                            let topcontributorList = allTopContribs.response?.contributors?.contributor
                             
+                            if let person = allTopContribs.response?.contributors {
                                 DispatchQueue.main.async {
-                                    if let p = person {
-                                        self.topContribPerson = p
-                                    }
-                                    if let tcl = topcontributorList {
-                                        self.topContributors = tcl
-                                    }
-
+                                    self.topContribPerson = person
                                 }
-
+                            }
+                            
+                            if let topcontributorList = allTopContribs.response?.contributors?.contributor {
+                                
+                                DispatchQueue.main.async {
+                                    self.topContributors = topcontributorList
+                                }
+                                
+                            }
+                            
                         } catch {
                             print("DATA \(error.localizedDescription)")
                         }

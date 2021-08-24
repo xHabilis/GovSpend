@@ -56,14 +56,15 @@ class AllCongressManager: ObservableObject {
                     do {
                         let fullCongressInfo = try decoder.decode(AllCongressData.self, from: safeData)
                         
-                        let info = fullCongressInfo.results![0].members
+                        if let info = fullCongressInfo.results?.first?.members {
+                        
 
                         DispatchQueue.main.async {
-                            self.congressResults = info!
+                            self.congressResults = info
                             self.congressMetaData = fullCongressInfo
                         }
                         
-                        
+                       }
                         
                     } catch {
                         print("DATA \(error.localizedDescription)")

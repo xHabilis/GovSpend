@@ -43,15 +43,12 @@ class RevenueManager: ObservableObject {
                                 }
                             }
 
-                        
+                            if let money = moneyAll.data {
                                 DispatchQueue.main.async {
-                                 
-                                    if let money = moneyAll.data {
-                                        self.revenue =  money
-                                    }
-                                    
+                                    self.revenue =  money
                                     self.barChartData = someArray
-                                    
+                                }
+       
                                 }
 
                         } catch {
