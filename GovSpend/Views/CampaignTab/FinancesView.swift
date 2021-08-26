@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+
 struct FinancesView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \CongressPerson.firstName, ascending: true)],
+        animation: .default) var congressPerson: FetchedResults<CongressPerson>
+
     @StateObject var theFinancials: FinancesManager
     @State private var showCitationView: Bool = false
     @State private var showFundRaising: Bool = false
     @State private var showTable: Bool = true
+    @State private var bookmark = false
+    @State private var isShowingSaveAlert = false
     
     var firstName: String
     var lastName: String
@@ -29,6 +38,7 @@ struct FinancesView: View {
     var contact: String
     var phone: String
     var website: String
+    
     @ViewBuilder
     var body: some View {
         
@@ -58,6 +68,28 @@ struct FinancesView: View {
                                         Text("\(title) \(firstName) \(lastName)")
                                             .font(.system(size: 14)).fontWeight(.semibold)
                                         
+                                        
+                                        //Add to Context: Save
+                                        Button(action: {
+                                            
+                                            addItem()
+                                            bookmark = true
+                                            isShowingSaveAlert.toggle()
+                                            
+                                        }, label: {
+                                            if bookmark {
+                                            Image(systemName: "bookmark.fill")
+                                            } else {
+                                            Image(systemName: "bookmark")
+                                            }
+
+                                        }).alert(isPresented: $isShowingSaveAlert, content: {
+                                            Alert(title: Text("Saved"), message: Text("Congress Member Saved"), dismissButton: .default(Text("OK")))
+                                        })
+                                        
+                                        
+                                        
+
                                     }
                                     .frame(width: 280, height: 20, alignment: .center)
                                     
@@ -152,11 +184,7 @@ struct FinancesView: View {
                         .background(Color(K.appColors.gray))
                         .shadow(radius: 5)
                         .cornerRadius(8)
-                        
-                        
-                        
-                        
-                        
+
                         
                     }
                     .frame(width: UIScreen.main.bounds.width-15, height: 160, alignment: .center)
@@ -321,10 +349,55 @@ struct FinancesView: View {
         }
         
     }
+
+//MARK: - CoreData CRUD-ADD
+    
+    func addItem() {
+        
+        withAnimation {
+            let newBookMark = CongressPerson(context: viewContext)
+            
+            //Map Data to Model
+            newBookMark.firstName = firstName
+            newBookMark.lastName = lastName
+            newBookMark.party = party
+            newBookMark.bioID = bioID
+            newBookMark.state = state
+            newBookMark.cID = cID
+            newBookMark.title = title
+            newBookMark.status = status
+            newBookMark.nextElection = nextElection
+            newBookMark.facebook = facebook
+            newBookMark.twitter = twitter
+            newBookMark.youtube = youtube
+            newBookMark.contact = contact
+            newBookMark.phone = phone
+            newBookMark.website = website
+            newBookMark.isBookmarked = bookmark
+
+  
+            
+
+            do {
+                try viewContext.save()
+
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                
+            }
+        }
+    }
+
     
 }
 
+
+
+
+
 struct PersonalFinanceView_Previews: PreviewProvider {
+    @Binding var isOn: Bool
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self, content: FinancesView(theFinancials: FinancesManager(), firstName: "",
                                                                                lastName: "",
@@ -340,7 +413,7 @@ struct PersonalFinanceView_Previews: PreviewProvider {
                                                                                youtube: "",
                                                                                contact: "",
                                                                                phone: "", website: ""
-        ).preferredColorScheme)
+        ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).preferredColorScheme)
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }

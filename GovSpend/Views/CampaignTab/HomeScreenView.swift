@@ -11,8 +11,8 @@ struct HomeScreenView: View {
 
     @State private var candidateName: String = ""
     @State private var cycleYear = "2020"
-    @State private var congressNumber = "Select Session"
-    @State private var chamber = "Select Chamber"
+    @State private var congressNumber = "117"
+    @State private var chamber = "Senate"
     @State private var showCitationView: Bool = false
     @State private var isShowingCandidates: Bool = false
    
@@ -252,7 +252,7 @@ struct HomeScreenView: View {
         static var previews: some View {
             ForEach(ColorScheme.allCases, id: \.self,
                     content: HomeScreenView().preferredColorScheme)
-            //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         }
     }
     

@@ -32,6 +32,7 @@ struct CongressSearchResultsView: View {
                 .padding(.top)
             List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) })) { legislator in
                 
+                //Section(header: Text(legislator.state)) {
                 
                 NavigationLink(
                     destination: FinancesView(theFinancials: FinancesManager(), firstName: legislator.first_name ?? "",
@@ -70,8 +71,8 @@ struct CongressSearchResultsView: View {
                                                  party: legislator.party ?? "",
                                                  statusTitle: "Current Status:",
                                                  status: String(legislator.in_office ?? false),
-                                                 electionTitle: "Election:",
-                                                 election: legislator.next_election ?? "")
+                                                 stateTitle: "State:",
+                                                 state:  "\(Configs.extendAbbreviation(StateName: legislator.state ?? "N/A"))")
                                 
                             }.animation(.linear)
                             .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)

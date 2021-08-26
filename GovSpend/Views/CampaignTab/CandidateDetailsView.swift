@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct CandidateDetailsView: View {
-
+    
     @StateObject var detailsManager: CandidateDetailsManager
     @State private var showCitationView: Bool = false
- 
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \FecCandidate.name, ascending: true)],
+        animation: .default) var candidate: FetchedResults<FecCandidate>
 
     let candidateURL: String
+    @State private var bookmark = false
+    @State private var isShowingSaveAlert = false
 
     var body: some View {
             ScrollView {
@@ -29,10 +35,35 @@ struct CandidateDetailsView: View {
                                     
                                     VStack (spacing: 5){
                                         
+                                        HStack {
                                         Text(details.display_name)
                                             .font(.system(size: 14).bold())
+                                            
+                                            //Add to Context: Save
+                                            Button(action: {
+                                                
+                                                addItem()
+                                                bookmark = true
+                                                isShowingSaveAlert.toggle()
+                                                
+                                            }, label: {
+                                                if bookmark {
+                                                Image(systemName: "bookmark.fill")
+                                                } else {
+                                                Image(systemName: "bookmark")
+                                                }
+
+                                            }).alert(isPresented: $isShowingSaveAlert, content: {
+                                                Alert(title: Text("Saved"), message: Text("Candidate Saved"), dismissButton: .default(Text("OK")))
+                                            })
+                                            
+                                            
+                                        }
+                                        
                                         Text(Configs.extendAbbreviation(StateName: "\(details.mailing_state)"))
                                             .font(.system(size: 12)).fontWeight(.semibold)
+                                                                             
+                                        
                                     }
                                     .frame(width: 300, height: 30, alignment: .center)
 
@@ -226,6 +257,28 @@ struct CandidateDetailsView: View {
                                         CitationView()
                                     }})
 
+
+    }
+    
+    //CoreData - ADD
+    func addItem() {
+        
+        withAnimation {
+            let newCandidate = FecCandidate(context: viewContext)
+            
+            newCandidate.name = detailsManager.candidateDetails.first?.display_name
+            newCandidate.candidateURL = candidateURL
+            newCandidate.party = detailsManager.candidateDetails.first?.party
+
+            do {
+                try viewContext.save()
+
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                
+            }
+        }
     }
 }
 
@@ -233,7 +286,7 @@ struct CandidateDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self,
                 content: CandidateDetailsView(detailsManager: CandidateDetailsManager(),
-                                              candidateURL: "").preferredColorScheme)
+                                              candidateURL: "").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).preferredColorScheme)
     }
     
 }

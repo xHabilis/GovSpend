@@ -160,8 +160,8 @@ struct CongressListCard: View {
     var party: String
     var statusTitle: String
     var status: String
-    var electionTitle: String
-    var election: String
+    var stateTitle: String
+    var state: String
     
     
     var body: some View {
@@ -195,12 +195,12 @@ struct CongressListCard: View {
                 
             }
             HStack {
-                Text("\(electionTitle)")
+                Text("\(stateTitle)")
                     .font(.system(size: 10))
                     .frame(width: 100, height: 15, alignment: .trailing)
                 
                 
-                Text("\(election)")
+                Text("\(state)")
                     .font(.system(size: 10).weight(.semibold))
                     .frame(width: 100, height: 20, alignment: .leading)
                 
@@ -209,6 +209,56 @@ struct CongressListCard: View {
         }
     }
 }
+
+//MARK: - CongressBookMark
+
+struct CongressBookMark: View {
+    
+    var firstName: String
+    var lastName: String
+    var party: String
+    var stateTitle: String
+    var state: String
+    
+    
+    var body: some View {
+        VStack(spacing: -2.0){
+            
+            HStack{
+                Text("\(firstName) \(lastName)")
+                    .padding(.leading, 20.0)
+                    .frame(width: 246, height: 20, alignment: .center)
+                    //.background(Color(.green))
+                    .font(.system(size: 12).bold())
+                
+                Text("\(party)")
+                    .font(.system(size: 12)).bold()
+                    .padding(.trailing, 4)
+                    .shadow(radius: 2)
+                    .frame(width: 25, height: 20, alignment: .topTrailing)
+                //.background(Color(.green))
+                
+            }
+
+            HStack {
+                Text("\(stateTitle)")
+                    .font(.system(size: 10))
+                    .frame(width: 100, height: 15, alignment: .trailing)
+                
+                
+                Text("\(state)")
+                    .font(.system(size: 10).weight(.semibold))
+                    .frame(width: 100, height: 20, alignment: .leading)
+                
+            }
+            
+        }
+    }
+}
+
+
+
+
 
 //MARK: - SearchBar
 

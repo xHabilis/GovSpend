@@ -54,7 +54,9 @@
 		6AA57B7926939C10008A3EA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA57B7826939C10008A3EA6 /* Assets.xcassets */; };
 		6AA57B7C26939C10008A3EA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA57B7B26939C10008A3EA6 /* Preview Assets.xcassets */; };
 		6AABBEA726D4565600C1ADA3 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEA626D4565600C1ADA3 /* Testing.swift */; };
-		6AABBEA926D5403900C1ADA3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEA826D5403900C1ADA3 /* SettingsView.swift */; };
+		6AABBEAC26D597FC00C1ADA3 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */; };
+		6AABBEAF26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */; };
+		6AABBEB126D59D9100C1ADA3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AABBEB026D59D9100C1ADA3 /* Persistence.swift */; };
 		6AAE117B26A384550099B6A2 /* AllCongressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE117A26A384550099B6A2 /* AllCongressManager.swift */; };
 		6AAE117D26A384640099B6A2 /* AllCongressData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE117C26A384640099B6A2 /* AllCongressData.swift */; };
 		6AAFC35626962D4D00F7696B /* CandidateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAFC35526962D4D00F7696B /* CandidateModel.swift */; };
@@ -123,7 +125,9 @@
 		6AA57B7B26939C10008A3EA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6AA57B7D26939C10008A3EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AABBEA626D4565600C1ADA3 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
-		6AABBEA826D5403900C1ADA3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		6AABBEAE26D5997E00C1ADA3 /* CongressBookMark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CongressBookMark.xcdatamodel; sourceTree = "<group>"; };
+		6AABBEB026D59D9100C1ADA3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		6AAE117A26A384550099B6A2 /* AllCongressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCongressManager.swift; sourceTree = "<group>"; };
 		6AAE117C26A384640099B6A2 /* AllCongressData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCongressData.swift; sourceTree = "<group>"; };
 		6AAFC35526962D4D00F7696B /* CandidateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateModel.swift; sourceTree = "<group>"; };
@@ -229,6 +233,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		6AABBEAA26D597D500C1ADA3 /* SavedView */ = {
+			isa = PBXGroup;
+			children = (
+				6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */,
+				6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */,
+				6AABBEB026D59D9100C1ADA3 /* Persistence.swift */,
+			);
+			path = SavedView;
+			sourceTree = "<group>";
+		};
 		6AAE117926A383880099B6A2 /* Holding */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,10 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				6A8193CE26B35B4A00315EAB /* HomeTabsView.swift */,
+				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
 				6A891C6E26C06ED800D51A81 /* DebtTab */,
 				6AE96B7F26C0B64E008AA9D0 /* RevenueTab */,
-				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
-				6AABBEA826D5403900C1ADA3 /* SettingsView.swift */,
+				6AABBEAA26D597D500C1ADA3 /* SavedView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,7 +431,6 @@
 				6AA57B7726939C0E008A3EA6 /* CurrentCongressDetailsView.swift in Sources */,
 				6A273D9226A1FD9C005ADF21 /* TopContribManager.swift in Sources */,
 				6A891C7826C0717800D51A81 /* MonthlyDebtData.swift in Sources */,
-				6AABBEA926D5403900C1ADA3 /* SettingsView.swift in Sources */,
 				6A8193CF26B35B4A00315EAB /* HomeTabsView.swift in Sources */,
 				6AA57B7526939C0E008A3EA6 /* GovSpendApp.swift in Sources */,
 				6AAE117B26A384550099B6A2 /* AllCongressManager.swift in Sources */,
@@ -431,12 +444,15 @@
 				6A270404269CE83100ECAE35 /* StateSearchManager.swift in Sources */,
 				6A4384F226A08434007AFF6F /* PersonalFinanceData.swift in Sources */,
 				6AD1E438269F3D5B002601B6 /* CurrentCongressData.swift in Sources */,
+				6AABBEAF26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld in Sources */,
 				6AAFC3852696597600F7696B /* TopContributorsView.swift in Sources */,
 				6AABBEA726D4565600C1ADA3 /* Testing.swift in Sources */,
 				6A67812926A48A8E002735FE /* CategoryResultView.swift in Sources */,
 				6A54BE262697F9B300419A13 /* CandidateDetailsData.swift in Sources */,
 				6A273D8E26A1FCC1005ADF21 /* TopContribView.swift in Sources */,
 				6A4384EE269F9074007AFF6F /* ListPrepView.swift in Sources */,
+				6AABBEB126D59D9100C1ADA3 /* Persistence.swift in Sources */,
+				6AABBEAC26D597FC00C1ADA3 /* SavedView.swift in Sources */,
 				6AE96B8926C0B6F7008AA9D0 /* RevenueView.swift in Sources */,
 				6A891C7426C0713600D51A81 /* AnnualDebtManager.swift in Sources */,
 				6A273D9426A1FDEB005ADF21 /* TopContribData.swift in Sources */,
@@ -661,6 +677,19 @@
 			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6AABBEAE26D5997E00C1ADA3 /* CongressBookMark.xcdatamodel */,
+			);
+			currentVersion = 6AABBEAE26D5997E00C1ADA3 /* CongressBookMark.xcdatamodel */;
+			path = CongressBookMark.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6AA57B6926939C0E008A3EA6 /* Project object */;
 }

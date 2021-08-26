@@ -26,6 +26,11 @@ struct HomeTabsView: View {
                 .tabItem {
                     Label("Revenue", systemImage: "banknote")
                 }
+            
+            SavedView()
+                .tabItem {
+                    Label("Saved", systemImage: "bookmark.circle")
+                }
 
         }
         

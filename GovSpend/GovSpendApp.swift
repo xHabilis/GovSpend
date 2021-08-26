@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct GovSpendApp: App {
+    
+    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             HomeTabsView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
         }
     }
