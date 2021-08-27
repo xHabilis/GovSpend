@@ -161,6 +161,7 @@
 		6A54BE242697F94700419A13 /* Later */ = {
 			isa = PBXGroup;
 			children = (
+				6A8193CA26B0617A00315EAB /* Dummy.swift */,
 				6A270403269CE83100ECAE35 /* StateSearchManager.swift */,
 				6A270401269CE5B200ECAE35 /* SearchStateData.swift */,
 				6A273D9B26A23CA5005ADF21 /* PictureCardView.swift */,
@@ -210,17 +211,16 @@
 			isa = PBXGroup;
 			children = (
 				6A8D55EA26C3390900516C0C /* GovSpend.entitlements */,
-				6AAE117926A383880099B6A2 /* Holding */,
 				6AAFC35B26962DD900F7696B /* Models */,
 				6AAFC35F26962E2600F7696B /* Views */,
 				6AAFC35C26962DE100F7696B /* Managers */,
 				6A54BE242697F94700419A13 /* Later */,
-				6AA57B7426939C0E008A3EA6 /* GovSpendApp.swift */,
-				6AA57B7826939C10008A3EA6 /* Assets.xcassets */,
 				6AA57B7D26939C10008A3EA6 /* Info.plist */,
-				6AA57B7A26939C10008A3EA6 /* Preview Content */,
 				6A270434269E322800ECAE35 /* Keys.swift */,
 				6A8E56E826A49CB700B41160 /* K.swift */,
+				6AA57B7426939C0E008A3EA6 /* GovSpendApp.swift */,
+				6AA57B7826939C10008A3EA6 /* Assets.xcassets */,
+				6AA57B7A26939C10008A3EA6 /* Preview Content */,
 			);
 			path = GovSpend;
 			sourceTree = "<group>";
@@ -233,27 +233,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6AABBEAA26D597D500C1ADA3 /* SavedView */ = {
+		6AABBEAA26D597D500C1ADA3 /* SavedTab */ = {
 			isa = PBXGroup;
 			children = (
 				6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */,
 				6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */,
 				6AABBEB026D59D9100C1ADA3 /* Persistence.swift */,
 			);
-			path = SavedView;
-			sourceTree = "<group>";
-		};
-		6AAE117926A383880099B6A2 /* Holding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Holding;
+			path = SavedTab;
 			sourceTree = "<group>";
 		};
 		6AAFC35B26962DD900F7696B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6A8193CA26B0617A00315EAB /* Dummy.swift */,
 				6AAE117C26A384640099B6A2 /* AllCongressData.swift */,
 				6AAFC38F2697732F00F7696B /* FECCandidateSearchData.swift */,
 				6A54BE252697F9B300419A13 /* CandidateDetailsData.swift */,
@@ -292,7 +284,7 @@
 				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
 				6A891C6E26C06ED800D51A81 /* DebtTab */,
 				6AE96B7F26C0B64E008AA9D0 /* RevenueTab */,
-				6AABBEAA26D597D500C1ADA3 /* SavedView */,
+				6AABBEAA26D597D500C1ADA3 /* SavedTab */,
 			);
 			path = Views;
 			sourceTree = "<group>";

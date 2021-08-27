@@ -15,7 +15,7 @@ class AnnualDebtManager: ObservableObject {
 
     
     func getAnnualDebt() {
-        let fullURL = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_outstanding?fields=record_date,debt_outstanding_amt,src_line_nbr,record_fiscal_year&filter=record_fiscal_year:gt:1899?page[number]=1&page[size]=1000"
+        let fullURL = K.apiURLs.annualDebt
         
         performRequest(with: fullURL)
         print(fullURL)

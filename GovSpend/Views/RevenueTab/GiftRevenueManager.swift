@@ -16,7 +16,7 @@ class GiftRevenueManager: ObservableObject {
     
     func getGiftRevenue() {
         
-        let fullURL = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/gift_contributions?fields=record_date,contribution_amt,record_calendar_month&page[number]=1&page[size]=13&sort=-record_date"
+        let fullURL = K.apiURLs.giftRevenue
         
         performRequest(with: fullURL)
         print(fullURL)

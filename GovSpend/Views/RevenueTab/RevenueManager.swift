@@ -16,7 +16,7 @@ class RevenueManager: ObservableObject {
     
     func getMonthlyRevenue() {
         
-        let fullURL = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/revenue/rcm?fields=record_date,tax_category_desc,net_collections_amt,record_fiscal_year&page[number]=1&page[size]=28&sort=-record_date"
+        let fullURL = K.apiURLs.revenue
         
         performRequest(with: fullURL)
         print(fullURL)

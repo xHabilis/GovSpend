@@ -17,7 +17,7 @@ class MonthlyDebtManager: ObservableObject {
 
     
     func getMonthlyDebt() {
-        let fullURL = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?fields=record_date,debt_held_public_amt,%20intragov_hold_amt%20,tot_pub_debt_out_amt&page[number]=1&page[size]=30&sort=-record_date"
+        let fullURL = K.apiURLs.monthlyDebt
         
         performRequest(with: fullURL)
         print(fullURL)

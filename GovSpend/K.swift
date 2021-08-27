@@ -29,14 +29,6 @@ struct K {
 
     }
     
-    struct partyLogos {
-        
-        static let republican = "republicanlogo"
-        static let democrat = "democratlogo"
-        static let liberterian = "liberterianlogo"
-        static let green = "greenpartylogo"
-        static let independent = "independentpartylogo"
-    }
     
     struct apiURLs {
         static let getCandidateUrl = "https://api.propublica.org/congress/v1/members/"
@@ -53,6 +45,11 @@ struct K {
         static let sectorTotals = "https://www.opensecrets.org/api/?method=candSector&cid="
         static let allCongress = "https://api.propublica.org/congress/v1/"
         static let committees = "https://api.propublica.org/campaign-finance/v1/"
+        static let annualDebt = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_outstanding?fields=record_date,debt_outstanding_amt,src_line_nbr,record_fiscal_year&filter=record_fiscal_year:gt:1899?page[number]=1&page[size]=1000"
+        static let monthlyDebt = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?fields=record_date,debt_held_public_amt,%20intragov_hold_amt%20,tot_pub_debt_out_amt&page[number]=1&page[size]=30&sort=-record_date"
+        static let giftRevenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/gift_contributions?fields=record_date,contribution_amt,record_calendar_month&page[number]=1&page[size]=13&sort=-record_date"
+        static let revenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/revenue/rcm?fields=record_date,tax_category_desc,net_collections_amt,record_fiscal_year&page[number]=1&page[size]=28&sort=-record_date"
+        
 
     }
     
