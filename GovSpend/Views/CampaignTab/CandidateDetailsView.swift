@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct CandidateDetailsView: View {
+
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \FecCandidate.savedAt, ascending: false)],
+        animation: .default) var candidate: FetchedResults<FecCandidate>
     
     @StateObject var detailsManager: CandidateDetailsManager
-    @State private var showCitationView: Bool = false
     
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \FecCandidate.name, ascending: true)],
-        animation: .default) var candidate: FetchedResults<FecCandidate>
-
-    let candidateURL: String
+    @State private var showCitationView: Bool = false
     @State private var bookmark = false
     @State private var isShowingSaveAlert = false
+    @State private var showCommittee: Bool = false
+    
+    let candidateURL: String
 
     var body: some View {
             ScrollView {
@@ -54,7 +55,7 @@ struct CandidateDetailsView: View {
                                                 }
 
                                             }).alert(isPresented: $isShowingSaveAlert, content: {
-                                                Alert(title: Text("Saved"), message: Text("Candidate Saved"), dismissButton: .default(Text("OK")))
+                                                Alert(title: Text("Saved"), message: Text("\(details.display_name) Saved"), dismissButton: .default(Text("OK")))
                                             })
                                             
                                             
@@ -141,21 +142,20 @@ struct CandidateDetailsView: View {
 //MARK: - Committee Button
                     
                     if let path = detailsManager.candidateDetails.first {
-                    NavigationLink(
-                        destination: CommitteesView(committeeObject: CommitteeManager(), commiteePath: path.committee!),
-                        label: {
-
-                            Text("Committees")
-                                .padding(.horizontal)
-
-
-                        })
+                        Button("Committees") {
+                            showCommittee.toggle()
+                        }
                         .foregroundColor(Color.black)
                         .font(.system(size: 12))
                         .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
-                        .background(Configs.chooseColor(for: path.party ))
+                        .background(Configs.chooseColor(for: path.party))
                         .cornerRadius(10)
-                        .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
+                        .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
+                        
+                        .sheet(isPresented: $showCommittee) {
+                            CommitteesView(committeeObject: CommitteeManager(), commiteePath: path.committee ?? "")
+                        }
+                        
                     }
                     
                     
@@ -229,10 +229,11 @@ struct CandidateDetailsView: View {
                     
   
                 }
-                .frame(width: UIScreen.main.bounds.width-25, height: 110, alignment: .center)
-                    .background(Color(K.appColors.background)).opacity(0.9)
+                .frame(width: UIScreen.main.bounds.width-25, height: 130, alignment: .center)
+
                 .cornerRadius(20)
                 .shadow(radius: 2)
+                Spacer()
                     
                     
 
@@ -247,7 +248,7 @@ struct CandidateDetailsView: View {
             detailsManager.getCandidateDetails(with: candidateURL)
             
         })
-        .navigationBarTitle("Candidate Details")
+        .navigationBarTitle("FEC Candidate")
         .navigationBarItems(trailing:
                                 Button(action: {
                                     showCitationView = true
@@ -269,6 +270,7 @@ struct CandidateDetailsView: View {
             newCandidate.name = detailsManager.candidateDetails.first?.display_name
             newCandidate.candidateURL = candidateURL
             newCandidate.party = detailsManager.candidateDetails.first?.party
+            newCandidate.savedAt = Date()
 
             do {
                 try viewContext.save()

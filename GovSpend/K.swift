@@ -26,6 +26,8 @@ struct K {
         static let grayBrown = "grayBrown"
         static let cardShadow = "cardShadow"
         static let cardShadowReverse = "cardShadowReverse"
+        static let imageFail = "imageFail"
+        static let imageFailTwo = "imageFailTwo"
 
     }
     

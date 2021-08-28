@@ -9,20 +9,20 @@ import SwiftUI
 import CoreData
 
 struct SavedView: View {
-    //@StateObject var detailsManager: CandidateDetailsManager
     
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \CongressPerson.firstName, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \CongressPerson.savedAt, ascending: false)],
         animation: .default) var congressPerson: FetchedResults<CongressPerson>
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \FecCandidate.name, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \FecCandidate.savedAt, ascending: false)],
         animation: .default)
     
     var candidate: FetchedResults<FecCandidate>
-    
+
     var body: some View {
+
     
         NavigationView {
             List {
@@ -82,8 +82,10 @@ struct SavedView: View {
                 .onDelete(perform: deleteItems)
                 }
                 
+                
+                
                 Section(header: Text("Candidates")) {
-
+                    
                 ForEach (candidate) { candidate in
                 NavigationLink(
 
@@ -99,7 +101,7 @@ struct SavedView: View {
                                     .font(.system(size: 12))
                                     .background(Configs.chooseColor(for: candidate.party ?? ""))
                                     .cornerRadius(8)
-                                    .shadow(color: Color(K.appColors.cardShadow),radius: 3.5)
+                                    .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             }
 
                             VStack {
@@ -113,11 +115,23 @@ struct SavedView: View {
                             }
 
                         }
-////
+
                     })
-//
+
                 }.onDelete(perform: deleteCandidate)
                 }
+//MARK: - Notify User
+                VStack (spacing: 10){
+                Image(systemName: "bookmark")
+                    .accentColor(.accentColor)
+                    .font(.system(size: 20))
+                Text("Tap the Bookmark button to save and easily access your candidate's information on this screen.")
+                    .font(.system(size: 11))
+                    .multilineTextAlignment(.center)
+                    
+                }
+                .font(.system(size: 11))
+                .frame(width: UIScreen.main.bounds.width-45, height: 80, alignment: .center)
                 
                 
             }.navigationBarTitle("Saved", displayMode: .inline)

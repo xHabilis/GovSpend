@@ -11,6 +11,7 @@
         <attribute name="nextElection" optional="YES" attributeType="String"/>
         <attribute name="party" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="savedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -23,9 +24,10 @@
         <attribute name="isBookmarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="party" optional="YES" attributeType="String"/>
+        <attribute name="savedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="CongressPerson" positionX="-63" positionY="-18" width="128" height="269"/>
-        <element name="FecCandidate" positionX="-54" positionY="108" width="128" height="89"/>
+        <element name="CongressPerson" positionX="-63" positionY="-18" width="128" height="284"/>
+        <element name="FecCandidate" positionX="-54" positionY="108" width="128" height="104"/>
     </elements>
 </model>

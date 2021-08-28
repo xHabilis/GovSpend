@@ -7,41 +7,38 @@
 
 import SwiftUI
 
-struct Test: View {
-    @State private var rememberMe = false
+struct TestData: Identifiable {
+    var id = UUID()
+    var title: String
+    var items: [String]
+}
+
+struct ListView : View {
+    let mygroups = [
+        TestData(title: "Numbers", items: ["1","2","3"]),
+        TestData(title: "Letters", items: ["A","B","C"]),
+        TestData(title: "Symbols", items: ["€","%","&"])
+    ]
 
     var body: some View {
-        VStack {
-            //SaveButton(isOn: $rememberMe)
-            Text(rememberMe ? "On" : "Off")
+        List {
+            ForEach(mygroups) { gr in
+                Section(header: Text(gr.title)) {
+                    ForEach(gr.items, id: \.self, content: { item in
+                                                Text(item)
+                                            })
+                }
+            }
         }
     }
 }
 
 
-struct Test_Previews: PreviewProvider {
+struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        Test()
+        ListView()
     }
 }
 
 
 
-//struct SaveButton: View {
-//
-//    @Binding var isOn: Bool
-//
-//    var body: some View {
-//
-//        Button(action: {self.isOn.toggle()} , label: {
-//            if isOn {
-//                Image(systemName: "bookmark.fill")
-//            } else {
-//                Image(systemName: "bookmark")
-//            }
-//        })
-//
-//        .padding()
-//        .clipShape(Rectangle())
-//    }
-//}

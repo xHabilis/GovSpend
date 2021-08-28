@@ -45,15 +45,15 @@ class FundRaisingManager: ObservableObject {
                         
                             if let fundNumbers = fundsSummary.response?.summary?.attributes {
                                 
-                                let theTotal = (fundNumbers.total as NSString).doubleValue
+                                //let theTotal = (fundNumbers.total as NSString).doubleValue
                                 let spent = (fundNumbers.spent as NSString).doubleValue
                                 let onHand = (fundNumbers.cash_on_hand as NSString).doubleValue
-                                let debt = (fundNumbers.debt as NSString).doubleValue
+                                //let debt = (fundNumbers.debt as NSString).doubleValue
                                 
-                                someArray.append((name: "Total", value: theTotal))
+                                //someArray.append((name: "Total", value: theTotal))
                                 someArray.append((name: "Spent", value: spent))
                                 someArray.append((name: "Cash on Hand", value: onHand))
-                                someArray.append((name: "Debt", value: debt))
+                                //someArray.append((name: "Debt", value: debt))
                             }
                             
                             

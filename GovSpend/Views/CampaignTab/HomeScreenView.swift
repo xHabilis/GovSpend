@@ -24,19 +24,21 @@ struct HomeScreenView: View {
             ScrollView (showsIndicators: false){
                 ZStack {
                     Color(K.appColors.background)
-
+                        //.edgesIgnoringSafeArea(.bottom)
                     
                     VStack (spacing: 25) {
-                        Text("Search Congress")
-                            .font(.system(size: 13)).fontWeight(.semibold)
-                            .frame(width: UIScreen.main.bounds.width-45, height: 25, alignment: .bottom).padding(.bottom, -10.0)
                         VStack (spacing: 30){
                             
 //MARK: - First Card: Search by Congress and Chamber
     
                             VStack(spacing: 2){
-                                
                                 VStack{
+                                    
+                                    Text("Search Congress")
+                                        .font(.system(size: 11)).fontWeight(.semibold)
+                                        .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
+
+                                    
                                     Text("House: Sessions 102-117")
                                         .font(.system(size: 9))
                                     
@@ -48,7 +50,6 @@ struct HomeScreenView: View {
                             }
                             .frame(width: UIScreen.main.bounds.width-45, height: 65, alignment: .center)
                             .background(Color(K.appColors.blue))
-                            .font(.system(size: 12))
                             
                             VStack (spacing: 15) {
                                 Picker(congressNumber, selection: $congressNumber) {
@@ -119,12 +120,14 @@ struct HomeScreenView: View {
                       
                         
 //MARK: - Second Card: Search ALL FEC Candidates
-                        Text("Search FEC Registered Candidates")
-                            .font(.system(size: 13)).fontWeight(.semibold).padding(.bottom, -10.0)
-                            .frame(width: UIScreen.main.bounds.width-45, height: 15, alignment: .bottom)
 
                         VStack(spacing: 30) {
-                            VStack (spacing: 15) {
+                            VStack  {
+                                
+                                Text("Search FEC Registered Candidates")
+                                    .font(.system(size: 11)).fontWeight(.semibold)
+                                    .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
+                                
                                 Text("Cycles 2010 - 2020")
                                     .font(.system(size: 9))
                                     .frame(width: UIScreen.main.bounds.width-45, height: 15, alignment: .center)
@@ -182,12 +185,14 @@ struct HomeScreenView: View {
                         
 //MARK: - Categories
                     VStack (spacing: 10) {
-                        Text("Top 20 Candidates")
-                            .font(.system(size: 13)).fontWeight(.semibold)
-                            .frame(width: 290, height: 28, alignment: .center)
 
                         VStack(spacing: 30) {
-                            VStack (spacing: 20) {
+                            VStack {
+                                
+                                Text("Top 20 Candidates")
+                                    .font(.system(size: 11)).fontWeight(.semibold)
+                                    .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
+                                
                                 Text("Categories")
                                     .font(.system(size: 9))
                                     .frame(width: UIScreen.main.bounds.width-45, height: 15, alignment: .center)
@@ -228,6 +233,7 @@ struct HomeScreenView: View {
 
                         
                     }
+                    .padding(.top)
                     //Main Stack
                     .frame(width: UIScreen.main.bounds.width-15, alignment: .center)
                 }
@@ -252,7 +258,7 @@ struct HomeScreenView: View {
         static var previews: some View {
             ForEach(ColorScheme.allCases, id: \.self,
                     content: HomeScreenView().preferredColorScheme)
-            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         }
     }
     

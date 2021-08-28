@@ -13,13 +13,14 @@ struct FinancesView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \CongressPerson.firstName, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \CongressPerson.savedAt, ascending: false)],
         animation: .default) var congressPerson: FetchedResults<CongressPerson>
 
     @StateObject var theFinancials: FinancesManager
     @State private var showCitationView: Bool = false
     @State private var showFundRaising: Bool = false
     @State private var showTable: Bool = true
+    
     @State private var bookmark = false
     @State private var isShowingSaveAlert = false
     
@@ -69,11 +70,13 @@ struct FinancesView: View {
                                             .font(.system(size: 14)).fontWeight(.semibold)
                                         
                                         
+                                        
                                         //Add to Context: Save
                                         Button(action: {
                                             
-                                            addItem()
                                             bookmark = true
+                                            addItem()
+                                            
                                             isShowingSaveAlert.toggle()
                                             
                                         }, label: {
@@ -84,7 +87,7 @@ struct FinancesView: View {
                                             }
 
                                         }).alert(isPresented: $isShowingSaveAlert, content: {
-                                            Alert(title: Text("Saved"), message: Text("Congress Member Saved"), dismissButton: .default(Text("OK")))
+                                            Alert(title: Text("Saved"), message: Text("\(title) \(firstName) \(lastName) Saved"), dismissButton: .default(Text("OK")))
                                         })
                                         
                                         
@@ -200,7 +203,7 @@ struct FinancesView: View {
                                         .multilineTextAlignment(.center)
                                     
                                 })
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color(K.appColors.cardShadow))
                                 .font(.system(size: 12))
                                 .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
                                 .background(Configs.chooseColor(for: party))
@@ -221,7 +224,7 @@ struct FinancesView: View {
                                     
                                     
                                 })
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color(K.appColors.cardShadow))
                                 .font(.system(size: 12))
                                 .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
                                 .background(Configs.chooseColor(for: party))
@@ -236,7 +239,7 @@ struct FinancesView: View {
                             Button("Fund Raising") {
                                 showFundRaising.toggle()
                             }
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color(K.appColors.cardShadow))
                             .font(.system(size: 12))
                             .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
                             .background(Configs.chooseColor(for: party))
@@ -374,6 +377,7 @@ struct FinancesView: View {
             newBookMark.phone = phone
             newBookMark.website = website
             newBookMark.isBookmarked = bookmark
+            newBookMark.savedAt = Date()
 
   
             

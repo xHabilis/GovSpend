@@ -56,18 +56,24 @@ class AllCongressManager: ObservableObject {
                     do {
                         let fullCongressInfo = try decoder.decode(AllCongressData.self, from: safeData)
                         
-                        if let info = fullCongressInfo.results?.first?.members {
                         
+                        if let info = fullCongressInfo.results?.first?.members {
+                            
+                            let alphaSort = info.sorted(by: { Member, MemberTwo in
+                                let member = Member.state
+                                let memberTwo = MemberTwo.state
+                                return (member?.localizedCaseInsensitiveCompare(memberTwo!) == .orderedAscending)
+                            })
 
                         DispatchQueue.main.async {
-                            self.congressResults = info
+                            self.congressResults = alphaSort
                             self.congressMetaData = fullCongressInfo
                         }
-                        
+        
                        }
-                        
+               
                     } catch {
-                        print("DATA \(error.localizedDescription)")
+                        print("DATA \(error)")
                     }
                 }
             }

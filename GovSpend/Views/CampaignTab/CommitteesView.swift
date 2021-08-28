@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CommitteesView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var committeeObject: CommitteeManager
     @State private var showCitationView: Bool = false
     
@@ -17,6 +18,7 @@ struct CommitteesView: View {
     
     @ViewBuilder
     var body: some View {
+        NavigationView {
         ScrollView {
             
             if committeeObject.committeeList.count == 0 {
@@ -137,6 +139,7 @@ struct CommitteesView: View {
                         .shadow(radius: 5)
                         
                         Spacer()
+                        Spacer()
                         VStack (spacing: 20){
                             
                             Text("\(committeeObject.committeeMetaData!.copyright!)")
@@ -153,16 +156,13 @@ struct CommitteesView: View {
                             
                             
                         }
-                        .frame(width: UIScreen.main.bounds.width-25, height: 110, alignment: .center)
-                        .background(Color(K.appColors.background)).opacity(0.9)
+                        .frame(width: UIScreen.main.bounds.width-25, height: 150, alignment: .center)
                         .cornerRadius(20)
                         .shadow(radius: 2)
                         
                     }
                 }
-                .onAppear() {
-                    committeeObject.getCommittees(with: commiteePath)
-                }
+                
                 .navigationBarTitle("Committee Funds")
                 .navigationBarItems(trailing:
                                         Button(action: {
@@ -173,6 +173,11 @@ struct CommitteesView: View {
                                                 CitationView()
                                             }})
             }
+        }
+            
+        }
+        .onAppear() {
+            committeeObject.getCommittees(with: commiteePath)
         }
     }
 }

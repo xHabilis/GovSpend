@@ -29,7 +29,7 @@ struct HomeTabsView: View {
             
             SavedView()
                 .tabItem {
-                    Label("Saved", systemImage: "bookmark.circle")
+                    Label("Saved", systemImage: "bookmark")
                 }
 
         }
