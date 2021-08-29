@@ -272,7 +272,6 @@
 				6A67812626A46DEC002735FE /* CategorySearchManager.swift */,
 				6A17EBE326B5AF430045D679 /* CommitteeManager.swift */,
 				6A270409269D037900ECAE35 /* Configs.swift */,
-				6A8193D026B3615A00315EAB /* Reusable.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -280,6 +279,7 @@
 		6AAFC35F26962E2600F7696B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A8193D026B3615A00315EAB /* Reusable.swift */,
 				6A8193CE26B35B4A00315EAB /* HomeTabsView.swift */,
 				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
 				6A891C6E26C06ED800D51A81 /* DebtTab */,

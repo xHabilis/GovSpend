@@ -38,6 +38,11 @@ class CandidateDetailsManager: ObservableObject {
         
         let task = session.dataTask(with: theRequest!) { data, response, error in
             
+            // ErrorCheck
+            let responseHandling = response as! HTTPURLResponse
+            let responseCode = responseHandling.statusCode
+            print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+            
             if error == nil {
                 let decoder = JSONDecoder()
                 if let safeData = data {
@@ -51,7 +56,7 @@ class CandidateDetailsManager: ObservableObject {
                         }
                     } catch {
                        
-                        print("DATA \(error.localizedDescription)")
+                        print("DATA Error: \(error.localizedDescription)")
                         
                     }
                 }
@@ -60,12 +65,5 @@ class CandidateDetailsManager: ObservableObject {
         task.resume()
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
+  
 }

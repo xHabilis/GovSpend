@@ -35,6 +35,12 @@ class FinancesManager: ObservableObject {
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: url) {(data, response, error) in
+                
+                // ErrorCheck
+                let responseHandling = response as! HTTPURLResponse
+                let responseCode = responseHandling.statusCode
+                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
@@ -61,7 +67,7 @@ class FinancesManager: ObservableObject {
                             
 
                         } catch {
-                            print("DATA \(error.localizedDescription)")
+                            print("DATA Error: \(error.localizedDescription)")
                         }
                     }
                 }
@@ -70,21 +76,3 @@ class FinancesManager: ObservableObject {
     }
 }
 }
-
-
-//Test This!
-
-//DispatchQueue.main.async {
-//    if let position =  p?.position {
-//        self.pfPositions = position
-//    }
-//
-//    self.pfAssets = asset.
-//
-//    if let transaction = t?.transaction {
-//        self.pfTransactions = transaction
-//    }
-//
-//
-//
-//}

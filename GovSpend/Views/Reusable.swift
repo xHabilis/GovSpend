@@ -163,7 +163,6 @@ struct CongressListCard: View {
     var stateTitle: String
     var state: String
     
-    
     var body: some View {
         VStack(spacing: -2.0){
             
@@ -220,7 +219,6 @@ struct CongressBookMark: View {
     var stateTitle: String
     var state: String
     
-    
     var body: some View {
         VStack(spacing: -2.0){
             
@@ -228,7 +226,6 @@ struct CongressBookMark: View {
                 Text("\(firstName) \(lastName)")
                     .padding(.leading, 20.0)
                     .frame(width: 246, height: 20, alignment: .center)
-                    //.background(Color(.green))
                     .font(.system(size: 12).bold())
                 
                 Text("\(party)")
@@ -236,7 +233,6 @@ struct CongressBookMark: View {
                     .padding(.trailing, 4)
                     .shadow(radius: 2)
                     .frame(width: 25, height: 20, alignment: .topTrailing)
-                //.background(Color(.green))
                 
             }
 

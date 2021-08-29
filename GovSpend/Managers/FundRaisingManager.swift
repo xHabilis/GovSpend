@@ -34,6 +34,12 @@ class FundRaisingManager: ObservableObject {
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: url) {(data, response, error) in
+                
+                // ErrorCheck
+                let responseHandling = response as! HTTPURLResponse
+                let responseCode = responseHandling.statusCode
+                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
@@ -42,34 +48,24 @@ class FundRaisingManager: ObservableObject {
                             
                             //Create Custom Array for Chart
                             var someArray: [(name: String, value: Double)] = []
-                        
+            
                             if let fundNumbers = fundsSummary.response?.summary?.attributes {
-                                
-                                //let theTotal = (fundNumbers.total as NSString).doubleValue
                                 let spent = (fundNumbers.spent as NSString).doubleValue
                                 let onHand = (fundNumbers.cash_on_hand as NSString).doubleValue
-                                //let debt = (fundNumbers.debt as NSString).doubleValue
-                                
-                                //someArray.append((name: "Total", value: theTotal))
+
                                 someArray.append((name: "Spent", value: spent))
                                 someArray.append((name: "Cash on Hand", value: onHand))
-                                //someArray.append((name: "Debt", value: debt))
                             }
-                            
-                            
-                            
-
+           
                             let summary = fundsSummary.response?.summary
                             
                                 DispatchQueue.main.async {
                                     self.fundRaisingSummary = summary
-                                    
                                     self.barChartData = someArray
-
                                 }
 
                         } catch {
-                            print("DATA \(error.localizedDescription)")
+                            print("DATA Error: \(error.localizedDescription)")
                         }
                     }
                 }

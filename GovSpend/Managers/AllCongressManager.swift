@@ -50,13 +50,22 @@ class AllCongressManager: ObservableObject {
         
         let task = session.dataTask(with: theRequest!) { data, response, error in
             
+            
+            // ErrorCheck
+            let responseHandling = response as! HTTPURLResponse
+            let responseCode = responseHandling.statusCode
+            print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+
             if error == nil {
+
                 let decoder = JSONDecoder()
+                
                 if let safeData = data {
                     do {
                         let fullCongressInfo = try decoder.decode(AllCongressData.self, from: safeData)
                         
-                        
+                        //print(fullCongressInfo.status)
+      
                         if let info = fullCongressInfo.results?.first?.members {
                             
                             let alphaSort = info.sorted(by: { Member, MemberTwo in
@@ -64,16 +73,18 @@ class AllCongressManager: ObservableObject {
                                 let memberTwo = MemberTwo.state
                                 return (member?.localizedCaseInsensitiveCompare(memberTwo!) == .orderedAscending)
                             })
-
+  
                         DispatchQueue.main.async {
                             self.congressResults = alphaSort
                             self.congressMetaData = fullCongressInfo
+                            
                         }
         
                        }
                
                     } catch {
-                        print("DATA \(error)")
+                        print("DATA Error: \(error.localizedDescription)")
+                        
                     }
                 }
             }
@@ -82,4 +93,3 @@ class AllCongressManager: ObservableObject {
         
     }
 }
-

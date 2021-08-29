@@ -20,7 +20,7 @@ class MonthlyDebtManager: ObservableObject {
         let fullURL = K.apiURLs.monthlyDebt
         
         performRequest(with: fullURL)
-        print(fullURL)
+        //print(fullURL)
     }
     
     func performRequest(with fullURL: String) {
@@ -29,6 +29,12 @@ class MonthlyDebtManager: ObservableObject {
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: url) {(data, response, error) in
+                
+                // ErrorCheck
+                let responseHandling = response as! HTTPURLResponse
+                let responseCode = responseHandling.statusCode
+                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
@@ -38,9 +44,9 @@ class MonthlyDebtManager: ObservableObject {
                             var someArray: [(name: String, value: Double)] = []
                             var arrayOfDoubles: [Double] = []
                             
+                            //Chart Array Creation
                             if let daysandDebt = allMonthly.data {
                                 for day in daysandDebt {
-                                    
                                     someArray.append((name: "\(day.record_date)", value: day.debtAsDouble))
                                     
                                     arrayOfDoubles.append(day.debtAsDouble)

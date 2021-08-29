@@ -9,7 +9,37 @@ import Foundation
 import SwiftUI
 
 struct Configs {
-
+    
+    
+//MARK: - API Network ErrorChecks
+    
+    static func getHTTPStatusCodeDescription (for statusCode: Int) -> String {
+        
+        switch statusCode {
+        
+        case 200:
+            return "Status OK"
+        case 401:
+            return "unauthorized: Authentication is required and has failed or has not yet been provided."
+        case 400:
+            return "badRequest: The server cannot or will not process the request due to an apparent client error."
+        case 403:
+            return "forbidden: Your request did not include an authorization header"
+        case 404:
+            return "notFound: The specified record(s) could not be found"
+        case 406:
+            return "notAcceptable – You requested a format that isn’t json or xml"
+        case 429:
+            return "tooManyRequests: The user has sent too many requests in a given amount of time."
+        case 444:
+            return "noResponse: Used to indicate that the server has returned no information to the client and closed the connection."
+        case 500:
+            return "internalServerError – We had a problem with our server. Try again later."
+        default:
+            return "Investigate this Code: \(String(statusCode))"
+        }
+    }
+    
 //MARK: - Abbreviate State Names
     static func abbreviate(longStateName: String) -> String {
         var shortStateName: String!
@@ -191,6 +221,10 @@ struct Configs {
     
     static let chambers = ["Senate", "House"]
     static let cycles = ["2020", "2018", "2016", "2014", "2012", "2010"]
+    
+    
+    
+
     
 }
 

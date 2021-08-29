@@ -183,7 +183,7 @@ struct HomeScreenView: View {
                         .shadow(color: Color(K.appColors.cardShadow),radius: 2)
                         
                         
-//MARK: - Categories
+//MARK: - Third Card: Categories
                     VStack (spacing: 10) {
 
                         VStack(spacing: 30) {

@@ -18,7 +18,7 @@ class AnnualDebtManager: ObservableObject {
         let fullURL = K.apiURLs.annualDebt
         
         performRequest(with: fullURL)
-        print(fullURL)
+        //print(fullURL)
     }
     
     func performRequest(with fullURL: String) {
@@ -27,17 +27,22 @@ class AnnualDebtManager: ObservableObject {
             let session = URLSession(configuration: .default)
             
             let task = session.dataTask(with: url) {(data, response, error) in
+                
+                // ErrorCheck
+                let responseHandling = response as! HTTPURLResponse
+                let responseCode = responseHandling.statusCode
+                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
                             let allAnnualDebt = try decoder.decode(AnnualDebtData.self, from: safeData)
                             
+                            //Chart Array Creation
                             var someArray: [(name: String, value: Double)] = []
-                            
                             if let yearAndDebt = allAnnualDebt.data {
                                 for year in yearAndDebt {
-                                    
                                     someArray.append((name: "\(year.record_fiscal_year!)", value: year.debtAsDouble))
                                 }
                             }
