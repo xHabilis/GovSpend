@@ -51,9 +51,9 @@ struct DebtView: View {
                     
                     
                     
-                    BarChartView(data: ChartData(values: annualDebt.barChartData), title: "National Debt: Annual", legend: "Calendar Year", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge)
+                    BarChartView(data: ChartData(values: annualDebt.barChartData), title: "National Debt: Annual", legend: "Calendar Year", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
                     
-                    BarChartView(data: ChartData(values: monthlyDebt.barChartData), title: "Monthly Snapshot", legend: "Date", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.extraLarge)
+                    BarChartView(data: ChartData(values: monthlyDebt.barChartData), title: "Monthly Snapshot", legend: "Date", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
                     
                     if let allDebt = monthlyDebt.monthlyDebt.first {
                         

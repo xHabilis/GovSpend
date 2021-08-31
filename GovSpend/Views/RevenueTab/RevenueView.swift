@@ -21,22 +21,36 @@ struct RevenueView: View {
                     VStack (spacing: 50){
                         
                         VStack (spacing: 20){
-                        Text("Tax and Non-Tax Revenue ")
-                            .font(.system(size: 13)).fontWeight(.semibold).padding(.vertical, 5.0)
+                        Text("IRS Tax and Non-Tax Revenue")
+                            .font(.system(size: 12))
+                            .frame(width: 250, height: 25, alignment: .center)
+                            .background(Color(K.appColors.background))
+                            .cornerRadius(10)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 2)
                         
-                        BarChartView(data: ChartData(values: taxRevenue.barChartData), title: "Daily Revenue", legend: "Date", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge)
+                        BarChartView(data: ChartData(values: taxRevenue.barChartData), title: "Daily IRS Revenue", legend: "Date", style: Styles.barChartMidnightGreenDark, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
                         
                         }
                         
                         VStack (spacing: 20){
                         Text("Gift Contributions to Reduce the Public Debt")
-                            .font(.system(size: 13)).fontWeight(.semibold).padding(.vertical, 5.0)
+                            .font(.system(size: 12))
+                            .frame(width: 300, height: 25, alignment: .center)
+                            .background(Color(K.appColors.background))
+                            .cornerRadius(10)
+                            .shadow(color: Color(K.appColors.cardShadow), radius: 2)
                         
                         
-                        BarChartView(data: ChartData(values: gift.barChartData), title: "Monthly Contributions", legend: "Date", style: Styles.barChartMidnightGreenDark, form: ChartForm.extraLarge)
+                        BarChartView(data: ChartData(values: gift.barChartData), title: "Monthly Contributions", legend: "Date", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
                         }
                         
-                        
+                        VStack {
+                            if let revenueDate = taxRevenue.revenue.first {
+                                
+                                Text("Updated: \(revenueDate.record_date)")
+                                    .font(.system(size: 8)).fontWeight(.semibold).padding(.top)
+                            }
+                        }
                         
                     }
                     .padding(.top)

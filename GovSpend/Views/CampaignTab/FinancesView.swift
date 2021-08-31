@@ -67,7 +67,7 @@ struct FinancesView: View {
                                     HStack {
                                         
                                         Text("\(title) \(firstName) \(lastName)")
-                                            .font(.system(size: 14)).fontWeight(.semibold)
+                                            .font(.system(size: 16)).fontWeight(.semibold).padding(.leading, 5.0)
                                         
                                         
                                         

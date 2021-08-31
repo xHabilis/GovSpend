@@ -38,7 +38,7 @@ struct CandidateDetailsView: View {
                                         
                                         HStack {
                                         Text(details.display_name)
-                                            .font(.system(size: 14).bold())
+                                            .font(.system(size: 16).bold()).padding(.leading, 5.0)
                                             
                                             //Add to Context: Save
                                             Button(action: {

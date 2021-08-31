@@ -35,17 +35,6 @@ struct CitationView: View {
                             .cornerRadius(15)
                             .shadow(color: Color(K.appColors.cardShadow), radius: 3)
                     })
-                    
-                    
-                    
-                    Link(destination: URL(string: "https://www.opensecrets.org/open-data/api")!, label: {
-                        Text("OpenSecrets")
-                            .font(.system(size: 13))
-                            .frame(width: 300, height: 40, alignment: .center)
-                            .background(Color(K.appColors.cardShadowReverse))
-                            .cornerRadius(15)
-                            .shadow(color: Color(K.appColors.cardShadow), radius: 3)
-                    })
                         
                 }
    
@@ -91,10 +80,6 @@ struct CitationView: View {
                             .background(Color(K.appColors.cardShadowReverse))
                             .cornerRadius(15)
                             .shadow(color: Color(K.appColors.cardShadow), radius: 3)
-                    })
-                    
-                    Link(destination: /*@START_MENU_TOKEN@*/URL(string: "https://www.apple.com")!/*@END_MENU_TOKEN@*/, label: {
-                        /*@START_MENU_TOKEN@*/Text("Link")/*@END_MENU_TOKEN@*/
                     })
                     
                 }

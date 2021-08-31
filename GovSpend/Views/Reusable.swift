@@ -73,7 +73,7 @@ struct ItemNameValue: View {
             Text(itemName)
                 .font(.system(size: 12))
                 .padding(.leading)
-                .frame(width: 190, height: 30, alignment: .trailing)
+                .frame(width: 170, height: 30, alignment: .trailing)
 
             Text(String(itemValue))
                 .foregroundColor(Color.black)

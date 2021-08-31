@@ -28,6 +28,15 @@ struct K {
         static let cardShadowReverse = "cardShadowReverse"
         static let imageFail = "imageFail"
         static let imageFailTwo = "imageFailTwo"
+        static let capitalOne = "capitalOne"
+        static let capitalTwo = "capitalTwo"
+        static let capitalThree = "capitalThree"
+        static let capitalFour = "capitalFour"
+        static let capitalFive = "capitalFive"
+        static let capitalVector = "capitalVector"
+        static let fec = "fec"
+        static let flag = "flag"
+        static let flagTwo = "flagTwo"
 
     }
     

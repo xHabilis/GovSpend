@@ -14,8 +14,7 @@ struct CommitteesView: View {
     @State private var showCitationView: Bool = false
     
     var commiteePath: String
-    
-    
+
     @ViewBuilder
     var body: some View {
         NavigationView {
