@@ -93,3 +93,19 @@ class AllCongressManager: ObservableObject {
         
     }
 }
+
+//if let info = fullCongressInfo.results?.first?.members {
+//
+//    let alphaSort = info.sorted(by: { Member, MemberTwo in
+//        let member = Member.state
+//        let memberTwo = MemberTwo.state
+//        return (member?.localizedCaseInsensitiveCompare(memberTwo!) == .orderedAscending)
+//    })
+//
+//DispatchQueue.main.async {
+//    self.congressResults = alphaSort
+//    self.congressMetaData = fullCongressInfo
+//
+//}
+//
+//}

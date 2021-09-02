@@ -9,11 +9,10 @@ import Foundation
 
 class FinancesManager: ObservableObject {
     
-    @Published var pfAssets = [Asset]()
-    @Published var pfTransactions = [Transaction]()
-    @Published var pfPositions = [Position]()
+    @Published var pfAssets: Assets?
+    @Published var pfPositions: Positions?
     @Published var pfProfile: MemberProfile?
-    
+
     let searchURL = K.apiURLs.personalFinance
     
     func getPersonalFinances(for CRPCandidateID: String) {
@@ -47,10 +46,9 @@ class FinancesManager: ObservableObject {
                         do {
                             let allPersonalFinances = try decoder.decode(PersonalFinanceData.self, from: safeData)
 
-  
-                            if let asset = allPersonalFinances.response?.member_profile.assets {
+                            if let asset = allPersonalFinances.response?.member_profile.assets{
                                 DispatchQueue.main.async {
-                                    self.pfAssets = asset.asset
+                                    self.pfAssets = asset
                                 }
                             }
                             if let profile = allPersonalFinances.response {
@@ -58,10 +56,10 @@ class FinancesManager: ObservableObject {
                                     self.pfProfile = profile.member_profile
                                 }
                             }
-                            
+
                             if let position = allPersonalFinances.response?.member_profile.positions {
                                 DispatchQueue.main.async {
-                                    self.pfPositions = position.position
+                                    self.pfPositions = position
                                 }
                             }
                             

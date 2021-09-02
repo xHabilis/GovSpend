@@ -260,17 +260,19 @@ struct FinancesView: View {
                     Spacer()
                     
 //MARK: - Reported Assets
-
+                    
                     Text("Reported Assets")
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
 
-                    
 
-                        List(theFinancials.pfAssets) { asset in
+//                    theFinancials.pfProfile?.assets?.asset
+//                        List(theFinancials.pfAssets) { asset in
+                    if let item = theFinancials.pfProfile?.assets {
+                        List(item.asset) { asset in
                             VStack (){
                                 HStack {
-                                    
+
                                     VStack (spacing: 4){
                                         Text(asset.attributes!.name)
                                             .font(.system(size: 12)).fontWeight(.semibold)
@@ -280,47 +282,49 @@ struct FinancesView: View {
                                     VStack (spacing: 3.5){
                                         Text(asset.attributes!.sector)
                                             .font(.system(size: 9))
-                                        
+
                                         Text("High: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
 
-                                        
+
                                         Text("Low: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
                                     }
                                     .frame(width: 150, height: 45, alignment: .center)
-                                    
-                                    
-                                }
+
+
+
                             }
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
                             .background(Color(K.appColors.background))
                             .cornerRadius(8)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 3)
-                            
+
                         }
-              
+                    }
+                    }
+
 
 //MARK: - Positions
-                    
+
                     Text("Positions")
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
 
-                    
 
-                        List(theFinancials.pfPositions) { position in
+                    if let item = theFinancials.pfPositions?.position {
+                        List(item) { position in
                             VStack {
                                 VStack(spacing: 5) {
-                                    
+
                                     Text(position.attributes!.title)
                                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
                                         .font(.system(size: 12))
-                                    
+
                                     Text(position.attributes!.organization)
                                         .font(.system(size: 9)).fontWeight(.semibold)
                                         .frame(width: UIScreen.main.bounds.width-25, height: 10, alignment: .center)
-                                        
+
                                 }
                             }
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
@@ -328,7 +332,7 @@ struct FinancesView: View {
                             .cornerRadius(8)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                         }
-             
+                    }
 
                     
                     
@@ -421,3 +425,74 @@ struct PersonalFinanceView_Previews: PreviewProvider {
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
+
+////MARK: - Reported Assets
+//
+//                    Text("Reported Assets")
+//                        .font(.system(size: 12)).fontWeight(.bold)
+//                        .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
+//
+//
+//
+//                        List(theFinancials.pfAssets) { asset in
+//                            VStack (){
+//                                HStack {
+//
+//                                    VStack (spacing: 4){
+//                                        Text(asset.attributes!.name)
+//                                            .font(.system(size: 12)).fontWeight(.semibold)
+//                                            .multilineTextAlignment(.leading).lineLimit(3)
+//                                    }
+//                                    .frame(width: 180, height: 35, alignment: .leading)
+//                                    VStack (spacing: 3.5){
+//                                        Text(asset.attributes!.sector)
+//                                            .font(.system(size: 9))
+//
+//                                        Text("High: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
+//                                            .font(.system(size: 7.5)).fontWeight(.semibold)
+//
+//
+//                                        Text("Low: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
+//                                            .font(.system(size: 7.5)).fontWeight(.semibold)
+//                                    }
+//                                    .frame(width: 150, height: 45, alignment: .center)
+//
+//
+//                                }
+//                            }
+//                            .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
+//                            .background(Color(K.appColors.background))
+//                            .cornerRadius(8)
+//                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+//
+//                        }
+//
+//
+////MARK: - Positions
+//
+//                    Text("Positions")
+//                        .font(.system(size: 12)).fontWeight(.bold)
+//                        .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
+//
+//
+//
+//                        List(theFinancials.pfPositions) { position in
+//                            VStack {
+//                                VStack(spacing: 5) {
+//
+//                                    Text(position.attributes!.title)
+//                                        .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
+//                                        .font(.system(size: 12))
+//
+//                                    Text(position.attributes!.organization)
+//                                        .font(.system(size: 9)).fontWeight(.semibold)
+//                                        .frame(width: UIScreen.main.bounds.width-25, height: 10, alignment: .center)
+//
+//                                }
+//                            }
+//                            .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
+//                            .background(Color(K.appColors.background))
+//                            .cornerRadius(8)
+//                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+//                        }
+//

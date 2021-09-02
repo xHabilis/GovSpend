@@ -272,7 +272,7 @@ struct HomeScreenView: View {
         static var previews: some View {
             ForEach(ColorScheme.allCases, id: \.self,
                     content: HomeScreenView().preferredColorScheme)
-            //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
         }
     }
     

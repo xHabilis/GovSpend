@@ -19,7 +19,6 @@ struct MemberProfile: Codable {
 
     let attributes: MemberProfileAttributes
     let assets: Assets?
-    let transactions: Transactions?
     let positions: Positions?
     
 
@@ -27,7 +26,6 @@ struct MemberProfile: Codable {
     private enum CodingKeys: String, CodingKey {
         case attributes = "@attributes"
         case assets
-        case transactions
         case positions
 
         
@@ -50,66 +48,77 @@ struct MemberProfile: Codable {
 
 }
 
-struct Assets: Codable {
-    let asset: [Asset]
-}
-
-struct Asset: Codable, Identifiable {
+//Account for positions as Array or Single item (non Array)
+struct Positions: Codable, Identifiable {
     var id = UUID()
-    let attributes: AssetAttributes?
+    var position: [Position]
 
-    private enum CodingKeys: String, CodingKey {
-        case attributes = "@attributes"
+        
+        init(from decoder: Decoder) throws {
+            let items = try decoder.container(keyedBy: CodingKeys.self)
+            position = []
+            
+            if let singlePosition = try? items.decode(Position.self, forKey: CodingKeys.position) {
+            position.append(singlePosition)
+                
+            } else if let positionArray = try? items.decode([Position].self, forKey: CodingKeys.position) {
+                position = positionArray
+            }
+
+            enum CodingKeys: String, CodingKey { case position }
+        }
+        
+        struct Position: Codable, Identifiable{
+            var id = UUID()
+            let attributes: PositionAttributes?
+
+            private enum CodingKeys: String, CodingKey {
+                case attributes = "@attributes"
+            }
+
+            struct PositionAttributes: Codable {
+                let title: String
+                let organization: String
+            }
+        }
     }
+    
 
-    struct AssetAttributes: Codable {
-        let name: String
-        let holdings_low: String
-        let holdings_high: String
-        let industry: String
-        let sector: String
-    }
 
-}
-struct Transactions: Codable {
-    let transaction: [Transaction]
-}
 
-struct Transaction: Codable, Identifiable {
+struct Assets: Codable, Identifiable {
     var id = UUID()
-    let attributes: TransactionAttributes?
+    var asset: [Asset]
 
-    private enum CodingKeys: String, CodingKey {
-        case attributes = "@attributes"
+        init(from decoder: Decoder) throws {
+            let items = try decoder.container(keyedBy: CodingKeys.self)
+            asset = []
+            
+            if let singleAsset = try? items.decode(Asset.self, forKey: CodingKeys.asset) {
+            asset.append(singleAsset)
+                
+            } else if let AssetArray = try? items.decode([Asset].self, forKey: CodingKeys.asset) {
+            asset = AssetArray
+            }
+
+            enum CodingKeys: String, CodingKey { case asset }
+        }
+
+        struct Asset: Codable, Identifiable{
+            var id = UUID()
+            let attributes: AssetAttributes?
+
+            private enum CodingKeys: String, CodingKey {
+                case attributes = "@attributes"
+            }
+
+            struct AssetAttributes: Codable {
+                let name: String
+                let holdings_low: String
+                let holdings_high: String
+                let industry: String
+                let sector: String
+            }
+
+        }
     }
-
-    struct TransactionAttributes: Codable {
-        let asset_name: String
-        let tx_date: String
-        let tx_action: String
-        let value_low: String
-        let value_high: String
-    }
-}
-
-
-
-
-
-struct Positions: Codable {
-    let position: [Position]
-}
-
-struct Position: Codable, Identifiable {
-    var id = UUID()
-    let attributes: PositionAttributes?
-
-    private enum CodingKeys: String, CodingKey {
-        case attributes = "@attributes"
-    }
-
-    struct PositionAttributes: Codable {
-        let title: String
-        let organization: String
-    }
-}

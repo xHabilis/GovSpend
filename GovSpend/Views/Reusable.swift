@@ -128,7 +128,7 @@ struct RemoteImage: View {
             .resizable()
     }
 
-    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "exclamationmark.square")) {
+    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image("flagThree")) {
         _loader = StateObject(wrappedValue: Loader(url: url))
         self.loading = loading
         self.failure = failure
