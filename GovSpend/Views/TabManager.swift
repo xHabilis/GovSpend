@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct HomeTabsView: View {
+struct TabManager: View {
     var body: some View {
         
         TabView {
-            HomeScreenView()
+            HomeView()
                 .tabItem {
-                    Label("Campaign", systemImage: "rectangle.stack.person.crop")
+                    Label("Home", systemImage: "house")
                 }
             
-            DebtView(annualDebt: AnnualDebtManager(), monthlyDebt: MonthlyDebtManager())
+            CampaignFinanceView()
                 .tabItem {
-                    Label("Debt", systemImage: "list.dash")
-                    
+                    Label("Campaign", systemImage: "building.columns")
                 }
             
             RevenueView(taxRevenue: RevenueManager(), gift: GiftRevenueManager())
@@ -27,6 +26,12 @@ struct HomeTabsView: View {
                     Label("Revenue", systemImage: "banknote")
                 }
             
+            DebtView(annualDebt: AnnualDebtManager(), monthlyDebt: MonthlyDebtManager())
+                .tabItem {
+                    Label("Debt", systemImage: "list.dash")
+                    
+                }
+
             SavedView()
                 .tabItem {
                     Label("Saved", systemImage: "bookmark")
@@ -40,7 +45,7 @@ struct HomeTabsView: View {
 
 struct HomeTabsView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self, content: HomeTabsView().preferredColorScheme)
+        ForEach(ColorScheme.allCases, id: \.self, content: TabManager().preferredColorScheme)
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }

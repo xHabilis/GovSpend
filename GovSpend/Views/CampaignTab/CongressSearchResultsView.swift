@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import CoreLocation
+
 
 struct CongressSearchResultsView: View {
     
     @StateObject var personalFinance: FinancesManager
+    @ObservedObject var theLocation: CoreLocationManager
     @StateObject var congress: AllCongressManager
-    
     @State private var showCitationView: Bool = false
     @State private var searchText : String = ""
+    
+    @State private var showAlert = false
+    @State private var activeAlert: Alerts = .locationDenied
     
     
     var congressNum: String
@@ -27,10 +32,47 @@ struct CongressSearchResultsView: View {
         }
         
         VStack {
-            
-            SearchBar(text: $searchText)
-                .padding(.top)
-            List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) })) { legislator in
+            HStack {
+                
+                SearchBar(text: $searchText)
+                    .padding(.top)
+
+                Button(action: {
+
+                    if theLocation.isDisabled {self.activeAlert = .locationDisabled
+                        self.showAlert = true
+                    }
+                    if theLocation.isDenied {self.activeAlert = .locationDenied
+                        self.showAlert = true
+                    }
+                    if theLocation.isRestricted {self.activeAlert = .locationRestricted
+                        self.showAlert = true
+                    }
+                    
+                    theLocation.checkForLocationServices()
+                    searchText = theLocation.theAddress ?? ""
+
+                }) {
+                    Image(systemName: "location.circle").imageScale(.large)
+                        .padding(.top)
+                }
+                .alert(isPresented: $showAlert) {
+                    switch activeAlert {
+                    
+                    case .locationDisabled:
+                        return Alert(title: Text("Location access is Disabled"), message: Text("Please Enable in Settings"), dismissButton: .default(Text("OK")))
+                        
+                    case .locationDenied:
+                        return Alert(title: Text("Location access request was denied"), message: Text("Please Allow Location Access for GovSpend in Location Settings"), dismissButton: .default(Text("OK")))
+                        
+                    case .locationRestricted:
+                        return Alert(title: Text("Location access is Restricted"), message: Text("Please confirm this applications access in your settings."), dismissButton: .default(Text("OK")))
+                    }
+                }
+                
+                
+            }
+            List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) })) { legislator in
 
                 NavigationLink(
                     destination: FinancesView(theFinancials: FinancesManager(), firstName: legislator.first_name ?? "",
@@ -115,8 +157,9 @@ struct CongressSearchResultsView: View {
 
 struct CurrentCongressResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self, content: CongressSearchResultsView(personalFinance: FinancesManager(), congress: AllCongressManager(),congressNum: "", congressChamber: "").preferredColorScheme)
+        ForEach(ColorScheme.allCases, id: \.self, content: CongressSearchResultsView(personalFinance: FinancesManager(), theLocation: CoreLocationManager(), congress: AllCongressManager(),congressNum: "", congressChamber: "").preferredColorScheme)
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
+
 

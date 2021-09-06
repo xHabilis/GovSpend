@@ -58,7 +58,7 @@ struct FundRaisingView: View {
                         
                         
                         VStack {
-                            BarChartView(data: ChartData(values: funds.barChartData), title: "Fund Raising", legend: "Category", style: Styles.barChartMidnightGreenDark, form: ChartForm.extraLarge)
+                            BarChartView(data: ChartData(values: funds.barChartData), title: "Fund Raising", legend: "Category", style: Styles.barChartMidnightGreenLight, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
                         }
                             
                         VStack (spacing: 10) {

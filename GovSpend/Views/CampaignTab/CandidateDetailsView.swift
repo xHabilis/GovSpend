@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct CandidateDetailsView: View {
 
@@ -46,6 +47,7 @@ struct CandidateDetailsView: View {
                                                 addItem()
                                                 bookmark = true
                                                 isShowingSaveAlert.toggle()
+                                                
                                                 
                                             }, label: {
                                                 if bookmark {
@@ -157,8 +159,7 @@ struct CandidateDetailsView: View {
                         }
                         
                     }
-                    
-                    
+
                     VStack (spacing: 10){
 
                         
@@ -209,7 +210,10 @@ struct CandidateDetailsView: View {
                     .cornerRadius(8)
                     .shadow(radius: 2)
                     
-                    
+                    VStack {
+                        BarChartView(data: ChartData(values: detailsManager.barChartData), title: "Contributions", legend: "Sourece", style: Styles.barChartMidnightGreenDark, form: ChartForm.extraLarge, cornerImage: Image(systemName: "dollarsign.square"))
+                    }
+                    .padding(.vertical)
                     
                     VStack (spacing: 20){
                         if let copyInfo = detailsManager.candidateDetailsMetaData {
@@ -233,15 +237,8 @@ struct CandidateDetailsView: View {
 
                 .cornerRadius(20)
                 .shadow(radius: 2)
-                Spacer()
-                    
-                    
-
-                    
-                    
 
                 }
-                .frame(width: 400, height: 800, alignment: .top)
             }
         }
         .onAppear(perform: {

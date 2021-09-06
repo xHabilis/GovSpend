@@ -57,7 +57,7 @@ struct Configs {
 //MARK:  Short State Names -> Expanded
     
     static func extendAbbreviation(StateName: String) -> String {
-        var LongStateName: String!
+        var LongStateName: String?
         
         for name in Configs.stateDict {
             if name.key.localizedCaseInsensitiveContains(StateName) {
@@ -65,7 +65,8 @@ struct Configs {
                 LongStateName = abbreviated
             }
         }
-        return LongStateName
+        
+        return LongStateName ?? ""
     }
     
     
@@ -152,7 +153,7 @@ struct Configs {
             return "Active"
             
         } else {
-            return "Inactive"
+            return "N/A"
         }
     }
     

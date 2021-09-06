@@ -35,9 +35,12 @@ struct K {
         static let capitalFive = "capitalFive"
         static let capitalVector = "capitalVector"
         static let fec = "fec"
-        static let flag = "flag"
+        static let theflag = "theflag"
         static let flagTwo = "flagTwo"
         static let flagThree = "flagThree"
+        static let flagalso = "flagalso"
+        static let congressVectorOne = "congressVectorOne"
+        static let congressVectorTwo = "congressVectorTwo"
 
     }
     
@@ -47,12 +50,9 @@ struct K {
         static let getCandidateMoneyUrl = "https://api.propublica.org/campaign-finance/v1/2020"
         static let candidateSearch = "https://api.propublica.org/campaign-finance/v1/"
         static let categorySearch = "https://api.propublica.org/campaign-finance/v1/2020/candidates/leaders/"
-        //static let stateSearch = "https://api.propublica.org/campaign-finance/v1/2020/races/"
         static let imageURL = "https://theunitedstates.io/images/congress/450x550/"
         static let imageURLjpg = ".jpg"
         static let currentCongress = "https://www.opensecrets.org/api/?method=getLegislators&id="
-        //static let personalFinance = "https://www.opensecrets.org/api/?method=memPFDprofile&year=2016&cid="
-        
         static let personalFinance = "https://www.opensecrets.org/api/?method=memPFDprofile&cid="
         static let fundRaising = "https://www.opensecrets.org/api/?method=candSummary&cid="
         static let topContrib = "https://www.opensecrets.org/api/?method=candContrib&cid="

@@ -14,7 +14,7 @@ struct GovSpendApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeTabsView()
+            TabManager()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
         }

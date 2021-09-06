@@ -11,6 +11,7 @@ class CandidateDetailsManager: ObservableObject {
     
     @Published var candidateDetails = [Results]()
     @Published var candidateDetailsMetaData: CandidateDetailsData?
+    @Published var barChartData:[(name: String, value: Double)] = []
     
     var theRequest: URLRequest?
     let detailsURL = URL(string: K.apiURLs.getCandidateMoneyUrl)!
@@ -49,10 +50,32 @@ class CandidateDetailsManager: ObservableObject {
                     do {
                         let detailsResult = try decoder.decode(CandidateDetailsData.self, from: safeData)
                         
+                        //Create Custom Array for Chart
+                        var someArray: [(name: String, value: Double)] = []
+                        
+                        if let candContribs = detailsResult.results.first {
+                            let pac = candContribs.total_from_pacs
+                            let individuals = candContribs.total_from_individuals
+                            let total = candContribs.total_contributions
+                            let receipts = candContribs.total_receipts
+                            let loans = candContribs.candidate_loans
+                            let pacRefunds = candContribs.pac_refunds
+                            let debts = candContribs.debts_owed
+                            
+                            someArray.append((name: "PACs", value: pac))
+                            someArray.append((name: "Individuals", value: individuals))
+                            someArray.append((name: "Total Contrib", value: total))
+                            someArray.append((name: "Receipts", value: receipts))
+                            someArray.append((name: "Loans", value: loans))
+                            someArray.append((name: "PAC Refunds", value: pacRefunds))
+                            someArray.append((name: "Debts Owed", value: debts))
+                        }
+                        
                         
                         DispatchQueue.main.async {
                             self.candidateDetails = detailsResult.results
                             self.candidateDetailsMetaData = detailsResult
+                            self.barChartData = someArray
                         }
                     } catch {
                        

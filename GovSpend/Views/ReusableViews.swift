@@ -128,7 +128,7 @@ struct RemoteImage: View {
             .resizable()
     }
 
-    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image("flagThree")) {
+    init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image("theflag")) {
         _loader = StateObject(wrappedValue: Loader(url: url))
         self.loading = loading
         self.failure = failure
@@ -266,7 +266,8 @@ struct SearchBar: View {
     var body: some View {
         HStack {
  
-            TextField("Search Names", text: $text)
+            TextField("Search", text: $text)
+                .frame(width: 270, height: 15, alignment: .center)
                 .font(.system(size: 12))
                 .padding(7)
                 .padding(.horizontal, 25)
@@ -288,6 +289,8 @@ struct SearchBar: View {
                                     .padding(.trailing, 8)
                             }
                         }
+                        
+
                     }
                 )
                 .padding(.horizontal, 10)
@@ -300,12 +303,12 @@ struct SearchBar: View {
                     self.isEditing = false
                     self.text = ""
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-
+                    
  
                 }) {
-                    Text("Cancel")
+                    Image(systemName: "keyboard.chevron.compact.down")
                 }
-                .padding(.trailing, 10)
+                .padding(.trailing, 1)
                 .transition(.move(edge: .trailing))
                 .animation(.default)
             }
