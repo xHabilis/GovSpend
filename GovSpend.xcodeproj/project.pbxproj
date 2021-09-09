@@ -21,11 +21,13 @@
 		6A273D9826A202C0005ADF21 /* SectorTotalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A273D9726A202C0005ADF21 /* SectorTotalsManager.swift */; };
 		6A273D9A26A208E1005ADF21 /* FundRaisingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A273D9926A208E1005ADF21 /* FundRaisingView.swift */; };
 		6A27CC74269CBD0700B4818B /* CategorySearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A27CC73269CBD0700B4818B /* CategorySearchData.swift */; };
+		6A32492A26E9620D0065C14C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A32492926E9620D0065C14C /* AboutView.swift */; };
 		6A36D20126A1E3260084AEF1 /* FundRaisingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A36D20026A1E3260084AEF1 /* FundRaisingManager.swift */; };
 		6A36D20526A1E34B0084AEF1 /* FundRaisingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A36D20426A1E34B0084AEF1 /* FundRaisingData.swift */; };
 		6A4384F226A08434007AFF6F /* PersonalFinanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4384F126A08434007AFF6F /* PersonalFinanceData.swift */; };
 		6A4384F426A08746007AFF6F /* FinancesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4384F326A08746007AFF6F /* FinancesManager.swift */; };
 		6A5439A226E6BC7900B2991D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5439A126E6BC7900B2991D /* HomeView.swift */; };
+		6A5439A426E82FFD00B2991D /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5439A326E82FFD00B2991D /* Testing.swift */; };
 		6A54BE262697F9B300419A13 /* CandidateDetailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54BE252697F9B300419A13 /* CandidateDetailsData.swift */; };
 		6A54BE282697FC6D00419A13 /* CandidateDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54BE272697FC6D00419A13 /* CandidateDetailsManager.swift */; };
 		6A54BE2A26989D8800419A13 /* CandidateDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A54BE2926989D8800419A13 /* CandidateDetailsView.swift */; };
@@ -79,11 +81,13 @@
 		6A273D9726A202C0005ADF21 /* SectorTotalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorTotalsManager.swift; sourceTree = "<group>"; };
 		6A273D9926A208E1005ADF21 /* FundRaisingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundRaisingView.swift; sourceTree = "<group>"; };
 		6A27CC73269CBD0700B4818B /* CategorySearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySearchData.swift; sourceTree = "<group>"; };
+		6A32492926E9620D0065C14C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6A36D20026A1E3260084AEF1 /* FundRaisingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundRaisingManager.swift; sourceTree = "<group>"; };
 		6A36D20426A1E34B0084AEF1 /* FundRaisingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundRaisingData.swift; sourceTree = "<group>"; };
 		6A4384F126A08434007AFF6F /* PersonalFinanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFinanceData.swift; sourceTree = "<group>"; };
 		6A4384F326A08746007AFF6F /* FinancesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesManager.swift; sourceTree = "<group>"; };
 		6A5439A126E6BC7900B2991D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6A5439A326E82FFD00B2991D /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		6A54BE252697F9B300419A13 /* CandidateDetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailsData.swift; sourceTree = "<group>"; };
 		6A54BE272697FC6D00419A13 /* CandidateDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailsManager.swift; sourceTree = "<group>"; };
 		6A54BE2926989D8800419A13 /* CandidateDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateDetailsView.swift; sourceTree = "<group>"; };
@@ -140,20 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				6A8193CA26B0617A00315EAB /* Dummy.swift */,
+				6A5439A326E82FFD00B2991D /* Testing.swift */,
 			);
 			path = Later;
-			sourceTree = "<group>";
-		};
-		6A891C6E26C06ED800D51A81 /* DebtTab */ = {
-			isa = PBXGroup;
-			children = (
-				6A891C7B26C071C300D51A81 /* DebtView.swift */,
-				6A891C7526C0715800D51A81 /* AnnualDebtData.swift */,
-				6A891C7726C0717800D51A81 /* MonthlyDebtData.swift */,
-				6A891C7326C0713600D51A81 /* AnnualDebtManager.swift */,
-				6A891C7926C071A200D51A81 /* MonthlyDebtManager.swift */,
-			);
-			path = DebtTab;
 			sourceTree = "<group>";
 		};
 		6AA57B6826939C0E008A3EA6 = {
@@ -198,19 +191,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		6AABBEAA26D597D500C1ADA3 /* SavedTab */ = {
-			isa = PBXGroup;
-			children = (
-				6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */,
-				6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */,
-				6AABBEB026D59D9100C1ADA3 /* Persistence.swift */,
-			);
-			path = SavedTab;
-			sourceTree = "<group>";
-		};
 		6AAFC35B26962DD900F7696B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6A891C7526C0715800D51A81 /* AnnualDebtData.swift */,
+				6A891C7726C0717800D51A81 /* MonthlyDebtData.swift */,
+				6AE96B8026C0B677008AA9D0 /* RevenueData.swift */,
+				6AE96B8626C0B6DA008AA9D0 /* GiftRevenueData.swift */,
 				6AAE117C26A384640099B6A2 /* AllCongressData.swift */,
 				6AAFC38F2697732F00F7696B /* FECCandidateSearchData.swift */,
 				6A54BE252697F9B300419A13 /* CandidateDetailsData.swift */,
@@ -220,6 +207,7 @@
 				6A273D9326A1FDEB005ADF21 /* TopContribData.swift */,
 				6A273D9526A1FE20005ADF21 /* SectorTotalsData.swift */,
 				6A17EBDF26B5AEED0045D679 /* CommitteeData.swift */,
+				6AABBEAD26D5997E00C1ADA3 /* CongressBookMark.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,8 +224,13 @@
 				6A273D9726A202C0005ADF21 /* SectorTotalsManager.swift */,
 				6A67812626A46DEC002735FE /* CategorySearchManager.swift */,
 				6A17EBE326B5AF430045D679 /* CommitteeManager.swift */,
+				6A891C7326C0713600D51A81 /* AnnualDebtManager.swift */,
+				6A891C7926C071A200D51A81 /* MonthlyDebtManager.swift */,
+				6AE96B8426C0B6BC008AA9D0 /* GiftRevenueManager.swift */,
+				6AE96B8226C0B69C008AA9D0 /* RevenueManager.swift */,
 				6A270409269D037900ECAE35 /* Configs.swift */,
 				6A9EE2A626E2DE2D0091A1B1 /* CoreLocationManager.swift */,
+				6AABBEB026D59D9100C1ADA3 /* Persistence.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -245,32 +238,13 @@
 		6AAFC35F26962E2600F7696B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6A8193D026B3615A00315EAB /* ReusableViews.swift */,
-				6A5439A126E6BC7900B2991D /* HomeView.swift */,
 				6A8193CE26B35B4A00315EAB /* TabManager.swift */,
-				6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */,
-				6A891C6E26C06ED800D51A81 /* DebtTab */,
-				6AE96B7F26C0B64E008AA9D0 /* RevenueTab */,
-				6AABBEAA26D597D500C1ADA3 /* SavedTab */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		6AE96B7F26C0B64E008AA9D0 /* RevenueTab */ = {
-			isa = PBXGroup;
-			children = (
-				6AE96B8426C0B6BC008AA9D0 /* GiftRevenueManager.swift */,
-				6AE96B8226C0B69C008AA9D0 /* RevenueManager.swift */,
-				6AE96B8026C0B677008AA9D0 /* RevenueData.swift */,
-				6AE96B8626C0B6DA008AA9D0 /* GiftRevenueData.swift */,
+				6A5439A126E6BC7900B2991D /* HomeView.swift */,
+				6A32492926E9620D0065C14C /* AboutView.swift */,
+				6A61AAAD26AC81D10084C0D6 /* CitationView.swift */,
+				6A8193D026B3615A00315EAB /* ReusableViews.swift */,
+				6A891C7B26C071C300D51A81 /* DebtView.swift */,
 				6AE96B8826C0B6F7008AA9D0 /* RevenueView.swift */,
-			);
-			path = RevenueTab;
-			sourceTree = "<group>";
-		};
-		6AE96B8A26C0B9AE008AA9D0 /* CampaignTab */ = {
-			isa = PBXGroup;
-			children = (
 				6AAFC35D26962E1F00F7696B /* CampaignFinanceView.swift */,
 				6AD1E439269F4916002601B6 /* CongressSearchResultsView.swift */,
 				6AAFC3802696574700F7696B /* FinancesView.swift */,
@@ -281,10 +255,10 @@
 				6A67812826A48A8E002735FE /* CategoryResultView.swift */,
 				6A54BE2926989D8800419A13 /* CandidateDetailsView.swift */,
 				6A00AE5126B5BDBE00F16C1C /* CommitteesView.swift */,
-				6A61AAAD26AC81D10084C0D6 /* CitationView.swift */,
 				6A61AAB126ACAB550084C0D6 /* LoadingView.swift */,
+				6AABBEAB26D597FC00C1ADA3 /* SavedView.swift */,
 			);
-			path = CampaignTab;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,10 +353,12 @@
 				6A273D9A26A208E1005ADF21 /* FundRaisingView.swift in Sources */,
 				6AAFC3902697732F00F7696B /* FECCandidateSearchData.swift in Sources */,
 				6A8E56E926A49CB700B41160 /* K.swift in Sources */,
+				6A5439A426E82FFD00B2991D /* Testing.swift in Sources */,
 				6A891C7C26C071C300D51A81 /* DebtView.swift in Sources */,
 				6A67812726A46DEC002735FE /* CategorySearchManager.swift in Sources */,
 				6A27CC74269CBD0700B4818B /* CategorySearchData.swift in Sources */,
 				6A8193CB26B0617A00315EAB /* Dummy.swift in Sources */,
+				6A32492A26E9620D0065C14C /* AboutView.swift in Sources */,
 				6A273D9226A1FD9C005ADF21 /* TopContribManager.swift in Sources */,
 				6A5439A226E6BC7900B2991D /* HomeView.swift in Sources */,
 				6A891C7826C0717800D51A81 /* MonthlyDebtData.swift in Sources */,

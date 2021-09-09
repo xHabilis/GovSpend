@@ -21,15 +21,15 @@ struct TabManager: View {
                     Label("Campaign", systemImage: "building.columns")
                 }
             
+            DebtView(annualDebt: AnnualDebtManager(), monthlyDebt: MonthlyDebtManager())
+                .tabItem {
+                    Label("Debt", systemImage: "list.bullet")
+                    
+                }
+            
             RevenueView(taxRevenue: RevenueManager(), gift: GiftRevenueManager())
                 .tabItem {
                     Label("Revenue", systemImage: "banknote")
-                }
-            
-            DebtView(annualDebt: AnnualDebtManager(), monthlyDebt: MonthlyDebtManager())
-                .tabItem {
-                    Label("Debt", systemImage: "list.dash")
-                    
                 }
 
             SavedView()

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var showCitationView: Bool = false
+    @State private var showAboutView: Bool = false
     
     var body: some View {
         
         NavigationView {
             
             ZStack {
+                Color(K.appColors.background)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     Image("congressVectorOne").resizable().aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width-45, height: 250, alignment: .center)
@@ -31,11 +33,11 @@ struct HomeView: View {
                     .navigationBarTitle("Gov$pend")
                     .navigationBarItems(trailing:
                                             Button(action: {
-                                                showCitationView = true
+                                                showAboutView = true
                                                 
                                             }){Image(systemName: "square.grid.2x2.fill").imageScale(.large)
-                                                .sheet(isPresented: $showCitationView) {
-                                                    CitationView()
+                                                .sheet(isPresented: $showAboutView) {
+                                                    AboutView()
                                                 }})
                 }
             }

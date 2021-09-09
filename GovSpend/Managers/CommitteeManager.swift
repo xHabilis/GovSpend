@@ -11,6 +11,7 @@ class CommitteeManager: ObservableObject {
     
     @Published var committeeList = [CommitteeInfo]()
     @Published var committeeMetaData: CommitteeData?
+    @Published var barChartData:[(name: String, value: Double)] = []
     
     var theRequest: URLRequest?
     let committeeURL = URL(string: K.apiURLs.committees)!
@@ -49,12 +50,38 @@ class CommitteeManager: ObservableObject {
                 if let safeData = data {
                     do {
                         let theCommitteeData = try decoder.decode(CommitteeData.self, from: safeData)
+                        
+                        //Create Custom Array for Chart
+                        var someArray: [(name: String, value: Double)] = []
+                        
+                        if let committeeFunds = theCommitteeData.results?.first {
+                            
+                            let pac = committeeFunds.total_from_pacs
+                            let individuals = committeeFunds.total_from_individuals
+                            let totalContributions = committeeFunds.total_contributions
+                            let transfers = committeeFunds.transfers_in
+                            let debt = committeeFunds.debts_owed
+                            let totalRecepits = committeeFunds.total_receipts
+                            
+                            someArray.append((name: "PACs", value: ((pac ?? 0.0) as Double)))
+                            someArray.append((name: "Individuals", value: ((individuals ?? 0.0) as Double)))
+                            someArray.append((name: "Total\nContribs", value: ((totalContributions ?? 0.0) as Double)))
+                            someArray.append((name: "Transfers", value: ((transfers ?? 0.0) as Double)))
+                            someArray.append((name: "Debts", value: ((debt ?? 0.0) as Double)))
+                            someArray.append((name: "Total\nRecepits", value: ((totalRecepits ?? 0.0) as Double)))
+
+                            
+                        }
+                        
+                        
         
                         if let committeeStuff = theCommitteeData.results {
                             DispatchQueue.main.async {
                                 
                                 self.committeeList = committeeStuff
                                 self.committeeMetaData = theCommitteeData
+                                self.barChartData = someArray
+                                
                                 
                             }
                             

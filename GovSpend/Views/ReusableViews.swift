@@ -11,24 +11,24 @@ import SwiftUI
 //MARK: - Single Item
 
 struct SingleItem: View {
-
+    
     let titleText: String
     let labelText: String
     let color: String
-
+    
     var body: some View {
         HStack (alignment: .center, spacing: 0){
             Text(titleText)
                 .font(.system(size: 10))
                 .frame(width: 85, height: 28, alignment: .leading)
-
+            
             Text(labelText)
                 .font(.system(size: 10))
                 .foregroundColor(.black)
                 .frame(width: 80, height: 20, alignment: .center)
                 .background(Color(color))
                 .cornerRadius(8)
-
+            
         }
         .frame(width: 165, height: 30, alignment: .center)
     }
@@ -55,8 +55,8 @@ struct CategoryLink: View {
             .background(Color(K.appColors.green))
             .cornerRadius(10)
             .shadow(color: Color(K.appColors.cardShadow),radius: 2)
-
-            
+        
+        
     }
 }
 
@@ -74,7 +74,7 @@ struct ItemNameValue: View {
                 .font(.system(size: 12))
                 .padding(.leading)
                 .frame(width: 170, height: 30, alignment: .trailing)
-
+            
             Text(String(itemValue))
                 .foregroundColor(Color.black)
                 .font(.system(size: 12)).fontWeight(.semibold)
@@ -94,16 +94,16 @@ struct RemoteImage: View {
     private enum LoadState {
         case loading, success, failure
     }
-
+    
     private class Loader: ObservableObject {
         var data = Data()
         var state = LoadState.loading
-
+        
         init(url: String) {
             guard let parsedURL = URL(string: url) else {
                 fatalError("Invalid URL: \(url)")
             }
-
+            
             URLSession.shared.dataTask(with: parsedURL) { data, response, error in
                 if let data = data, data.count > 0 {
                     self.data = data
@@ -111,29 +111,29 @@ struct RemoteImage: View {
                 } else {
                     self.state = .failure
                 }
-
+                
                 DispatchQueue.main.async {
                     self.objectWillChange.send()
                 }
             }.resume()
         }
     }
-
+    
     @StateObject private var loader: Loader
     var loading: Image
     var failure: Image
-
+    
     var body: some View {
         selectImage()
             .resizable()
     }
-
+    
     init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image("theflag")) {
         _loader = StateObject(wrappedValue: Loader(url: url))
         self.loading = loading
         self.failure = failure
     }
-
+    
     private func selectImage() -> Image {
         switch loader.state {
         case .loading:
@@ -235,7 +235,7 @@ struct CongressBookMark: View {
                     .frame(width: 25, height: 20, alignment: .topTrailing)
                 
             }
-
+            
             HStack {
                 Text("\(stateTitle)")
                     .font(.system(size: 10))
@@ -260,12 +260,12 @@ struct CongressBookMark: View {
 
 struct SearchBar: View {
     @Binding var text: String
- 
+    
     @State private var isEditing = false
- 
+    
     var body: some View {
         HStack {
- 
+            
             TextField("Search", text: $text)
                 .frame(width: 270, height: 15, alignment: .center)
                 .font(.system(size: 12))
@@ -279,10 +279,12 @@ struct SearchBar: View {
                             .foregroundColor(.gray)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)
-                 
+                        
                         if isEditing {
                             Button(action: {
+                                self.isEditing = false
                                 self.text = ""
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)
@@ -290,28 +292,14 @@ struct SearchBar: View {
                             }
                         }
                         
-
+                        
                     }
                 )
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 5)
                 .onTapGesture {
                     self.isEditing = true
                 }
- 
-            if isEditing {
-                Button(action: {
-                    self.isEditing = false
-                    self.text = ""
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    
- 
-                }) {
-                    Image(systemName: "keyboard.chevron.compact.down")
-                }
-                .padding(.trailing, 1)
-                .transition(.move(edge: .trailing))
-                .animation(.default)
-            }
+            
         }
     }
 }
