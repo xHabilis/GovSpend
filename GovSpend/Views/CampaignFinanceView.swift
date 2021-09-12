@@ -191,8 +191,7 @@ struct CampaignFinanceView: View {
                         //Present Search Results
                         NavigationLink(destination: FECSearchResultsView(candidateSearchManager: FECCandidateSearchManager(),
                                                                          candidateDetailsManager: CandidateDetailsManager(),
-                                                                         searchName: candidateName,
-                                                                         theYear: cycleYear),
+                                                                         searchName: candidateName, theYear: cycleYear),
                                        isActive: $isShowingCandidates) { EmptyView() }
 
                         }

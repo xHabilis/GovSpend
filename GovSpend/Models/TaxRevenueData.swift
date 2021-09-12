@@ -7,25 +7,19 @@
 
 import Foundation
 
-struct RevenueData: Codable {
+struct TaxRevenueData: Codable {
     let data: [TheRevenue]?
-    let meta: Meta?
+    let meta: RevenueMeta?
     let links: Links?
 }
 
 
 struct TheRevenue: Codable, Identifiable {
     let id = UUID()
-    let record_date, tax_category_desc, net_collections_amt, record_fiscal_year: String
-    var revenueAsDouble: Double {
-        return (net_collections_amt as NSString).doubleValue
-    }
-    
-    var tag: String {
-        return "\(record_date)\n\(tax_category_desc)"
-    }
-    
-    
+    let record_date, net_collections_amt, record_fiscal_year: String
+        var revenueAsDouble: Double {
+            return (net_collections_amt as NSString).doubleValue
+        }
 }
 
 

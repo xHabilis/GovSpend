@@ -267,7 +267,7 @@ struct SearchBar: View {
         HStack {
             
             TextField("Search", text: $text)
-                .frame(width: 270, height: 15, alignment: .center)
+                .frame(width: 275, height: 20, alignment: .center)
                 .font(.system(size: 12))
                 .padding(7)
                 .padding(.horizontal, 25)

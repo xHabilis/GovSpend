@@ -7,16 +7,16 @@
 
 import Foundation
 
-class RevenueManager: ObservableObject {
+class TaxRevenueManager: ObservableObject {
     
     @Published var revenue = [TheRevenue]()
 
     @Published var barChartData:[(name: String, value: Double)] = []
 
     
-    func getMonthlyRevenue() {
+    func getTaxRevenue() {
         
-        let fullURL = K.apiURLs.revenue
+        let fullURL = K.apiURLs.taxRevenue
         
         performRequest(with: fullURL)
         //print(fullURL)
@@ -30,22 +30,23 @@ class RevenueManager: ObservableObject {
             let task = session.dataTask(with: url) {(data, response, error) in
                 
                 // ErrorCheck
-                let responseHandling = response as! HTTPURLResponse
+                if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
                 print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let moneyAll = try decoder.decode(RevenueData.self, from: safeData)
+                            let moneyAll = try decoder.decode(TaxRevenueData.self, from: safeData)
                             
                             //Chart Array Creation
                             var someArray: [(name: String, value: Double)] = []
-                            if let taxNonTaxMoney = moneyAll.data {
-                                for day in taxNonTaxMoney {
-                                    someArray.append((name: "\(day.tag)", value: day.revenueAsDouble))
-                  
+                            if let taxMoney = moneyAll.data {
+                                for chart in taxMoney {
+                                    someArray.append((name: "\(chart.record_date)", value: chart.revenueAsDouble))
+
                                 }
                             }
 

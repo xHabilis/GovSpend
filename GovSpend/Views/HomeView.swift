@@ -42,7 +42,7 @@ struct HomeView: View {
                 }
             }
             
-        }
+        }.onAppear() {}.animation(.default)
     }
 }
 

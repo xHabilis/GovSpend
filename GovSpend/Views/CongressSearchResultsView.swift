@@ -33,10 +33,7 @@ struct CongressSearchResultsView: View {
         
         VStack {
             HStack (spacing: 0){
-                
-                
-                SearchBar(text: $searchText)
-                    .padding(.top, 5.0)
+
 
                 Button(action: {
 
@@ -71,6 +68,8 @@ struct CongressSearchResultsView: View {
                     }
                 }
                 
+                SearchBar(text: $searchText)
+                    .padding(.top, 5.0)
                 
             }
             List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) || $0.state!.contains(searchText) })) { legislator in

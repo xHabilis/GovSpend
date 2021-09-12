@@ -11,12 +11,12 @@ struct FECSearchResultsView: View {
     
     @StateObject var candidateSearchManager: FECCandidateSearchManager
     @StateObject var candidateDetailsManager:CandidateDetailsManager
-    
     @State private var showCitationView: Bool = false
-    
-    
+
     var searchName: String
-    let theYear: String
+    var theYear: String
+    
+    
     
     @ViewBuilder
     var body: some View {

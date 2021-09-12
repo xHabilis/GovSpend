@@ -18,7 +18,7 @@ class CandidateDetailsManager: ObservableObject {
     
     func getCandidateDetails(with urlEndPiece: String) {
         
-        let urlWithName = URL(string: "\(detailsURL)\(urlEndPiece)")!
+        let urlWithName = URL(string: "\(detailsURL)2020\(urlEndPiece)")!
         var request = URLRequest(url: urlWithName)
         request.allHTTPHeaderFields = Keys.campaignFinance
         theRequest = request
@@ -40,9 +40,10 @@ class CandidateDetailsManager: ObservableObject {
         let task = session.dataTask(with: theRequest!) { data, response, error in
             
             // ErrorCheck
-            let responseHandling = response as! HTTPURLResponse
+            if let responseHandling = response as? HTTPURLResponse {
             let responseCode = responseHandling.statusCode
             print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+            }
             
             if error == nil {
                 let decoder = JSONDecoder()

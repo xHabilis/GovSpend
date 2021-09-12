@@ -42,7 +42,7 @@ struct K {
     
     struct apiURLs {
         static let getCandidateUrl = "https://api.propublica.org/congress/v1/members/"
-        static let getCandidateMoneyUrl = "https://api.propublica.org/campaign-finance/v1/2020"
+        static let getCandidateMoneyUrl = "https://api.propublica.org/campaign-finance/v1/"
         static let candidateSearch = "https://api.propublica.org/campaign-finance/v1/"
         static let categorySearch = "https://api.propublica.org/campaign-finance/v1/2020/candidates/leaders/"
         static let imageURL = "https://theunitedstates.io/images/congress/450x550/"
@@ -57,8 +57,8 @@ struct K {
         static let annualDebt = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_outstanding?fields=record_date,debt_outstanding_amt,src_line_nbr,record_fiscal_year&filter=record_fiscal_year:gt:1899?page[number]=1&page[size]=1000"
         static let monthlyDebt = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny?fields=record_date,debt_held_public_amt,%20intragov_hold_amt%20,tot_pub_debt_out_amt&page[number]=1&page[size]=30&sort=-record_date"
         static let giftRevenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/gift_contributions?fields=record_date,contribution_amt,record_calendar_month&page[number]=1&page[size]=13&sort=-record_date"
-        static let revenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/revenue/rcm?fields=record_date,tax_category_desc,net_collections_amt,record_fiscal_year&page[number]=1&page[size]=28&sort=-record_date"
-        
+        static let taxRevenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/revenue/rcm?fields=record_date,net_collections_amt,record_fiscal_year&filter=tax_category_desc:eq:IRS%20Tax&page[number]=1&page[size]=31&sort=-record_date"
+        static let nonTaxRevenue = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/revenue/rcm?fields=record_date,net_collections_amt,record_fiscal_year&filter=tax_category_desc:eq:IRS%20Non-Tax&page[number]=1&page[size]=31&sort=-record_date"
 
     }
     

@@ -16,62 +16,35 @@ struct Testing: View {
     @State private var showCitationView: Bool = false
     @State private var isShowingCandidates: Bool = false
     var body: some View {
-        VStack {
-
-            VStack (spacing: 3){
-                VStack {
-                    
-                    Text("Top 20 Candidates")
-                        .font(.system(size: 13))
-                        .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
-                        
-                }
-                .frame(width: UIScreen.main.bounds.width-45, height:20, alignment: .center)
+        VStack (spacing: 10) {
+            
+            Text("Total Public Debt Outstanding")
+                .font(.system(size: 13)).fontWeight(.semibold).padding(.vertical, 5.0)
+            Text("$28,456,765,543,000")
+                .font(.system(size: 20)).fontWeight(.semibold)
+                .foregroundColor(.red)
+                .frame(width: 250, height: 35, alignment: .center)
                 .background(Color(K.appColors.background))
-              
-
-                    HStack(spacing: 30) {
-                        VStack (spacing: 10){
-                            CategoryLink(CategoryUrlName: "individual-total",
-                                         CategoryTitle: "Individual Totals")
-                            
-                            CategoryLink(CategoryUrlName: "receipts-total",
-                                         CategoryTitle: "Receipt Totals")
-      
-                            CategoryLink(CategoryUrlName: "debts-owed",
-                                         CategoryTitle: "Debts Owed")
-
-                        }
-                        
-                        VStack(spacing: 10) {
-                            CategoryLink(CategoryUrlName: "pac-total",
-                                         CategoryTitle: "PAC Totals")
-                            CategoryLink(CategoryUrlName: "candidate-loan",
-                                         CategoryTitle: "Candidate Loans")
-                            CategoryLink(CategoryUrlName: "end-cash",
-                                         CategoryTitle: "End Cash")
-                        }
-
-                    }
-                    .frame(width: UIScreen.main.bounds.width-60, height: 130, alignment: .center)
-
-               
-                
-                VStack {
-                    Text("Categories")
-                        .font(.system(size: 13))
-                        .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
-                }
-                .frame(width: UIScreen.main.bounds.width-45, height: 20, alignment: .center)
-                .background(Color(K.appColors.background))
-                
-            }
-            .frame(width: UIScreen.main.bounds.width-45, height: 200, alignment: .center)
-            .background(Color(K.appColors.background))
-            .cornerRadius(30)
-            .shadow(color: Color(K.appColors.cardShadow),radius: 9)
-         
+                .cornerRadius(10)
+                .shadow(color: Color(K.appColors.cardShadow), radius: 2)
+            
+            
+            Text("Debt Held by the Public")
+                .font(.system(size: 10)).fontWeight(.semibold)
+            Text("$28,456,765,543")
+                .font(.system(size: 9))
+                .padding(.bottom, 3.0)
+            
+            Text("Intragovernmental Holdings")
+                .font(.system(size: 10)).fontWeight(.semibold)
+            Text("$28,456,765,543")
+                .font(.system(size: 9))
+            
         }
+        .frame(width: UIScreen.main.bounds.width-45, height: 200, alignment: .center)
+        .background(Color(K.appColors.background))
+        .cornerRadius(30)
+        .shadow(color: Color(K.appColors.cardShadow),radius: 3)
 
         
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabManager: View {
+struct TabManagerView: View {
     var body: some View {
         
         TabView {
@@ -27,7 +27,7 @@ struct TabManager: View {
                     
                 }
             
-            RevenueView(taxRevenue: RevenueManager(), gift: GiftRevenueManager())
+            RevenueView(taxRevenue: TaxRevenueManager(), nonTaxRevenue: NonTaxRevenueManager(), gift: GiftRevenueManager())
                 .tabItem {
                     Label("Revenue", systemImage: "banknote")
                 }
@@ -45,7 +45,7 @@ struct TabManager: View {
 
 struct HomeTabsView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self, content: TabManager().preferredColorScheme)
+        ForEach(ColorScheme.allCases, id: \.self, content: TabManagerView().preferredColorScheme)
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }

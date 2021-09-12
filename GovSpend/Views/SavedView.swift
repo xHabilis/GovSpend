@@ -137,7 +137,7 @@ struct SavedView: View {
             }.navigationBarTitle("Saved", displayMode: .inline)
 
             
-        }
+        }.onAppear() {}.animation(.default)
 
     }
     

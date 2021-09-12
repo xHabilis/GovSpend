@@ -36,15 +36,16 @@ class FinancesManager: ObservableObject {
             let task = session.dataTask(with: url) {(data, response, error) in
                 
                 // ErrorCheck
-                let responseHandling = response as! HTTPURLResponse
+                if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
                 print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let allPersonalFinances = try decoder.decode(PersonalFinanceData.self, from: safeData)
+                            let allPersonalFinances = try decoder.decode(FinancesData.self, from: safeData)
 
                             if let asset = allPersonalFinances.response?.member_profile.assets{
                                 DispatchQueue.main.async {

@@ -1,22 +1,22 @@
 //
-//  GiftRevenueManager.swift
+//  TaxRevenueManager.swift
 //  GovSpend
 //
-//  Created by Isaac M on 8/8/21.
+//  Created by Isaac M on 9/12/21.
 //
 
 import Foundation
 
-class GiftRevenueManager: ObservableObject {
+class NonTaxRevenueManager: ObservableObject {
     
-    @Published var revenue = [GiftRevenue]()
+    @Published var nonTaxRevenue = [NonTax]()
 
     @Published var barChartData:[(name: String, value: Double)] = []
 
     
-    func getGiftRevenue() {
+    func getNonTaxRevenue() {
         
-        let fullURL = K.apiURLs.giftRevenue
+        let fullURL = K.apiURLs.nonTaxRevenue
         
         performRequest(with: fullURL)
         //print(fullURL)
@@ -39,32 +39,31 @@ class GiftRevenueManager: ObservableObject {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let giftMoneyAll = try decoder.decode(GiftRevenueData.self, from: safeData)
+                            let moneyAll = try decoder.decode(NonTaxRevenueData.self, from: safeData)
                             
                             //Chart Array Creation
                             var someArray: [(name: String, value: Double)] = []
-                            if let giftMoney = giftMoneyAll.data {
-                                for day in giftMoney {
+                            if let nonTaxMoney = moneyAll.data {
+                                for chart in nonTaxMoney {
+                                    someArray.append((name: "\(chart.record_date)", value: chart.revenueAsDouble))
 
-                                    someArray.append((name: "\(day.record_date)", value: day.giftAsDouble))
                                 }
                             }
-                            
-                            if let money = giftMoneyAll.data {
+
+                            if let money = moneyAll.data {
                                 DispatchQueue.main.async {
-                                    
+                                    self.nonTaxRevenue =  money
                                     self.barChartData = someArray
-                                    self.revenue =  money
                                 }
-                                
-                            }
-                            
+       
+                                }
+
                         } catch {
                             print("DATA \(error.localizedDescription)")
                         }
                     }
                 }
-            }
+        }
             task.resume()
     }
 }

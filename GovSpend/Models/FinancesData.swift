@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PersonalFinanceData: Codable {
+struct FinancesData: Codable {
     let response: Response?
 
     struct Response: Codable {

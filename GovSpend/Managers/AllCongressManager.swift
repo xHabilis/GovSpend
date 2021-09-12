@@ -52,9 +52,10 @@ class AllCongressManager: ObservableObject {
             
             
             // ErrorCheck
-            let responseHandling = response as! HTTPURLResponse
+            if let responseHandling = response as? HTTPURLResponse {
             let responseCode = responseHandling.statusCode
             print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+            }
 
             if error == nil {
 
@@ -63,11 +64,11 @@ class AllCongressManager: ObservableObject {
                 if let safeData = data {
                     do {
                         let fullCongressInfo = try decoder.decode(AllCongressData.self, from: safeData)
-                        
-                        //print(fullCongressInfo.status)
+
       
                         if let info = fullCongressInfo.results?.first?.members {
                             
+                            //Sort results by State
                             let alphaSort = info.sorted(by: { Member, MemberTwo in
                                 let member = Member.state
                                 let memberTwo = MemberTwo.state
@@ -93,19 +94,3 @@ class AllCongressManager: ObservableObject {
         
     }
 }
-
-//if let info = fullCongressInfo.results?.first?.members {
-//
-//    let alphaSort = info.sorted(by: { Member, MemberTwo in
-//        let member = Member.state
-//        let memberTwo = MemberTwo.state
-//        return (member?.localizedCaseInsensitiveCompare(memberTwo!) == .orderedAscending)
-//    })
-//
-//DispatchQueue.main.async {
-//    self.congressResults = alphaSort
-//    self.congressMetaData = fullCongressInfo
-//
-//}
-//
-//}

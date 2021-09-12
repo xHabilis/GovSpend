@@ -18,20 +18,19 @@ struct AboutView: View {
                 VStack {
                     
                     VStack (spacing: 10){
-                        Text("Created By: xHabilis")
-                            .font(.system(size: 11))
-                        Text("Contact")
-                            .font(.system(size: 11))
+                        Text("Created by: xHabilis").fontWeight(.semibold)
+                            .font(.system(size: 12))
+                        
  
                         
                         let mail = "xhabilis@gmail.com"
                         Link(destination: URL(string: "mailto:\(mail)")!, label: {
-                            Image(systemName: "envelope")
+                            Image(systemName: "envelope").imageScale(.large)
                         
                         })
                     
 
-                    Text("Gov$pend is a free application created to allow for quick reference of Campaign Finance, Current and Past US Debt as well as on going IRS Revenue Collection")
+                    Text("Gov$pend is a free application created to allow for the reference of Campaign Finances by election cycle, current and past US Debt as well as on going IRS Revenue Collection")
                         .font(.system(size: 11))
                         .multilineTextAlignment(.center)
                         .lineLimit(4)
@@ -40,8 +39,8 @@ struct AboutView: View {
                     }
 
                     
-                    VStack (spacing: 5){
-                        Text("Data is provided by the sources below. \nInformation is presented if available.")
+                    VStack (spacing: 25){
+                        Text("Data is provided by the sources below and information is presented if available.")
                             .font(.system(size: 11)).fontWeight(.semibold)
                             .multilineTextAlignment(.center)
                             .lineLimit(4)
@@ -108,6 +107,7 @@ struct AboutView: View {
                         }
                         
                     }
+                    .frame(width: UIScreen.main.bounds.width-40, height: 450, alignment: .center)
                 }
                 .navigationBarTitle("About")
             }

@@ -37,9 +37,10 @@ class TopContribManager: ObservableObject {
             let task = session.dataTask(with: url) {(data, response, error) in
                 
                 // ErrorCheck
-                let responseHandling = response as! HTTPURLResponse
+                if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
                 print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
