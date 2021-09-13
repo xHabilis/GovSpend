@@ -1,5 +1,5 @@
 //
-//  StateNameManager.swift
+//  Configs.swift
 //  GovSpend
 //
 //  Created by Isaac M on 7/12/21.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Configs {
+struct AppSettings {
     
     
 //MARK: - API Network ErrorChecks
@@ -44,7 +44,7 @@ struct Configs {
     static func abbreviate(longStateName: String) -> String {
         var shortStateName: String!
         
-        for name in Configs.stateDict {
+        for name in AppSettings.stateDict {
             if name.value.localizedCaseInsensitiveContains(longStateName) {
                 let abbreviated = name.key
                 shortStateName = abbreviated
@@ -59,7 +59,7 @@ struct Configs {
     static func extendAbbreviation(StateName: String) -> String {
         var LongStateName: String?
         
-        for name in Configs.stateDict {
+        for name in AppSettings.stateDict {
             if name.key.localizedCaseInsensitiveContains(StateName) {
                 let abbreviated = name.value
                 LongStateName = abbreviated
@@ -153,7 +153,7 @@ struct Configs {
             return "Active"
             
         } else {
-            return "N/A"
+            return ""
         }
     }
     

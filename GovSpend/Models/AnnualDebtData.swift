@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - YearlyDebtData
 struct AnnualDebtData: Codable {
     let data: [DebtData]?
     let meta: Meta?

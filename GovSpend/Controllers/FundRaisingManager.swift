@@ -1,20 +1,20 @@
 //
-//  SectorTotalsManager.swift
+//  FundRaisingManager.swift
 //  GovSpend
 //
 //  Created by Isaac M on 7/16/21.
 //
-//http://www.opensecrets.org/api/?method=candSector&cid=N00007360&cycle=2020&output=json&apikey=4d2efe0e8ba6a6943ef73ab1d09a4119
 
 import Foundation
 
-class SectorTotalsManager: ObservableObject {
-    @Published var sectorCandidate: Sectors?
-    @Published var sectorTotal = [Sector]()
-    
-    let searchURL = K.apiURLs.sectorTotals
-    
-    func getSectorTotals(for CRPCandidateID: String, in cycle: String) {
+class FundRaisingManager: ObservableObject {
+
+    @Published var fundRaisingSummary: Summary?
+    @Published var barChartData:[(name: String, value: Double)] = []
+
+    let searchURL = K.apiURLs.fundRaising
+
+    func getFundRaisingSummary(for CRPCandidateID: String, in cycle: String) {
         let key = Keys.openSecretKey
         
         let fullURL = "\(searchURL)\(CRPCandidateID)&cycle=\(cycle)&output=json&apikey=\(key)"
@@ -38,26 +38,32 @@ class SectorTotalsManager: ObservableObject {
                 // ErrorCheck
                 if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
-                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                print(AppSettings.getHTTPStatusCodeDescription(for: responseCode))
                 }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let allSectorData = try decoder.decode(SectorTotalsData.self, from: safeData)
+                            let fundsSummary = try decoder.decode(FundRaisingData.self, from: safeData)
+                            
+                            //Create Custom Array for Chart
+                            var someArray: [(name: String, value: Double)] = []
+            
+                            if let fundNumbers = fundsSummary.response?.summary?.attributes {
+                                let spent = (fundNumbers.spent as NSString).doubleValue
+                                let onHand = (fundNumbers.cash_on_hand as NSString).doubleValue
 
-                            if let tableData = allSectorData.response?.sectors?.sector {
-                                DispatchQueue.main.async {
-                                    self.sectorTotal = tableData
-                                }
+                                someArray.append((name: "Spent", value: spent))
+                                someArray.append((name: "Cash on Hand", value: onHand))
                             }
-
-                            if let candidateData = allSectorData.response?.sectors {
+           
+                            let summary = fundsSummary.response?.summary
+                            
                                 DispatchQueue.main.async {
-                                    self.sectorCandidate = candidateData
+                                    self.fundRaisingSummary = summary
+                                    self.barChartData = someArray
                                 }
-                            }
 
                         } catch {
                             print("DATA Error: \(error.localizedDescription)")

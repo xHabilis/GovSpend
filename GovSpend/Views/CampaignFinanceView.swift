@@ -16,8 +16,6 @@ struct CampaignFinanceView: View {
     @State private var showCitationView: Bool = false
     @State private var isShowingCandidates: Bool = false
    
-
-
     var body: some View {
         
         NavigationView {
@@ -54,7 +52,7 @@ struct CampaignFinanceView: View {
 
                             HStack (spacing: 15) {
                                 Picker(congressNumber, selection: $congressNumber) {
-                                    ForEach(Configs.AllCongressSessions, id: \.self) {
+                                    ForEach(AppSettings.AllCongressSessions, id: \.self) {
                                         Text($0)
                                             .font(.system(size: 12))
                                         
@@ -76,7 +74,7 @@ struct CampaignFinanceView: View {
                                 
                                 
                                 Picker(chamber, selection: $chamber) {
-                                    ForEach(Configs.chambers, id: \.self) {
+                                    ForEach(AppSettings.chambers, id: \.self) {
                                         Text($0)
                                             .font(.system(size: 12))
                                         
@@ -98,7 +96,7 @@ struct CampaignFinanceView: View {
 
 
                                 NavigationLink(
-                                    destination: CongressSearchResultsView(personalFinance: FinancesManager(), theLocation: CoreLocationManager(), congress: AllCongressManager(),congressNum: congressNumber, congressChamber: chamber),
+                                    destination: CongressSearchResultsView(theLocation: CoreLocationManager(), personalFinance: FinancesManager(), congress: AllCongressManager(),congressNum: congressNumber, congressChamber: chamber),
                                     label: {
                                         
                                         Image("blueArrow")
@@ -168,7 +166,7 @@ struct CampaignFinanceView: View {
                             VStack {
                                 //Year Picker
                                 Picker(cycleYear, selection: $cycleYear) {
-                                    ForEach(Configs.cycles.reversed(), id: \.self) {
+                                    ForEach(AppSettings.cycles.reversed(), id: \.self) {
                                         Text($0)
                                             .font(.system(size: 12))
                                     }
@@ -278,7 +276,6 @@ struct CampaignFinanceView: View {
                                     }})
         }
         .onAppear().animation(.default)
-        .onDisappear().animation(.default)
  
     }
     

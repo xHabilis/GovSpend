@@ -41,7 +41,7 @@ struct FECSearchResultsView: View {
                                 .padding(.leading)
                                 .frame(width: 280, height: 40, alignment: .leading)
                                 .font(.system(size: 12))
-                                .background(Configs.chooseColor(for: candidate.candidate!.party))
+                                .background(AppSettings.chooseColor(for: candidate.candidate!.party))
                                 .cornerRadius(8)
                                 .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                         }
@@ -51,7 +51,7 @@ struct FECSearchResultsView: View {
                             Text(candidate.candidate!.party)
                                 .frame(width: 50, height: 40, alignment: .center)
                                 .font(.system(size: 11))
-                                .background(Configs.chooseColor(for: candidate.candidate!.party))
+                                .background(AppSettings.chooseColor(for: candidate.candidate!.party))
                                 .cornerRadius(8)
                                 .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                         }

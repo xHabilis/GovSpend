@@ -1,34 +1,34 @@
 //
-//  CandidateSearchManager.swift
+//  CategorySearchManager.swift
 //  GovSpend
 //
-//  Created by Isaac M on 7/8/21.
+//  Created by Isaac M on 7/18/21.
 //
 
 import Foundation
 
-class FECCandidateSearchManager: ObservableObject {
+class CategorySearchManager: ObservableObject {
     
-    @Published var searchResults = [SearchResults]()
- 
+    @Published var theCategoryResults = [Top20Results]()
+    @Published var categoryMetaData: CategorySearchData?
     
     var theRequest: URLRequest?
-    let searchURL = URL(string: K.apiURLs.candidateSearch)!
+    let categoryURL = URL(string: K.apiURLs.categorySearch)!
     
-    func getCandidateSearchResults(for name: String, in year: String) {
+    func getCategoryData(with categoryName: String) {
         
-        let urlWithName = URL(string: "\(searchURL)\(year)/candidates/search.json?query=\(name)")!
+        let fullURL = URL(string: "\(categoryURL)\(categoryName).json")!
         
-        var request = URLRequest(url: urlWithName)
+        var request = URLRequest(url: fullURL)
         request.allHTTPHeaderFields = Keys.campaignFinance
         theRequest = request
         
-        print(urlWithName)
+        print(fullURL)
         
         performRequest(with: request)
     }
     
-    
+
     /// - Description:
     ///     1. Initiate URL Session and get Data
     ///     2. Decode data using Model
@@ -42,20 +42,26 @@ class FECCandidateSearchManager: ObservableObject {
             // ErrorCheck
             if let responseHandling = response as? HTTPURLResponse {
             let responseCode = responseHandling.statusCode
-            print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+            print(AppSettings.getHTTPStatusCodeDescription(for: responseCode))
             }
             
             if error == nil {
                 let decoder = JSONDecoder()
                 if let safeData = data {
                     do {
-                        let searchResults = try decoder.decode(FECCandidateSearchData.self, from: safeData)
-                        
-                        
-                        
-                        DispatchQueue.main.async {
-                            self.searchResults = searchResults.results
+                        let theData = try decoder.decode(CategorySearchData.self, from: safeData)
+  
+                        if let dataStuff = theData.results {
+                            
+                            DispatchQueue.main.async {
+                                self.theCategoryResults = dataStuff
+                                self.categoryMetaData = theData
+                            }
+                            
+                            
+                            
                         }
+                        
                     } catch {
                         print("DATA Error: \(error.localizedDescription)")
                     }
@@ -65,4 +71,5 @@ class FECCandidateSearchManager: ObservableObject {
         task.resume()
         
     }
+    
 }

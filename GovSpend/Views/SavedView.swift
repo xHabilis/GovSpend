@@ -38,7 +38,7 @@ struct SavedView: View {
                                                   title: legislator.title ?? "",
                                                   party: legislator.party ?? "",
                                                   state: legislator.state ?? "",
-                                                  status: Configs.makeStatus(status: String(legislator.status ?? "")),
+                                                  status: AppSettings.makeStatus(status: String(legislator.status ?? "")),
                                                   nextElection: legislator.nextElection ?? "",
                                                   facebook: legislator.facebook ?? "",
                                                   twitter: legislator.twitter ?? "",
@@ -71,7 +71,7 @@ struct SavedView: View {
         
                         }.animation(.linear)
                         .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
-                        .background(Configs.chooseColor(for: legislator.party ?? ""))
+                        .background(AppSettings.chooseColor(for: legislator.party ?? ""))
                         .cornerRadius(8)
                         .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
         
@@ -99,7 +99,7 @@ struct SavedView: View {
                                     .padding(.leading)
                                     .frame(width: 280, height: 40, alignment: .leading)
                                     .font(.system(size: 12))
-                                    .background(Configs.chooseColor(for: candidate.party ?? ""))
+                                    .background(AppSettings.chooseColor(for: candidate.party ?? ""))
                                     .cornerRadius(8)
                                     .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             }
@@ -109,7 +109,7 @@ struct SavedView: View {
                                 Text(candidate.party ?? "")
                                     .frame(width: 50, height: 40, alignment: .center)
                                     .font(.system(size: 11))
-                                    .background(Configs.chooseColor(for: candidate.party ?? ""))
+                                    .background(AppSettings.chooseColor(for: candidate.party ?? ""))
                                     .cornerRadius(8)
                                     .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             }
@@ -120,6 +120,8 @@ struct SavedView: View {
 
                 }.onDelete(perform: deleteCandidate)
                 }
+                
+                
 //MARK: - Notify User
                 VStack (spacing: 10){
                 Image(systemName: "bookmark")

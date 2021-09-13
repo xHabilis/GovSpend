@@ -11,7 +11,6 @@ struct CategoryResultView: View {
     
     @StateObject var categoriesList: CategorySearchManager
     @StateObject var candidateDetailsManager: CandidateDetailsManager
-    
     @State private var showCitationView: Bool = false
     
     var categoryUrl: String
@@ -35,7 +34,7 @@ struct CategoryResultView: View {
                             .padding(.leading)
                             .frame(width: 280, height: 40, alignment: .leading)
                             .font(.system(size: 12))
-                            .background(Configs.chooseColor(for: person.party!))
+                            .background(AppSettings.chooseColor(for: person.party!))
                             .cornerRadius(8)
                             .shadow(radius: 2)
                     }
@@ -44,7 +43,7 @@ struct CategoryResultView: View {
                         Text(person.party!)
                             .frame(width: 50, height: 40, alignment: .center)
                             .font(.system(size: 11))
-                            .background(Configs.chooseColor(for: person.party!))
+                            .background(AppSettings.chooseColor(for: person.party!))
                             .cornerRadius(8)
                             .shadow(radius: 2)
                     }

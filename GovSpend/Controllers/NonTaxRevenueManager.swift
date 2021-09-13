@@ -32,7 +32,7 @@ class NonTaxRevenueManager: ObservableObject {
                 // ErrorCheck
                 if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
-                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                print(AppSettings.getHTTPStatusCodeDescription(for: responseCode))
                 }
                 
                 if error == nil {

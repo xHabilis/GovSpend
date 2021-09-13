@@ -188,7 +188,7 @@ struct CongressListCard: View {
                     .frame(width: 100, height: 15, alignment: .trailing)
                 
                 
-                Text(Configs.makeStatus(status: String(status)))
+                Text(AppSettings.makeStatus(status: String(status)))
                     .font(.system(size: 10).weight(.semibold))
                     .frame(width: 100, height: 15, alignment: .leading)
                 

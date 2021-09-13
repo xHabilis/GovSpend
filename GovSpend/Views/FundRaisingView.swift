@@ -30,16 +30,16 @@ struct FundRaisingView: View {
 
                             Text(theFunds.cand_name)
                                 .font(.system(size: 15)).fontWeight(.semibold)
-                            Text(Configs.extendAbbreviation(StateName: "\(theFunds.state)"))
+                            Text(AppSettings.extendAbbreviation(StateName: "\(theFunds.state)"))
                                 .font(.system(size: 12))
-                            Text(Configs.getLongName(for: "\(theFunds.party)"))
+                            Text(AppSettings.getLongName(for: "\(theFunds.party)"))
                                 .font(.system(size: 12))
-                            Text(Configs.getLongName(for: "\(theFunds.chamber)"))
+                            Text(AppSettings.getLongName(for: "\(theFunds.chamber)"))
                                 .font(.system(size: 12))
 
                         }
                         .frame(width: UIScreen.main.bounds.width-25, height: 100, alignment: .center)
-                        .background(Configs.chooseColor(for: "\(theFunds.party)")).opacity(9)
+                        .background(AppSettings.chooseColor(for: "\(theFunds.party)")).opacity(9)
                         .cornerRadius(20)
                         .shadow(radius: 10)
                         
@@ -47,19 +47,19 @@ struct FundRaisingView: View {
 
                         VStack (spacing: 10) {
                             ItemNameValue(itemName: "Total Cash",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: Double(theFunds.total)!))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: Double(theFunds.total)!))",
                                    itemValueColor: K.appColors.green)
 
                             ItemNameValue(itemName: "Spent",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: Double(theFunds.spent)!))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: Double(theFunds.spent)!))",
                                    itemValueColor: K.appColors.green)
 
                             ItemNameValue(itemName: "Cash on Hand",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: Double(theFunds.cash_on_hand)!))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: Double(theFunds.cash_on_hand)!))",
                                    itemValueColor: K.appColors.green)
 
                             ItemNameValue(itemName: "Debt",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: Double(theFunds.debt)!))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: Double(theFunds.debt)!))",
                                    itemValueColor: K.appColors.green)
 
                             ItemNameValue(itemName: "First Elected",

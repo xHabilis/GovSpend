@@ -11,7 +11,7 @@
 		6A174E6B269A7478005EF63F /* FECSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A174E6A269A7478005EF63F /* FECSearchResultsView.swift */; };
 		6A17EBE026B5AEED0045D679 /* CommitteeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A17EBDF26B5AEED0045D679 /* CommitteeData.swift */; };
 		6A17EBE426B5AF430045D679 /* CommitteeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A17EBE326B5AF430045D679 /* CommitteeManager.swift */; };
-		6A27040A269D037900ECAE35 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A270409269D037900ECAE35 /* Configs.swift */; };
+		6A27040A269D037900ECAE35 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A270409269D037900ECAE35 /* AppSettings.swift */; };
 		6A270435269E322800ECAE35 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A270434269E322800ECAE35 /* Keys.swift */; };
 		6A273D8E26A1FCC1005ADF21 /* TopContribView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A273D8D26A1FCC1005ADF21 /* TopContribView.swift */; };
 		6A273D9026A1FCDB005ADF21 /* SectorTotalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A273D8F26A1FCDB005ADF21 /* SectorTotalsView.swift */; };
@@ -73,7 +73,7 @@
 		6A174E6A269A7478005EF63F /* FECSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FECSearchResultsView.swift; sourceTree = "<group>"; };
 		6A17EBDF26B5AEED0045D679 /* CommitteeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitteeData.swift; sourceTree = "<group>"; };
 		6A17EBE326B5AF430045D679 /* CommitteeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitteeManager.swift; sourceTree = "<group>"; };
-		6A270409269D037900ECAE35 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		6A270409269D037900ECAE35 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		6A270434269E322800ECAE35 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		6A273D8D26A1FCC1005ADF21 /* TopContribView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContribView.swift; sourceTree = "<group>"; };
 		6A273D8F26A1FCDB005ADF21 /* SectorTotalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorTotalsView.swift; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 		6A61AAB126ACAB550084C0D6 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6A67812626A46DEC002735FE /* CategorySearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySearchManager.swift; sourceTree = "<group>"; };
 		6A67812826A48A8E002735FE /* CategoryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResultView.swift; sourceTree = "<group>"; };
+		6A6AB23F26F0007300334172 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		6A8193CA26B0617A00315EAB /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		6A8193CE26B35B4A00315EAB /* TabManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManagerView.swift; sourceTree = "<group>"; };
 		6A8193D026B3615A00315EAB /* ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViews.swift; sourceTree = "<group>"; };
@@ -153,6 +154,14 @@
 			path = Later;
 			sourceTree = "<group>";
 		};
+		6A6AB23E26F0005200334172 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6A6AB23F26F0007300334172 /* Config.xcconfig */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		6AA57B6826939C0E008A3EA6 = {
 			isa = PBXGroup;
 			children = (
@@ -172,10 +181,11 @@
 		6AA57B7326939C0E008A3EA6 /* GovSpend */ = {
 			isa = PBXGroup;
 			children = (
+				6A6AB23E26F0005200334172 /* API */,
 				6A8D55EA26C3390900516C0C /* GovSpend.entitlements */,
 				6AAFC35B26962DD900F7696B /* Models */,
 				6AAFC35F26962E2600F7696B /* Views */,
-				6AAFC35C26962DE100F7696B /* Managers */,
+				6AAFC35C26962DE100F7696B /* Controllers */,
 				6A54BE242697F94700419A13 /* Later */,
 				6AA57B7D26939C10008A3EA6 /* Info.plist */,
 				6A270434269E322800ECAE35 /* Keys.swift */,
@@ -217,7 +227,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		6AAFC35C26962DE100F7696B /* Managers */ = {
+		6AAFC35C26962DE100F7696B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				6AAE117A26A384550099B6A2 /* AllCongressManager.swift */,
@@ -234,11 +244,11 @@
 				6AE96B8226C0B69C008AA9D0 /* TaxRevenueManager.swift */,
 				6A32492B26EE9F340065C14C /* NonTaxRevenueManager.swift */,
 				6AE96B8426C0B6BC008AA9D0 /* GiftRevenueManager.swift */,
-				6A270409269D037900ECAE35 /* Configs.swift */,
+				6A270409269D037900ECAE35 /* AppSettings.swift */,
 				6A9EE2A626E2DE2D0091A1B1 /* CoreLocationManager.swift */,
 				6AABBEB026D59D9100C1ADA3 /* Persistence.swift */,
 			);
-			path = Managers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6AAFC35F26962E2600F7696B /* Views */ = {
@@ -351,7 +361,7 @@
 				6A32492E26EEA02A0065C14C /* NonTaxRevenueData.swift in Sources */,
 				6AAE117D26A384640099B6A2 /* AllCongressData.swift in Sources */,
 				6A174E6B269A7478005EF63F /* FECSearchResultsView.swift in Sources */,
-				6A27040A269D037900ECAE35 /* Configs.swift in Sources */,
+				6A27040A269D037900ECAE35 /* AppSettings.swift in Sources */,
 				6A32492C26EE9F340065C14C /* NonTaxRevenueManager.swift in Sources */,
 				6A17EBE026B5AEED0045D679 /* CommitteeData.swift in Sources */,
 				6A36D20126A1E3260084AEF1 /* FundRaisingManager.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  PersonalFinanceData.swift
+//  Finances.swift
 //  GovSpend
 //
 //  Created by Isaac M on 7/15/21.

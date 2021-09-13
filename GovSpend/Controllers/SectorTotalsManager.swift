@@ -1,21 +1,19 @@
 //
-//  TopContribManager.swift
+//  SectorTotalsManager.swift
 //  GovSpend
 //
 //  Created by Isaac M on 7/16/21.
 //
 
-
 import Foundation
 
-class TopContribManager: ObservableObject {
+class SectorTotalsManager: ObservableObject {
+    @Published var sectorCandidate: Sectors?
+    @Published var sectorTotal = [Sector]()
     
-    @Published var topContributors = [Contributor]()
-    @Published var topContribPerson: Contributors?
+    let searchURL = K.apiURLs.sectorTotals
     
-    let searchURL = K.apiURLs.topContrib
-    
-    func getTopContributors(for CRPCandidateID: String, in cycle: String) {
+    func getSectorTotals(for CRPCandidateID: String, in cycle: String) {
         let key = Keys.openSecretKey
         
         let fullURL = "\(searchURL)\(CRPCandidateID)&cycle=\(cycle)&output=json&apikey=\(key)"
@@ -39,29 +37,27 @@ class TopContribManager: ObservableObject {
                 // ErrorCheck
                 if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
-                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                print(AppSettings.getHTTPStatusCodeDescription(for: responseCode))
                 }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let allTopContribs = try decoder.decode(TopContribData.self, from: safeData)
-                            
-                            if let person = allTopContribs.response?.contributors {
+                            let allSectorData = try decoder.decode(SectorTotalsData.self, from: safeData)
+
+                            if let tableData = allSectorData.response?.sectors?.sector {
                                 DispatchQueue.main.async {
-                                    self.topContribPerson = person
+                                    self.sectorTotal = tableData
                                 }
                             }
-                            
-                            if let topcontributorList = allTopContribs.response?.contributors?.contributor {
-                                
+
+                            if let candidateData = allSectorData.response?.sectors {
                                 DispatchQueue.main.async {
-                                    self.topContributors = topcontributorList
+                                    self.sectorCandidate = candidateData
                                 }
-                                
                             }
-                            
+
                         } catch {
                             print("DATA Error: \(error.localizedDescription)")
                         }

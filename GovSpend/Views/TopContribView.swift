@@ -44,7 +44,7 @@ struct TopContribView: View {
                                 Text("Total:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
                                 
-                                Text("\(Configs.convertToDollars(someDouble: Double(contributor.attributes!.total)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(contributor.attributes!.total)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
                                 
                             }
@@ -54,7 +54,7 @@ struct TopContribView: View {
                                 Text("From Pacs:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
                                 
-                                Text("\(Configs.convertToDollars(someDouble: Double(contributor.attributes!.pacs)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(contributor.attributes!.pacs)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
                                 
                             }
@@ -64,7 +64,7 @@ struct TopContribView: View {
                                 Text("Individuals:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
                                 
-                                Text("\(Configs.convertToDollars(someDouble: Double(contributor.attributes!.indivs)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(contributor.attributes!.indivs)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
                                 
                             }
@@ -77,13 +77,8 @@ struct TopContribView: View {
                     .cornerRadius(8)
                     .shadow(color: Color(K.appColors.cardShadow),radius: 3)
                     
-                    
                 }
-                
-                
 
-                
-                
                 Spacer()
                 if let topContItem = contribs.topContribPerson?.attributes {
                     VStack (spacing: 15){

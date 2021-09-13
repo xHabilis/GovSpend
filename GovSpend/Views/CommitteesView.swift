@@ -39,7 +39,7 @@ struct CommitteesView: View {
                                         
                                         Text(item.name!).font(.system(size: 14)).fontWeight(.semibold).multilineTextAlignment(.center)
                                         
-                                        Text("\(Configs.getLongName(for: item.party ?? ""))").font(.system(size: 12))
+                                        Text("\(AppSettings.getLongName(for: item.party ?? ""))").font(.system(size: 12))
                                         
                                         Text(item.display_type ?? "").font(.system(size: 12))
                                     }
@@ -88,43 +88,43 @@ struct CommitteesView: View {
                             
                             VStack (spacing: 8){
                                 ItemNameValue(itemName: "Total Receipts",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_receipts!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_receipts!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Individual Totals",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_from_individuals!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_from_individuals!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "PAC Total",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_from_pacs!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_from_pacs!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Total Contributions",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_contributions!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_contributions!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Total Disbursements",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_disbursements!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_disbursements!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Begin Cash",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.begin_cash!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.begin_cash!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "End Cash",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.end_cash!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.end_cash!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Debts Owed",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.debts_owed!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.debts_owed!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Transfers In",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.transfers_in!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.transfers_in!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 ItemNameValue(itemName: "Total Candidate Contrib",
-                                              itemValue: "\(Configs.convertToDollars(someDouble: Double(item.total_candidate_contributions!)))",
+                                              itemValue: "\(AppSettings.convertToDollars(someDouble: Double(item.total_candidate_contributions!)))",
                                               itemValueColor: K.appColors.green)
                                 
                                 

@@ -15,13 +15,12 @@ struct CandidateDetailsView: View {
         animation: .default) var candidate: FetchedResults<FecCandidate>
     
     @StateObject var detailsManager: CandidateDetailsManager
-    
     @State private var showCitationView: Bool = false
     @State private var bookmark = false
     @State private var isShowingSaveAlert = false
     @State private var showCommittee: Bool = false
     
-    let candidateURL: String
+    var candidateURL: String
 
     var body: some View {
         ZStack {
@@ -67,7 +66,7 @@ struct CandidateDetailsView: View {
                                                 
                                             }
                                             
-                                            Text(Configs.extendAbbreviation(StateName: "\(details.mailing_state)"))
+                                            Text(AppSettings.extendAbbreviation(StateName: "\(details.mailing_state)"))
                                                 .font(.system(size: 12)).fontWeight(.semibold)
                                                                                  
                                             
@@ -81,7 +80,7 @@ struct CandidateDetailsView: View {
                                             Text("Party:")
                                                 .font(.system(size: 11))
                                                 .frame(width: 100, height: 20, alignment: .trailing)
-                                            Text(Configs.getLongName(for: details.party))
+                                            Text(AppSettings.getLongName(for: details.party))
                                                 .font(.system(size: 11))
                                                 .frame(width: 100, height: 20, alignment: .leading)
                                         }
@@ -92,7 +91,7 @@ struct CandidateDetailsView: View {
                                             Text("Status:")
                                                 .font(.system(size: 11))
                                                 .frame(width: 100, height: 20, alignment: .trailing)
-                                            Text(Configs.makeStatus(status: "\(details.status)"))
+                                            Text(AppSettings.makeStatus(status: "\(details.status)"))
                                                 .font(.system(size: 11))
                                                 .frame(width: 100, height: 20, alignment: .leading)
                                         }
@@ -125,7 +124,7 @@ struct CandidateDetailsView: View {
 
                                 }
                                 .frame(width: UIScreen.main.bounds.width-50, height: 30, alignment: .center)
-                                .background(Configs.chooseColor(for: iconData.party ))
+                                .background(AppSettings.chooseColor(for: iconData.party ))
                                 .cornerRadius(8)
                                 
                                 }
@@ -154,7 +153,7 @@ struct CandidateDetailsView: View {
                             .foregroundColor(Color.black)
                             .font(.system(size: 12))
                             .frame(width: UIScreen.main.bounds.width-300, height: 40, alignment: .center)
-                            .background(Configs.chooseColor(for: path.party))
+                            .background(AppSettings.chooseColor(for: path.party))
                             .cornerRadius(10)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
@@ -170,38 +169,38 @@ struct CandidateDetailsView: View {
                             if let candidate = detailsManager.candidateDetails.first {
                             
                             ItemNameValue(itemName: "Total Receipts",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.total_receipts))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.total_receipts))",
                                    itemValueColor: K.appColors.green)
                             ItemNameValue(itemName: "Total from Individuals",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.total_from_individuals))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.total_from_individuals))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Total from Pacs",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.total_from_pacs))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.total_from_pacs))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Total Contributions",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.total_contributions))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.total_contributions))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Candidate Loans",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.candidate_loans))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.candidate_loans))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Begin Cash",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.begin_cash))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.begin_cash))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "End Cash",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.end_cash))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.end_cash))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Pac Refunds",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.pac_refunds))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.pac_refunds))",
                                    itemValueColor: K.appColors.green)
                                 
                             ItemNameValue(itemName: "Debts Owed",
-                                   itemValue: "\(Configs.convertToDollars(someDouble: candidate.debts_owed))",
+                                   itemValue: "\(AppSettings.convertToDollars(someDouble: candidate.debts_owed))",
                                    itemValueColor: K.appColors.green)
 
                             }else {

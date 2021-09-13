@@ -20,29 +20,12 @@ struct FinancesView: View {
     @State private var showCitationView: Bool = false
     @State private var showFundRaising: Bool = false
     @State private var showTable: Bool = false
-    
     @State private var bookmark = false
     @State private var isShowingSaveAlert = false
     
-    var firstName: String
-    var lastName: String
-    var bioID: String
-    var cID: String
-    var title: String
-    var party: String
-    var state: String
-    var status: String
-    var nextElection: String
-    var facebook: String
-    var twitter: String
-    var youtube: String
-    var contact: String
-    var phone: String
-    var website: String
+    var firstName, lastName, bioID, cID, title, party, state, status, nextElection, facebook, twitter, youtube, contact, phone, website: String
     
     var body: some View {
-        
-        ZStack {
             ZStack {
                 VStack {
                     
@@ -137,7 +120,7 @@ struct FinancesView: View {
                                         .frame(width: 100, height: 20, alignment: .trailing)
                                         
                                         VStack {
-                                            Text("\(Configs.getLongName(for: party))")
+                                            Text("\(AppSettings.getLongName(for: party))")
                                                 .font(.system(size: 11))
                                         }
                                         .frame(width: 100, height: 20, alignment: .leading)
@@ -179,7 +162,7 @@ struct FinancesView: View {
                             }
                             
                             .frame(width: UIScreen.main.bounds.width-140, height: 30, alignment: .center)
-                            .background(Configs.chooseColor(for: party))
+                            .background(AppSettings.chooseColor(for: party))
                             .cornerRadius(8)
                             
                             
@@ -206,7 +189,7 @@ struct FinancesView: View {
                                 .foregroundColor(Color(K.appColors.cardShadow))
                                 .font(.system(size: 12))
                                 .frame(width: 115, height: 40, alignment: .center)
-                                .background(Configs.chooseColor(for: party))
+                                .background(AppSettings.chooseColor(for: party))
                                 .cornerRadius(10)
                                 .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                         }
@@ -224,7 +207,7 @@ struct FinancesView: View {
                                 .foregroundColor(Color(K.appColors.cardShadow))
                                 .font(.system(size: 12))
                                 .frame(width: 115, height: 40, alignment: .center)
-                                .background(Configs.chooseColor(for: party))
+                                .background(AppSettings.chooseColor(for: party))
                                 .cornerRadius(10)
                                 .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
@@ -239,7 +222,7 @@ struct FinancesView: View {
                             .foregroundColor(Color(K.appColors.cardShadow))
                             .font(.system(size: 12))
                             .frame(width: 115, height: 40, alignment: .center)
-                            .background(Configs.chooseColor(for: party))
+                            .background(AppSettings.chooseColor(for: party))
                             .cornerRadius(10)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             .sheet(isPresented: $showFundRaising) {
@@ -279,11 +262,11 @@ struct FinancesView: View {
                                         Text(asset.attributes!.sector)
                                             .font(.system(size: 9))
 
-                                        Text("High: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
+                                        Text("High: \(AppSettings.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
 
 
-                                        Text("Low: \(Configs.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
+                                        Text("Low: \(AppSettings.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
                                             .font(.system(size: 7.5)).fontWeight(.semibold)
                                     }
                                     .frame(width: 150, height: 45, alignment: .center)
@@ -332,7 +315,7 @@ struct FinancesView: View {
                     
                 }
                 .animation(.default)
-                .navigationBarTitle("\(Configs.extendAbbreviation(StateName: state))", displayMode: .inline)
+                .navigationBarTitle("\(title). \(lastName) - \(AppSettings.extendAbbreviation(StateName: state))", displayMode: .inline)
                 .navigationBarItems(trailing:
                                         Button(action: {
                                             showCitationView = true
@@ -347,8 +330,6 @@ struct FinancesView: View {
                 }
                 
             }
-        }
-        
     }
 
 //MARK: - CoreData CRUD-ADD
@@ -376,9 +357,6 @@ struct FinancesView: View {
             newBookMark.website = website
             newBookMark.isBookmarked = bookmark
             newBookMark.savedAt = Date()
-
-  
-            
 
             do {
                 try viewContext.save()

@@ -1,5 +1,10 @@
 
-
+//
+//  AllCongressData.swift
+//  GovSpend
+//
+//  Created by Isaac M on 8/8/21.
+//
 import Foundation
 
 struct AllCongressData: Codable {

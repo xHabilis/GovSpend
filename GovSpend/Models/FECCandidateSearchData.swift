@@ -1,5 +1,5 @@
 //
-//  CandidateSearchModel.swift
+//  FECCandidateSearchData.swift
 //  GovSpend
 //
 //  Created by Isaac M on 7/8/21.

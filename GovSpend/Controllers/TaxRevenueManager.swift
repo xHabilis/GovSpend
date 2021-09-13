@@ -1,5 +1,5 @@
 //
-//  AnnualDebtManager.swift
+//  RevenueManager.swift
 //  GovSpend
 //
 //  Created by Isaac M on 8/8/21.
@@ -7,15 +7,16 @@
 
 import Foundation
 
-class AnnualDebtManager: ObservableObject {
+class TaxRevenueManager: ObservableObject {
     
-    @Published var annualDebt = [DebtData]()
+    @Published var revenue = [TheRevenue]()
 
     @Published var barChartData:[(name: String, value: Double)] = []
 
     
-    func getAnnualDebt() {
-        let fullURL = K.apiURLs.annualDebt
+    func getTaxRevenue() {
+        
+        let fullURL = K.apiURLs.taxRevenue
         
         performRequest(with: fullURL)
         //print(fullURL)
@@ -31,31 +32,31 @@ class AnnualDebtManager: ObservableObject {
                 // ErrorCheck
                 if let responseHandling = response as? HTTPURLResponse {
                 let responseCode = responseHandling.statusCode
-                print(Configs.getHTTPStatusCodeDescription(for: responseCode))
+                print(AppSettings.getHTTPStatusCodeDescription(for: responseCode))
                 }
                 
                 if error == nil {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let allAnnualDebt = try decoder.decode(AnnualDebtData.self, from: safeData)
+                            let moneyAll = try decoder.decode(TaxRevenueData.self, from: safeData)
                             
                             //Chart Array Creation
                             var someArray: [(name: String, value: Double)] = []
-                            if let yearAndDebt = allAnnualDebt.data {
-                                for year in yearAndDebt {
-                                    someArray.append((name: "\(year.record_fiscal_year!)", value: year.debtAsDouble))
+                            if let taxMoney = moneyAll.data {
+                                for chart in taxMoney {
+                                    someArray.append((name: "\(chart.record_date)", value: chart.revenueAsDouble))
+
                                 }
                             }
-                            
-                            if let theDebt = allAnnualDebt.data {
+
+                            if let money = moneyAll.data {
                                 DispatchQueue.main.async {
-                                    
-                                    self.annualDebt =  theDebt
+                                    self.revenue =  money
                                     self.barChartData = someArray
                                 }
-         
-                            }
+       
+                                }
 
                         } catch {
                             print("DATA \(error.localizedDescription)")

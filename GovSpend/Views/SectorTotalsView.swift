@@ -42,7 +42,7 @@ struct SectorTotalsView: View {
                             HStack {
                                 Text("Total:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
-                                Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.total)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.total)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
                             }
                             .font(.system(size: 10))
@@ -51,7 +51,7 @@ struct SectorTotalsView: View {
                                 Text("From Pacs:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
                                 
-                                Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.pacs)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.pacs)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
 
                             }
@@ -61,7 +61,7 @@ struct SectorTotalsView: View {
                                 Text("Individuals:")
                                     .frame(width: 60, height: 10, alignment: .trailing)
                                 
-                                Text("\(Configs.convertToDollars(someDouble: Double(sectorItem.attributes!.indivs)!))")
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.indivs)!))")
                                     .frame(width: 60, height: 10, alignment: .leading)
 
                             }

@@ -11,16 +11,14 @@ import CoreLocation
 
 struct CongressSearchResultsView: View {
     
-    @StateObject var personalFinance: FinancesManager
     @ObservedObject var theLocation: CoreLocationManager
+    @StateObject var personalFinance: FinancesManager
     @StateObject var congress: AllCongressManager
     @State private var showCitationView: Bool = false
     @State private var searchText : String = ""
-    
     @State private var showAlert = false
     @State private var activeAlert: Alerts = .locationDenied
-    
-    
+
     var congressNum: String
     var congressChamber: String
     
@@ -33,8 +31,8 @@ struct CongressSearchResultsView: View {
         
         VStack {
             HStack (spacing: 0){
-
-
+                
+                //Core Location & Alerts
                 Button(action: {
 
                     if theLocation.isDisabled {self.activeAlert = .locationDisabled
@@ -72,6 +70,8 @@ struct CongressSearchResultsView: View {
                     .padding(.top, 5.0)
                 
             }
+            
+            //Filtered List
             List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) || $0.state!.contains(searchText) })) { legislator in
 
                 NavigationLink(
@@ -82,7 +82,7 @@ struct CongressSearchResultsView: View {
                                               title: legislator.short_title ?? "",
                                               party: legislator.party ?? "",
                                               state: legislator.state ?? "",
-                                              status: Configs.makeStatus(status: String(legislator.in_office!)),
+                                              status: AppSettings.makeStatus(status: String(legislator.in_office!)),
                                               nextElection: legislator.next_election ?? "",
                                               facebook: legislator.facebook_account ?? "",
                                               twitter: legislator.twitter_account ?? "",
@@ -105,38 +105,32 @@ struct CongressSearchResultsView: View {
                                     .cornerRadius(8)
                                     
                             }
-
+                            
                             VStack(spacing: 2){
-
+                                
                                 CongressListCard(firstName: legislator.first_name ?? "",
                                                  lastName: legislator.last_name ?? "",
                                                  party: legislator.party ?? "",
                                                  statusTitle: "Current Status:",
                                                  status: String(legislator.in_office ?? false),
                                                  stateTitle: "State:",
-                                                 state:  "\(Configs.extendAbbreviation(StateName: legislator.state ?? "N/A"))")
-
+                                                 state:  "\(AppSettings.extendAbbreviation(StateName: legislator.state ?? "N/A"))")
+                                
                             }.animation(.linear)
                             .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
-                            .background(Configs.chooseColor(for: legislator.party ?? ""))
+                            .background(AppSettings.chooseColor(for: legislator.party ?? ""))
                             .cornerRadius(8)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
-
+                            
                         }
                     })
-            
-            
-            
             }
             
             .onAppear() {
-                
                 congress.getCongress(congressNumber: congressNum, chamber: congressChamber)
-                
             }
             
             .navigationBarTitle("\(congressChamber) - \(congressNum)", displayMode: .inline)
-            
             .navigationBarItems(trailing:
                                     Button(action: {
                                         showCitationView = true
@@ -145,11 +139,8 @@ struct CongressSearchResultsView: View {
                                         .sheet(isPresented: $showCitationView) {
                                             CitationView()
                                         }})
-            
         }
     }
-    
-    
     
 }
 
@@ -157,7 +148,7 @@ struct CongressSearchResultsView: View {
 
 struct CurrentCongressResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self, content: CongressSearchResultsView(personalFinance: FinancesManager(), theLocation: CoreLocationManager(), congress: AllCongressManager(),congressNum: "", congressChamber: "").preferredColorScheme)
+        ForEach(ColorScheme.allCases, id: \.self, content: CongressSearchResultsView(theLocation: CoreLocationManager(), personalFinance: FinancesManager(), congress: AllCongressManager(),congressNum: "", congressChamber: "").preferredColorScheme)
         //.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
