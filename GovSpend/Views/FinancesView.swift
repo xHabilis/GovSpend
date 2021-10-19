@@ -45,7 +45,7 @@ struct FinancesView: View {
                         
                         VStack(spacing: 7) {
                             HStack (spacing: 7) {
-                                VStack {
+                                VStack (spacing: 5){
                                     HStack {
                                         
                                         Text("\(title) \(firstName) \(lastName)")
@@ -84,16 +84,16 @@ struct FinancesView: View {
                                             Text("Next Election:")
                                                 .font(.system(size: 11))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .trailing)
+                                        .frame(width: 100, height: 10, alignment: .trailing)
                                         
                                         VStack {
                                             Text(nextElection)
                                                 .font(.system(size: 11))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .leading)
+                                        .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                    .frame(width: 280, height: 20, alignment: .center)
+                                    //.frame(width: 280, height: 20, alignment: .center)
 
                                     
                                     HStack {
@@ -101,39 +101,38 @@ struct FinancesView: View {
                                             Text("Status:")
                                                 .font(.system(size: 11))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .trailing)
+                                        .frame(width: 100, height: 10, alignment: .trailing)
 
                                         VStack {
                                             Text(status)
                                                 .font(.system(size: 11))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .leading)
+                                        .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                    .frame(width: 280, height: 20, alignment: .center)
+                                   // .frame(width: 280, height: 20, alignment: .center)
                                     
                                     HStack {
                                         VStack {
                                             Text("Party:")
                                                 .font(.system(size: 12))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .trailing)
+                                        .frame(width: 100, height: 10, alignment: .trailing)
                                         
                                         VStack {
                                             Text("\(AppSettings.getLongName(for: party))")
                                                 .font(.system(size: 11))
                                         }
-                                        .frame(width: 100, height: 20, alignment: .leading)
+                                        .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                    .frame(width: 280, height: 20, alignment: .center)
+                                    //.frame(width: 280, height: 20, alignment: .center)
     
                                 }
                                 
                             }
                             
                             .frame(width: UIScreen.main.bounds.width-140, height: 90, alignment: .leading)
-                            
                             .background(Color(K.appColors.background))
                             .shadow(radius: 1)
                             .cornerRadius(8)
@@ -275,6 +274,7 @@ struct FinancesView: View {
 
                             }
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
+                            //.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 60)
                             .background(Color(K.appColors.background))
                             .cornerRadius(8)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 3)
@@ -283,6 +283,8 @@ struct FinancesView: View {
                     }
                     }
 
+ 
+                    
                     
 //MARK: - Positions
                     if let item = theFinancials.pfPositions?.position {
@@ -297,15 +299,19 @@ struct FinancesView: View {
                                 VStack(spacing: 5) {
 
                                     Text(position.attributes!.title)
-                                        .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
+                                        //.frame(height: 15, alignment: .center)
+                                    .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
                                         .font(.system(size: 12))
 
                                     Text(position.attributes!.organization)
                                         .font(.system(size: 9)).fontWeight(.semibold)
-                                        .frame(width: UIScreen.main.bounds.width-25, height: 10, alignment: .center)
+                                        .frame(height: 10, alignment: .center)
 
                                 }
+
                             }
+                            
+                            //.frame(maxWidth: UIScreen.main.bounds.width, maxHeight:80)
                             .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
                             .background(Color(K.appColors.background))
                             .cornerRadius(8)

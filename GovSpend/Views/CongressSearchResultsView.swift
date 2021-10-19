@@ -72,7 +72,8 @@ struct CongressSearchResultsView: View {
             }
             
             //Filtered List
-            List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) || $0.state!.contains(searchText) })) { legislator in
+            List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) || $0.state!.contains(searchText) })) {
+                legislator in
 
                 NavigationLink(
                     destination: FinancesView(theFinancials: FinancesManager(), firstName: legislator.first_name ?? "",
@@ -97,10 +98,10 @@ struct CongressSearchResultsView: View {
                                 let id = legislator.id!
                                 let fullImageURL = "\(K.apiURLs.imageURL)\(String(describing: id))\(K.apiURLs.imageURLjpg)"
                                 RemoteImage(url: fullImageURL)
-                                    .background(Color(K.appColors.background))
+                                    //.background(Color(K.appColors.background))
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 60, alignment: .leading)
-                                    .clipShape(Rectangle())
+                                    //.frame(width: 70, height: 60, alignment: .leading)
+                                    //.clipShape(Rectangle())
                                     .shadow(color: Color(.black), radius: 5)
                                     .cornerRadius(8)
                                     
@@ -117,14 +118,16 @@ struct CongressSearchResultsView: View {
                                                  state:  "\(AppSettings.extendAbbreviation(StateName: legislator.state ?? "N/A"))")
                                 
                             }.animation(.linear)
-                            .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
+                            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
                             .background(AppSettings.chooseColor(for: legislator.party ?? ""))
                             .cornerRadius(8)
                             .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
                         }
                     })
+                
             }
+            
             
             .onAppear() {
                 congress.getCongress(congressNumber: congressNum, chamber: congressChamber)

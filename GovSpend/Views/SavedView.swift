@@ -55,8 +55,8 @@ struct SavedView: View {
                             let fullImageURL = "\(K.apiURLs.imageURL)\(String(describing: id))\(K.apiURLs.imageURLjpg)"
                             RemoteImage(url: fullImageURL)
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 60, alignment: .leading)
-                                .clipShape(Rectangle())
+                                //.frame(width: 70, height: 60, alignment: .leading)
+                                //.clipShape(Rectangle())
                                 .shadow(color: Color(.black), radius: 5)
                                 .cornerRadius(8)
                         }

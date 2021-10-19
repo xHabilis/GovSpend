@@ -43,7 +43,7 @@ struct CampaignFinanceView: View {
                                 }
                                 .frame(width: UIScreen.main.bounds.width-45, height: 75, alignment: .center)
                                 .background(Color(K.appColors.background))
-                                
+                            
                                 
                             Image("congressVectorOne").resizable().aspectRatio(contentMode: .fill)
                                 .background(Color(K.appColors.background))

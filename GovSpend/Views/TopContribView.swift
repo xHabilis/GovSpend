@@ -72,7 +72,7 @@ struct TopContribView: View {
                             
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.width-35, height: 60, alignment: .center)
+                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
                     .background(Color(K.appColors.background))
                     .cornerRadius(8)
                     .shadow(color: Color(K.appColors.cardShadow),radius: 3)
