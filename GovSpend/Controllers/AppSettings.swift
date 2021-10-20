@@ -92,23 +92,23 @@ struct AppSettings {
         if apiShortName.capitalized.starts(with: "D".capitalized) {
             return "Democrat"
         }
-        if apiShortName.capitalized.starts(with: "R".capitalized) {
+        else if apiShortName.capitalized.starts(with: "R".capitalized) {
             return "Republican"
         }
-        if apiShortName.capitalized.starts(with: "I".capitalized) {
+        else if apiShortName.capitalized.starts(with: "I".capitalized) {
             return "Independent"
         }
-        if apiShortName.capitalized.starts(with: "G".capitalized) {
+        else if apiShortName.capitalized.starts(with: "G".capitalized) {
             return "Green Party"
         }
-        if apiShortName.capitalized.starts(with: "L".capitalized) {
+        else if apiShortName.capitalized.starts(with: "L".capitalized) {
             return "Libertarian"
         }
-        if apiShortName.capitalized.starts(with: "H".capitalized) {
+        else if apiShortName.capitalized.starts(with: "H".capitalized) {
             return "House"
         }
 
-        if apiShortName.capitalized.starts(with: "S".capitalized) {
+        else if apiShortName.capitalized.starts(with: "S".capitalized) {
             return "Senate"
 
         } else {
@@ -124,16 +124,16 @@ struct AppSettings {
         if party.capitalized.starts(with: "D".capitalized) {
             return Color(K.appColors.blue)
         }
-        if party.capitalized.starts(with: "R".capitalized) {
+       else if party.capitalized.starts(with: "R".capitalized) {
             return Color(K.appColors.red)
         }
-        if party.capitalized.starts(with: "I".capitalized) {
+        else if party.capitalized.starts(with: "I".capitalized) {
             return Color(K.appColors.background)
         }
-        if party.capitalized.starts(with: "G".capitalized) {
+        else if party.capitalized.starts(with: "G".capitalized) {
             return Color(K.appColors.green)
         }
-        if party.capitalized.starts(with: "L".capitalized) {
+        else if party.capitalized.starts(with: "L".capitalized) {
             return Color(K.appColors.yellow)
         } else {
             return Color(K.appColors.lightGray)
@@ -149,7 +149,7 @@ struct AppSettings {
         if status == "true" {
             return "Active"
         }
-        if status == "C" {
+        else if status == "C" {
             return "Active"
             
         } else {

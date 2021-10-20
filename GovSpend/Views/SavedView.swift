@@ -123,7 +123,7 @@ struct SavedView: View {
                 
                 
 //MARK: - Notify User
-                VStack (spacing: 10){
+                HStack (spacing: 10){
                 Image(systemName: "bookmark")
                     .accentColor(.accentColor)
                     .font(.system(size: 20))
@@ -132,8 +132,8 @@ struct SavedView: View {
                     .multilineTextAlignment(.center)
                     
                 }
-                .font(.system(size: 11))
-                .frame(width: UIScreen.main.bounds.width-45, height: 80, alignment: .center)
+                //.font(.system(size: 11))
+                //.frame(width: UIScreen.main.bounds.width-45, height: 80, alignment: .center)
                 
                 
             }.navigationBarTitle("Saved", displayMode: .inline)

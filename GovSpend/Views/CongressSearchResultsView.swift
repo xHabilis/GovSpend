@@ -71,6 +71,8 @@ struct CongressSearchResultsView: View {
                 
             }
             
+           
+            
             //Filtered List
             List(congress.congressResults.filter({ searchText.isEmpty ? true : $0.fullName.contains(searchText) || $0.state!.contains(searchText) || $0.state!.contains(searchText) })) {
                 legislator in
@@ -93,15 +95,15 @@ struct CongressSearchResultsView: View {
                                               website: legislator.url ?? ""),
                     label: {
 
+                        if #available(iOS 15, *) {
+                            //iOS 15 View
+                        
                         HStack (spacing: 13){
                             VStack{
                                 let id = legislator.id!
                                 let fullImageURL = "\(K.apiURLs.imageURL)\(String(describing: id))\(K.apiURLs.imageURLjpg)"
                                 RemoteImage(url: fullImageURL)
-                                    //.background(Color(K.appColors.background))
                                     .aspectRatio(contentMode: .fill)
-                                    //.frame(width: 70, height: 60, alignment: .leading)
-                                    //.clipShape(Rectangle())
                                     .shadow(color: Color(.black), radius: 5)
                                     .cornerRadius(8)
                                     
@@ -124,9 +126,46 @@ struct CongressSearchResultsView: View {
                             .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
                             
                         }
+                    } else {
+                       //iOS 14 View
+                        
+                        HStack (spacing: 13){
+                            VStack{
+                                let id = legislator.id!
+                                let fullImageURL = "\(K.apiURLs.imageURL)\(String(describing: id))\(K.apiURLs.imageURLjpg)"
+                                RemoteImage(url: fullImageURL)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 60, alignment: .leading)
+                                    .clipShape(Rectangle())
+                                    .shadow(color: Color(.black), radius: 5)
+                                    .cornerRadius(8)
+                            }
+                            
+                            VStack(spacing: 2){
+                                
+                                CongressListCard(firstName: legislator.first_name ?? "",
+                                                 lastName: legislator.last_name ?? "",
+                                                 party: legislator.party ?? "",
+                                                 statusTitle: "Current Status:",
+                                                 status: String(legislator.in_office ?? false),
+                                                 stateTitle: "State:",
+                                                 state:  "\(AppSettings.extendAbbreviation(StateName: legislator.state ?? "N/A"))")
+                                
+                            }.animation(.linear)
+                            .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
+                            .background(AppSettings.chooseColor(for: legislator.party ?? ""))
+                            .cornerRadius(8)
+                            .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
+                            
+                            
+                        }
+                    }
+                        
                     })
                 
             }
+            
+    
             
             
             .onAppear() {

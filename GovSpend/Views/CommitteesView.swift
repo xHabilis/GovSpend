@@ -60,7 +60,7 @@ struct CommitteesView: View {
                                             Text(item.date_coverage_to!).font(.system(size: 10))
                                                 .frame(width: 190, height: 10, alignment: .leading)
                                         }
-                                        .frame(width: 300, height: 20, alignment: .center)
+                                        .frame(width: 300, height: 10, alignment: .center)
                                         
                                         HStack {
                                             Text("Treasurer:").font(.system(size: 11)).fontWeight(.semibold)

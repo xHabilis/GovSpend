@@ -25,7 +25,9 @@ struct FinancesView: View {
     
     var firstName, lastName, bioID, cID, title, party, state, status, nextElection, facebook, twitter, youtube, contact, phone, website: String
     
+    @ViewBuilder
     var body: some View {
+
             ZStack {
                 VStack {
                     
@@ -237,6 +239,10 @@ struct FinancesView: View {
                     
                     Spacer()
                     
+                    
+                   
+                    
+                    
 //MARK: - Reported Assets
                     
                     if let item = theFinancials.pfProfile?.assets {
@@ -244,8 +250,9 @@ struct FinancesView: View {
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
 
-                    
-                   
+                        if #available(iOS 15, *) {
+                            
+                   // iOS 15 View
                         List(item.asset) { asset in
                             VStack (){
                                 HStack {
@@ -273,18 +280,61 @@ struct FinancesView: View {
 
 
                             }
-                            .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
-                            //.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 60)
-                            .background(Color(K.appColors.background))
-                            .cornerRadius(8)
-                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 60)
+                            //.background(Color(K.appColors.background))
+                            //.cornerRadius(8)
+                            //.shadow(color: Color(K.appColors.cardShadow),radius: 3)
 
                             }
                     }
+                        
+                        
+                        } else {
+                            
+                           // iOS 14 View
+                            List(item.asset) { asset in
+                                VStack (){
+                                    HStack {
+
+                                        VStack (spacing: 4){
+                                            Text(asset.attributes!.name)
+                                                .font(.system(size: 12)).fontWeight(.semibold)
+                                                .multilineTextAlignment(.leading).lineLimit(3)
+                                                .padding(.leading, 4.0)
+                                        }
+                                        .frame(width: 180, height: 35, alignment: .leading)
+                                        VStack (spacing: 3.5){
+                                            Text(asset.attributes!.sector)
+                                                .font(.system(size: 9))
+
+                                            Text("High: \(AppSettings.convertToDollars(someDouble: Double(asset.attributes!.holdings_high)!))")
+                                                .font(.system(size: 7.5)).fontWeight(.semibold)
+
+
+                                            Text("Low: \(AppSettings.convertToDollars(someDouble: Double(asset.attributes!.holdings_low)!))")
+                                                .font(.system(size: 7.5)).fontWeight(.semibold)
+                                        }
+                                        .frame(width: 150, height: 45, alignment: .center)
+
+
+
+                                }
+                                .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
+                                .background(Color(K.appColors.background))
+                                .cornerRadius(8)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+
+                                }
+                        }
+                            
+                            
+                        }
+                        
+                        
                     }
 
- 
                     
+
                     
 //MARK: - Positions
                     if let item = theFinancials.pfPositions?.position {
@@ -292,36 +342,58 @@ struct FinancesView: View {
                         .font(.system(size: 12)).fontWeight(.bold)
                         .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
 
-
+                        if #available(iOS 15, *) {
                     
+                            //iOS 15 View
+                            
                         List(item) { position in
                             VStack {
                                 VStack(spacing: 5) {
 
                                     Text(position.attributes!.title)
-                                        //.frame(height: 15, alignment: .center)
-                                    .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
                                         .font(.system(size: 12))
 
                                     Text(position.attributes!.organization)
                                         .font(.system(size: 9)).fontWeight(.semibold)
-                                        .frame(height: 10, alignment: .center)
 
                                 }
+                                .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 15, alignment: .center)
 
                             }
+
+                        }
                             
-                            //.frame(maxWidth: UIScreen.main.bounds.width, maxHeight:80)
-                            .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
-                            .background(Color(K.appColors.background))
-                            .cornerRadius(8)
-                            .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                        } else {
+                            
+                           //iOS 14 View
+                            List(item) { position in
+                                VStack {
+                                    VStack(spacing: 5) {
+
+                                        Text(position.attributes!.title)
+                                        .frame(width: UIScreen.main.bounds.width-25, height: 15, alignment: .center)
+                                            .font(.system(size: 12))
+
+                                        Text(position.attributes!.organization)
+                                            .font(.system(size: 9)).fontWeight(.semibold)
+                                            .frame(height: 10, alignment: .center)
+
+                                    }
+
+                                }
+                                .frame(width: UIScreen.main.bounds.width-35, height: 55, alignment: .center)
+                                .background(Color(K.appColors.background))
+                                .cornerRadius(8)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                            }
                         }
                     }
+                        
+                    
                     
                 }
                 .animation(.default)
-                .navigationBarTitle("\(title). \(lastName) - \(AppSettings.extendAbbreviation(StateName: state))", displayMode: .inline)
+                .navigationBarTitle("\(title) \(lastName) - \(AppSettings.extendAbbreviation(StateName: state))", displayMode: .inline)
                 .navigationBarItems(trailing:
                                         Button(action: {
                                             showCitationView = true

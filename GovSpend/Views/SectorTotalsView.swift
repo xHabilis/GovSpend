@@ -27,6 +27,10 @@ struct SectorTotalsView: View {
             
             VStack {
                 List (sector.sectorTotal) { sectorItem in
+                    
+                    if #available(iOS 15, *) {
+                        // iOS 15 View
+                        
                     HStack {
                         VStack {
                             Text(sectorItem.attributes!.sector_name)
@@ -69,10 +73,56 @@ struct SectorTotalsView: View {
                             
                         }
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
+                    
+                } else {
+                    //iOS 14 View
+                    HStack {
+                        VStack {
+                            Text(sectorItem.attributes!.sector_name)
+                                .font(.system(size: 12)).fontWeight(.semibold)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(3)
+                            
+                        }
+                        .frame(width: 180, height: 50, alignment: .leading)
+                        
+                        VStack (spacing: 5) {
+                            
+                            HStack {
+                                Text("Total:")
+                                    .frame(width: 60, height: 10, alignment: .trailing)
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.total)!))")
+                                    .frame(width: 60, height: 10, alignment: .leading)
+                            }
+                            .font(.system(size: 10))
+                            
+                            HStack {
+                                Text("From Pacs:")
+                                    .frame(width: 60, height: 10, alignment: .trailing)
+                                
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.pacs)!))")
+                                    .frame(width: 60, height: 10, alignment: .leading)
+
+                            }
+                            .font(.system(size: 10))
+                            
+                            HStack {
+                                Text("Individuals:")
+                                    .frame(width: 60, height: 10, alignment: .trailing)
+                                
+                                Text("\(AppSettings.convertToDollars(someDouble: Double(sectorItem.attributes!.indivs)!))")
+                                    .frame(width: 60, height: 10, alignment: .leading)
+
+                            }
+                            .font(.system(size: 10))
+                            
+                        }
+                    }
+                    .frame(width: UIScreen.main.bounds.width-35, height: 60, alignment: .center)
                     .background(Color(K.appColors.background))
                     .cornerRadius(8)
                     .shadow(color: Color(K.appColors.cardShadow),radius: 3)
+                }
                 }
                 Spacer()
                 
