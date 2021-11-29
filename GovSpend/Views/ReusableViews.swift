@@ -170,7 +170,6 @@ struct CongressListCard: View {
                 Text("\(firstName) \(lastName)")
                     .padding(.leading, 20.0)
                     .frame(width: 246, height: 20, alignment: .center)
-                    //.background(Color(.green))
                     .font(.system(size: 12).bold())
                 
                 Text("\(party)")
@@ -178,7 +177,6 @@ struct CongressListCard: View {
                     .padding(.trailing, 4)
                     .shadow(radius: 2)
                     .frame(width: 25, height: 20, alignment: .topTrailing)
-                //.background(Color(.green))
                 
             }
             

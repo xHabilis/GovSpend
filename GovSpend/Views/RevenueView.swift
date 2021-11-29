@@ -79,7 +79,7 @@ struct RevenueView: View {
                         gift.getGiftRevenue()
                     }.animation(.default)
             }
-            .navigationBarTitle("Gov$pend", displayMode: .inline)
+            .navigationBarTitle("GovSpend", displayMode: .inline)
         }
     }
 }

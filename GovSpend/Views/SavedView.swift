@@ -48,7 +48,9 @@ struct SavedView: View {
                                                   website: legislator.website ?? ""),
                         label: {
         
-        
+                            if #available(iOS 15, *) {
+                                //iOS 15 View
+                                
                     HStack (spacing: 13){
                         VStack{
                             let id = legislator.bioID!
@@ -70,12 +72,44 @@ struct SavedView: View {
                                              state:  legislator.state ?? "N/A")
         
                         }.animation(.linear)
-                        .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
+                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: UIScreen.main.bounds.height)
                         .background(AppSettings.chooseColor(for: legislator.party ?? ""))
                         .cornerRadius(8)
                         .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
         
                     }
+                        } else {
+                            //iOS 14 View
+                            HStack (spacing: 13){
+                                VStack{
+                                    let id = legislator.bioID!
+                                    let fullImageURL = "\(K.apiURLs.imageURL)\(String(describing: id))\(K.apiURLs.imageURLjpg)"
+                                    RemoteImage(url: fullImageURL)
+                                        .aspectRatio(contentMode: .fill)
+                                        //.frame(width: 70, height: 60, alignment: .leading)
+                                        //.clipShape(Rectangle())
+                                        .shadow(color: Color(.black), radius: 5)
+                                        .cornerRadius(8)
+                                }
+                
+                                VStack(spacing: 2){
+                
+                                    CongressBookMark(firstName: legislator.firstName ?? "",
+                                                     lastName: legislator.lastName ?? "",
+                                                     party: legislator.party ?? "",
+                                                     stateTitle: "State:",
+                                                     state:  legislator.state ?? "N/A")
+                
+                                }.animation(.linear)
+                                .frame(width: UIScreen.main.bounds.width-130, height: 60, alignment: .center)
+                                .background(AppSettings.chooseColor(for: legislator.party ?? ""))
+                                .cornerRadius(8)
+                                .shadow(color: Color(K.appColors.cardShadow),radius: 1.5)
+                
+                            }
+                            
+                            
+                        }
                         })
     
                 }
@@ -132,8 +166,6 @@ struct SavedView: View {
                     .multilineTextAlignment(.center)
                     
                 }
-                //.font(.system(size: 11))
-                //.frame(width: UIScreen.main.bounds.width-45, height: 80, alignment: .center)
                 
                 
             }.navigationBarTitle("Saved", displayMode: .inline)

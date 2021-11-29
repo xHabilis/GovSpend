@@ -37,7 +37,7 @@ struct LoadingView: View {
 
     }
     private func delayText() {
-         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
              hasTimeElapsed = true
          }
      }

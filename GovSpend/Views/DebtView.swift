@@ -79,7 +79,7 @@ struct DebtView: View {
                         
                 }.animation(.default)
             }
-            .navigationBarTitle("Gov$pend", displayMode: .inline)
+            .navigationBarTitle("GovSpend", displayMode: .inline)
         }
         
     }

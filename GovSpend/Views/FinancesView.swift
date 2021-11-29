@@ -52,9 +52,7 @@ struct FinancesView: View {
                                         
                                         Text("\(title) \(firstName) \(lastName)")
                                             .font(.system(size: 16)).fontWeight(.semibold).padding(.leading, 5.0)
-                                        
-                                        
-                                        
+                
                                         //Add to Context: Save
                                         Button(action: {
                                             
@@ -95,9 +93,7 @@ struct FinancesView: View {
                                         .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                    //.frame(width: 280, height: 20, alignment: .center)
 
-                                    
                                     HStack {
                                         VStack {
                                             Text("Status:")
@@ -112,7 +108,6 @@ struct FinancesView: View {
                                         .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                   // .frame(width: 280, height: 20, alignment: .center)
                                     
                                     HStack {
                                         VStack {
@@ -128,8 +123,6 @@ struct FinancesView: View {
                                         .frame(width: 100, height: 10, alignment: .leading)
                                         
                                     }
-                                    //.frame(width: 280, height: 20, alignment: .center)
-    
                                 }
                                 
                             }
@@ -281,9 +274,6 @@ struct FinancesView: View {
 
                             }
                             .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 60)
-                            //.background(Color(K.appColors.background))
-                            //.cornerRadius(8)
-                            //.shadow(color: Color(K.appColors.cardShadow),radius: 3)
 
                             }
                     }

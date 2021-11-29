@@ -265,7 +265,7 @@ struct CampaignFinanceView: View {
                 }
             
         }
-            .navigationBarTitle("Gov$pend", displayMode: .inline)
+            .navigationBarTitle("GovSpend", displayMode: .inline)
             .navigationBarItems(trailing:
                                     Button(action: {
                                         showCitationView = true
