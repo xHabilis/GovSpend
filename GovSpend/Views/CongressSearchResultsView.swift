@@ -11,6 +11,7 @@ import CoreLocation
 
 struct CongressSearchResultsView: View {
     
+    
     @ObservedObject var theLocation: CoreLocationManager
     @StateObject var personalFinance: FinancesManager
     @StateObject var congress: AllCongressManager

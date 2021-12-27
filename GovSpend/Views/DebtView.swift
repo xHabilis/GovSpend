@@ -15,14 +15,14 @@ struct DebtView: View {
     @State private var showCitationView: Bool = false
     
     var body: some View {
-        NavigationView {
             ZStack {
                 Color(K.appColors.background)
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
                 ScrollView (showsIndicators: false) {
                         
                         VStack (spacing: 25){
+                           
                             
                             if let allDebt = monthlyDebt.monthlyDebt.first {
                                 VStack (spacing: 10) {
@@ -30,7 +30,7 @@ struct DebtView: View {
                                     Text("Total Public Debt Outstanding")
                                         .font(.system(size: 13)).fontWeight(.semibold).padding(.vertical, 5.0)
                                     Text(AppSettings.convertToDollars(someDouble: Double(allDebt.tot_pub_debt_out_amt)!))
-                                        .font(.system(size: 20))
+                                        .font(.system(size: 20)).fontWeight(.bold)
                                         .foregroundColor(.red)
                                         .frame(width: 250, height: 35, alignment: .center)
                                         .background(Color(K.appColors.background))
@@ -52,6 +52,9 @@ struct DebtView: View {
                                     
                                 }
                                 .frame(width: UIScreen.main.bounds.width-74, height: 200, alignment: .center)
+                                .background(Color(K.appColors.background))
+                                .cornerRadius(20)
+                                .shadow(color: Color(K.appColors.cardShadow), radius: 2)
 
                             }
                                                         
@@ -72,14 +75,14 @@ struct DebtView: View {
                         }
 
                     }
+                    .navigationBarTitle("GovSpend", displayMode: .inline)
                     .onAppear() {
                         
                         annualDebt.getAnnualDebt()
                         monthlyDebt.getMonthlyDebt()
                         
                 }.animation(.default)
-            }
-            .navigationBarTitle("GovSpend", displayMode: .inline)
+ 
         }
         
     }

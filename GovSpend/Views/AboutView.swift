@@ -14,39 +14,24 @@ struct AboutView: View {
             
             ZStack {
                 Color(K.appColors.background)
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     
                     VStack (spacing: 10){
-                        Text("Created by: xHabilis").fontWeight(.semibold)
-                            .font(.system(size: 12))
-                        
- 
-                        
-                        let mail = "xhabilis@gmail.com"
-                        Link(destination: URL(string: "mailto:\(mail)")!, label: {
-                            Image(systemName: "envelope").imageScale(.large)
-                        
-                        })
-                    
 
                     Text("Gov$pend is a free application created to allow for the reference of Campaign Finances by election cycle, current and past US Debt as well as on going IRS Revenue Collection")
-                        .font(.system(size: 11))
+                            .font(.system(size: 14)).foregroundColor(.black)
                         .multilineTextAlignment(.center)
-                        .lineLimit(4)
                         .padding(.horizontal)
+                        Text("Data is provided by the sources below and information is presented if available.")
+                            .font(.system(size: 12)).fontWeight(.semibold).foregroundColor(.black)
+                            .multilineTextAlignment(.center)
+                            .padding()
                     
                     }
 
-                    
                     VStack (spacing: 25){
-                        Text("Data is provided by the sources below and information is presented if available.")
-                            .font(.system(size: 11)).fontWeight(.semibold)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(4)
-                            .padding()
 
-                        
                         VStack(spacing: 10) {
                             Text("Center for Responsive Politics")
                                 .font(.system(size: 15)).fontWeight(.semibold)
@@ -76,10 +61,7 @@ struct AboutView: View {
                                     .shadow(color: Color(K.appColors.cardShadow), radius: 3)
                             })
                             
-                            
-                            
-                            
-                            
+
                             Link(destination: URL(string: "https://www.propublica.org/datastore/api/propublica-congress-api")!, label: {
                                 Text("Congress")
                                     .font(.system(size: 13))
@@ -105,6 +87,16 @@ struct AboutView: View {
                             })
                             
                         }
+                        
+                        let mail = "xhabilis@gmail.com"
+                        Link(destination: URL(string: "mailto:\(mail)")!, label: {
+                            VStack (spacing: 2){
+                                Image(systemName: "envelope").imageScale(.large)
+                                Text("Contact Developer").font(.system(size: 13)).foregroundColor(.black)
+                                
+                            }
+
+                        })
                         
                     }
                     .frame(width: UIScreen.main.bounds.width-40, height: 450, alignment: .center)

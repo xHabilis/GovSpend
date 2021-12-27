@@ -30,7 +30,7 @@ struct HomeView: View {
                     }
                     
                     
-                    .navigationBarTitle("GovSpend")
+                    .navigationBarTitle("Gov$pend")
                     .navigationBarItems(trailing:
                                             Button(action: {
                                                 showAboutView = true

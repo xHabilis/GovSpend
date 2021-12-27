@@ -16,10 +16,10 @@ struct RevenueView: View {
     @State private var showCitationView: Bool = false
     
     var body: some View {
-        NavigationView {
+
             ZStack {
                 Color(K.appColors.background)
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
                 ScrollView  (showsIndicators: false) {
 
@@ -33,7 +33,7 @@ struct RevenueView: View {
                                         Text("IRS Revenue Collected")
                                             .font(.system(size: 13)).fontWeight(.semibold).padding(.vertical, 5.0)
                                         Text(AppSettings.convertToDollars(someDouble: total))
-                                            .font(.system(size: 20))
+                                            .font(.system(size: 20)).fontWeight(.bold)
                                             .foregroundColor(.green)
                                             .frame(width: 250, height: 35, alignment: .center)
                                             .background(Color(K.appColors.background))
@@ -56,6 +56,9 @@ struct RevenueView: View {
                                         
                                     }
                                     .frame(width: UIScreen.main.bounds.width-74, height: 200, alignment: .center)
+                                    .background(Color(K.appColors.background))
+                                    .cornerRadius(20)
+                                    .shadow(color: Color(K.appColors.cardShadow), radius: 2)
 
                                 }
                                 VStack {
@@ -79,8 +82,7 @@ struct RevenueView: View {
                         gift.getGiftRevenue()
                     }.animation(.default)
             }
-            .navigationBarTitle("GovSpend", displayMode: .inline)
-        }
+
     }
 }
 
